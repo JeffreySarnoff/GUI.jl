@@ -1,1 +1,1 @@
-### Best Practices using Mux.jl
+### Best Practices with Mux.jl
