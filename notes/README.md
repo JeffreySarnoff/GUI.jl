@@ -4,3 +4,8 @@
 - subtopics are named as files within their respective directories
 
 #### please add your own whenever you choose
+
+
+## Solving For Layouts
+
+- JuMP may be appropriate
