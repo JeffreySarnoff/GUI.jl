@@ -1,4 +1,6 @@
-_what is in these directories_
+### __you may need to download these to see all their content__
+
+----
 
 ### layout
 
