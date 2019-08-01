@@ -12,3 +12,6 @@ How Solving Strategies Support Layout Aesthetics
 
 [LutterothWeber2006]
 - User Interface Layout with Ordinal and Linear Constraints
+
+[Borning1999]
+- Cassowary
