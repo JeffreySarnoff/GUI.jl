@@ -1,3 +1,6 @@
+
+__you may need to download some of these to see all their content__
+
 - [ZeidlerWeber2017]
     - Tiling Algebra for constraint-based layout editing
 
