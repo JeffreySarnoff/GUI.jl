@@ -1,4 +1,7 @@
 
+[ZeidlerWeber2017]
+- Tiling Algebra for constraint-based layout editing
+
 [Zeidler2017]
 - Automatic Generation of User Interface Layouts
 for Alternative Screen Orientations
