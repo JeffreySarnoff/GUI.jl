@@ -8,4 +8,5 @@
 - JSExpr
 - LightXML
 - Mux
+- Observables
 - WebIO
