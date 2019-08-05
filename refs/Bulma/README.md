@@ -2,25 +2,29 @@
 
 [Bulma Docs](https://bulma.io/documentation/)
 
+----
 
 [Bulma Helpers](https://github.com/jmaczan/bulma-helpers)
 
 [Bulma Helpers docs](https://github.com/jmaczan/bulma-helpers#documentation)
 
+----
 
 [Bulma Extensions](https://wikiki.github.io/)
 
 [Bulma Extensions dist files](https://github.com/Wikiki/bulma-extensions/tree/master/dist)
 
+----
 
 [Bulma Addons](https://mubaidr.js.org/bulma-addons)
 
+----
 
 [Some Bulma Themes](https://jenil.github.io/bulmaswatch/)
 
 [Other Bulma Themes (some free, some not)](https://www.bulmathemes.com/)
 
-
+----
 
 [An Example Lesson](https://scrimba.com/g/gbulma)
 
@@ -31,3 +35,5 @@
 [Buefy: Bulma and Vue](https://buefy.org/documentation)
 
 [Vue.js](https://vuejs.org/)
+
+-----
