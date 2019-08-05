@@ -3,6 +3,7 @@
 [Bulma Docs](https://bulma.io/documentation/)
 
 [Bulma Extensions](https://wikiki.github.io/)
+[Bulma Extensions dist files](https://github.com/Wikiki/bulma-extensions/tree/master/dist)
 
 [Bulma Addons](https://mubaidr.js.org/bulma-addons)
 
