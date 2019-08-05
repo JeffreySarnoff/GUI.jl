@@ -2,8 +2,8 @@
 
 [Bulma Docs](https://bulma.io/documentation/)
 
-[Bulma Helpers](https://github.com/jmaczan/bulma-helpers)
 
+[Bulma Helpers](https://github.com/jmaczan/bulma-helpers)
 
 [Bulma Helpers docs](https://github.com/jmaczan/bulma-helpers#documentation)
 
