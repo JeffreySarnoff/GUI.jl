@@ -2,6 +2,8 @@
 
 [Bulma Docs](https://bulma.io/documentation/)
 
+[Bulma Helpers](https://github.com/jmaczan/bulma-helpers)
+
 [Bulma Extensions](https://wikiki.github.io/)
 
 [Bulma Extensions dist files](https://github.com/Wikiki/bulma-extensions/tree/master/dist)
