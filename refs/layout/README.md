@@ -3,6 +3,9 @@
 
 ----
 
+- [Jiang2019]
+    - ORC Layout: Adaptive GUI Layout
+    
 - [ZeidlerWeber2017]
     - Tiling Algebra for constraint-based layout editing
 
