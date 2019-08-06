@@ -1,3 +1,6 @@
+- [Velma2019]
+    - Mixed Integer Conic Optimization using Julia and JuMP
+    
 - [Jamil2016]
     - Extending Linear Relaxation for Non-Square Matrices and Soft Constraints
 
