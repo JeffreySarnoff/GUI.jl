@@ -12,3 +12,6 @@
 
 - [Jamil2012]
     - Extending Linear Relaxation for User Interface Layout
+    
+- [Smith2012]
+    - A Tutorial Guide to Mixed-Integer Programming Models and Solution Techniques
