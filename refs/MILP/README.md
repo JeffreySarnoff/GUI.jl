@@ -1,5 +1,8 @@
 - [Velma2019]
     - Mixed Integer Conic Optimization using Julia and JuMP
+
+- [Huchette2017]
+    - Strong mixed-integer formulations for the foor layout problem
     
 - [Jamil2016]
     - Extending Linear Relaxation for Non-Square Matrices and Soft Constraints
