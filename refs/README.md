@@ -34,6 +34,7 @@ How Solving Strategies Support Layout Aesthetics
     - Cassowary Article
 
 ----
+----
 
 ### refs/MILP
 
@@ -52,6 +53,21 @@ How Solving Strategies Support Layout Aesthetics
 - [Jamil2012]
     - Extending Linear Relaxation for User Interface Layout
     
+----
+----
+
+### refs/JuMP
+
+- [Vielma2019]
+     - Mixed Integer Conic Optimization using Julia and JuMP
+     - slides
+
+- [Vielma2018]
+    - Modeling	and	Solving	Discrete	Optimization	Problems	in	Practice
+    - slides from MIT course
+    
+
+----
 ----
 
 ### refs/Bulma
