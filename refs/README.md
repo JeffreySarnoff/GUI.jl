@@ -75,6 +75,15 @@ How Solving Strategies Support Layout Aesthetics
 ----
 ----
 
+### refs/UsersInterfacing
+
+- [Pollanen2007]
+    - Towards a Universal Interface for Real-Time Mathematical Communication
+
+
+---- 
+----
+
 ### refs/Bulma
 
 [UsingBulma](https://github.com/JeffreySarnoff/GUI.jl/blob/master/refs/Bulma/UsingBulma.pdf) is a pdf for which I paid.  It is here for our reference only while GUI.jl is a private repository.
