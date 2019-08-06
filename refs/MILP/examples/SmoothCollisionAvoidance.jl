@@ -10,6 +10,8 @@
 #
 # Example written and by Joey Huchette.
 
+# source: https://github.com/JuliaOpt/Pajarito.jl/blob/master/examples/collisionavoidance.jl
+
 using JuMP, PolyJuMP, SumOfSquares, MultivariatePolynomials
 using Pajarito
 
