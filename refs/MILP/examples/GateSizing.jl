@@ -10,6 +10,8 @@
 # Where variables are scale factors y, which are constrained to equal discrete values
 # Data is hard-coded from the circuit shown in figure 4 of "A Tutorial on Geometric Programming"
 
+# source: https://github.com/JuliaOpt/Pajarito.jl/blob/master/examples/gatesizing.jl
+
 using Convex, Pajarito
 
 # Set up Convex.jl model, solve, print solution
