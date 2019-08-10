@@ -38,6 +38,8 @@
 
 [Buefy: Bulma and Vue](https://buefy.org/documentation)
 
+[Buefy: Bulma, Vue, Fluent](https://mubaidr.js.org/vue-fluent)
+
 [Vue.js](https://vuejs.org/)
 
 -----
