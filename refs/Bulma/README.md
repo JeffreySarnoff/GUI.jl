@@ -26,6 +26,8 @@
 
 ----
 
+[Getting to know Bulma](https://scotch.io/bar-talk/get-to-know-bulma-my-current-favorite-css-framework)
+
 [An Example Lesson](https://scrimba.com/g/gbulma)
 
 ----
