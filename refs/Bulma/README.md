@@ -22,6 +22,8 @@
 
 [Some Bulma Themes](https://jenil.github.io/bulmaswatch/)
 
+[Bulma Templates](https://github.com/BulmaTemplates/bulma-templates)
+
 [Other Bulma Themes (some free, some not)](https://www.bulmathemes.com/)
 
 ----
