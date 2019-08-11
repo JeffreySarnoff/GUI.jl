@@ -1,4 +1,4 @@
-### __you may need to download these to see all their content__
+### __you may need to download the pdfs to see all their content__
 
 ----
 
@@ -155,6 +155,14 @@ How Solving Strategies Support Layout Aesthetics
     
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
+
+----
+----
+
+## refs/tools/layout
+
+- [flexboxes](https://the-echoplex.net/flexyboxes)
+
 
 ----
 ----
