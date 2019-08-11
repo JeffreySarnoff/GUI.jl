@@ -138,15 +138,13 @@ How Solving Strategies Support Layout Aesthetics
 
 -----
 
-[Bulma Customizer](https://bulma-customizer.bstash.io/)-----
+[Bulma Customizer](https://bulma-customizer.bstash.io/)
 
 
 ----
 ----
 
 ## refs/tools/color
-
-### Color
 
 - [color by position](https://color.hailpixel.com/)
     - move mouse on page to change the color
