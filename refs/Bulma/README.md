@@ -32,6 +32,8 @@
 
 [An Example Lesson](https://scrimba.com/g/gbulma)
 
+[Bulma Application](https://github.com/cssninjaStudio/fresh)
+
 ----
 
 [How To Use Bulma and Vue together](https://www.youtube.com/watch?v=9lcKFUzx5Ys)
