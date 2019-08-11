@@ -13,3 +13,6 @@
 
  - [Tutorials](https://github.com/barpit20/JuMPTutorials.jl)
  
+----
+
+- [Modelling Cookbook]
