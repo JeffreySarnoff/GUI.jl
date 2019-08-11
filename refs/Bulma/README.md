@@ -22,6 +22,10 @@
 
 [Some Bulma Themes](https://jenil.github.io/bulmaswatch/)
 
+[Bulma Application 1](https://github.com/cssninjaStudio/fresh)
+
+[Bulma Application 2](https://github.com/cssninjaStudio/krypton)
+
 [Bulma Templates](https://github.com/BulmaTemplates/bulma-templates)
 
 [Other Bulma Themes (some free, some not)](https://www.bulmathemes.com/)
@@ -31,8 +35,6 @@
 [Getting to know Bulma](https://scotch.io/bar-talk/get-to-know-bulma-my-current-favorite-css-framework)
 
 [An Example Lesson](https://scrimba.com/g/gbulma)
-
-[Bulma Application](https://github.com/cssninjaStudio/fresh)
 
 ----
 
