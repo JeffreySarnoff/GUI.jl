@@ -71,7 +71,9 @@ How Solving Strategies Support Layout Aesthetics
     
 - [Kronqvist2018]
     - A review and comparison of solvers for convex MINLP
- 
+
+ - [Tutorials](https://github.com/barpit20/JuMPTutorials.jl) 
+
 ----
 ----
 
@@ -138,3 +140,6 @@ How Solving Strategies Support Layout Aesthetics
 
 [Bulma Customizer](https://bulma-customizer.bstash.io/)-----
 
+
+----
+----
