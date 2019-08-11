@@ -2,7 +2,7 @@
     - Mixed Integer Conic Optimization using Julia and JuMP
     - slides
 
-- [Vielma2018]https://github.com/JeffreySarnoff/GUI.jl/blob/master/refs/JuMP/Vielma2018.pdf)
+- [Vielma201](https://github.com/JeffreySarnoff/GUI.jl/blob/master/refs/JuMP/Vielma2018.pdf)
     - Modeling	and	Solving	Discrete	Optimization	Problems	in	Practice
     - slides from MIT course
     
