@@ -8,3 +8,5 @@
     
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
+
+- [CSS3 Color Names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords)
