@@ -13,6 +13,8 @@
 
  - [Tutorials](https://github.com/barpit20/JuMPTutorials.jl)
  
+ - [Intro Course](https://laurentlessard.com/teaching/524-intro-to-optimization/)
+ 
 ----
 
 - [Modelling Cookbook](https://github.com/JeffreySarnoff/GUI.jl/blob/master/refs/JuMP/MOSEKModelingCookbook.pdf)
