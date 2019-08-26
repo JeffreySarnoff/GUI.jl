@@ -11,6 +11,10 @@ replacements, additions welcome
 - [Adobe Color](https://color.adobe.com/create)
     - does different things
 
+- [CIE Lab Gradient Development](http://davidjohnstone.net/pages/lch-lab-colour-gradient-picker)
+    - supports CIE Lab, Lch
+    - white, black or custom background color
+ 
 - [Nix Color Converter](https://www.nixsensor.com/free-color-converter/)
     - dynamic CIE Lab color setting
  
