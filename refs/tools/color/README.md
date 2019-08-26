@@ -6,6 +6,10 @@
 - [Adobe Color](https://color.adobe.com/create)
     - does different things
     
+- [CIE Lab Gradient Development](http://davidjohnstone.net/pages/lch-lab-colour-gradient-picker)
+    - supports CIE Lab, Lch
+    - white, black or custom background color
+ 
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
 
