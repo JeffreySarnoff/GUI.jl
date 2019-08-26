@@ -11,6 +11,11 @@ replacements, additions welcome
 - [Adobe Color](https://color.adobe.com/create)
     - does different things
     
+- [Colors and Palettes](https://www.color-hex.com)
+     - RGB, HSL, HSV, XYZ, CIE-Lab
+     - monochromatic variants and triadic, analogous colors
+     - contributed 5 tone palletes
+    
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
 
