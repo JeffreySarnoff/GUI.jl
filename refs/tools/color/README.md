@@ -9,4 +9,9 @@
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
 
+- [Colors and Palettes](https://www.color-hex.com)
+     - RGB, HSL, HSV, XYZ, CIE-Lab
+     - monochromatic variants and triadic, analogous colors
+     - contributed 5 tone palletes
+     
 - [CSS3 Color Names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords)
