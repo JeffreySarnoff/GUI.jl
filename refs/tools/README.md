@@ -10,7 +10,10 @@ replacements, additions welcome
     
 - [Adobe Color](https://color.adobe.com/create)
     - does different things
-    
+
+- [Nix Color Converter](https://www.nixsensor.com/free-color-converter/)
+    - dynamic CIE Lab color setting
+ 
 - [Colors and Palettes](https://www.color-hex.com)
      - RGB, HSL, HSV, XYZ, CIE-Lab
      - monochromatic variants and triadic, analogous colors
