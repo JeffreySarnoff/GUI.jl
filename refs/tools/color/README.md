@@ -9,6 +9,9 @@
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
 
+- [Nix Color Converter](https://www.nixsensor.com/free-color-converter/)
+    - dynamic CIE Lab color setting
+    
 - [Colors and Palettes](https://www.color-hex.com)
      - RGB, HSL, HSV, XYZ, CIE-Lab
      - monochromatic variants and triadic, analogous colors
