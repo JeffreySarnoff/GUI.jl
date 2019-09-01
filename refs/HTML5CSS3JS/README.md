@@ -8,7 +8,7 @@ Guidelines
     - [on github](https://github.com/open-wc/open-wc)
     - recommends
         - [lit-html](https://lit-html.polymer-project.org/)
-        - [lit-elements](https://lit-elements.polymer-project.org/)
+        - [lit-element](https://lit-element.polymer-project.org/)
     
 - [Coding](https://codeguide.co/)
     - only what is relevant
