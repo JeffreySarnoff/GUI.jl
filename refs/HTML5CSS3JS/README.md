@@ -2,8 +2,15 @@ W3 Standards Track
 
 - [UI Events](https://www.w3.org/TR/uievents/)
 
+Guidelines
 
-
-If there is some HTML5+CSS3 widget/context/layout let's use _relevant_ advice from [CodeGuide](https://codeguide.co/).
-(I found their notes first and do not want to fret over HTML5 tag presentation or CSS3 modifier ordering).
+- [Web Components](https://open-wc.org)
+    - [on github](https://github.com/open-wc/open-wc)
+    - recommends
+        - [lit-html](https://lit-html.polymer-project.org/)
+        - [lit-elements](https://lit-elements.polymer-project.org/)
+    
+- [Coding](https://codeguide.co/)
+    - only what is relevant
+    
 
