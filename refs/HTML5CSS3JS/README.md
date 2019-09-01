@@ -11,7 +11,11 @@ Guidelines
         - [lit-element](https://lit-element.polymer-project.org/)
         - [redux](https://redux.js.org/)
     
-- [Coding](https://codeguide.co/)
-    - only what is relevant
+- [Coding]
+    - [code guide](https://codeguide.co/)
+        - only some of this is relevant
     
+- JavaScript
+    -[hybrids](https://github.com/hybridsjs/hybrids)
+        - [getting info from a uri, async](https://stackblitz.com/edit/hybrids-async-user?file=async-user.js)
 
