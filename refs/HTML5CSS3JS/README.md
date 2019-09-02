@@ -15,7 +15,11 @@ Guidelines
     - [code guide](https://codeguide.co/)
         - only some of this is relevant
     
-- JavaScript
-    -[hybrids](https://github.com/hybridsjs/hybrids)
-        - [getting info from a uri, async](https://stackblitz.com/edit/hybrids-async-user?file=async-user.js)
+JavaScript
+
+- [tippy](https://github.com/atomiks/tippyjs/)
+    - tooltips
+        
+- [hybrids](https://github.com/hybridsjs/hybrids)
+    - [getting info from a uri, async](https://stackblitz.com/edit/hybrids-async-user?file=async-user.js)
 
