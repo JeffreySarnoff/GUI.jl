@@ -14,7 +14,7 @@ Guidelines
 - [Coding]
     - [code guide](https://codeguide.co/)
         - only some of this is relevant
-    
+
 JavaScript
 
 - [tippy](https://github.com/atomiks/tippyjs/)
@@ -24,3 +24,7 @@ JavaScript
 - [hybrids](https://github.com/hybridsjs/hybrids)
     - [getting info from a uri, async](https://stackblitz.com/edit/hybrids-async-user?file=async-user.js)
 
+
+Tools
+
+- [table maker](https://www.tablesgenerator.com/html_tables)
