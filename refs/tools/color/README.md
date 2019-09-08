@@ -22,3 +22,6 @@
      - contributed 5 tone palletes
      
 - [CSS3 Color Names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords)
+
+- [eclectic color naming](http://veli.ee/colorpedia/)
+    - select from hues x lightness
