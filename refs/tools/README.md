@@ -26,6 +26,9 @@ replacements, additions welcome
 - [Color Gradients](https://mycolor.space)
     - autogenerates gradients from choices
 
+- [eclectic color naming](http://veli.ee/colorpedia/)
+    - select from hues x lightness
+
 ----
 
 ### Layout
