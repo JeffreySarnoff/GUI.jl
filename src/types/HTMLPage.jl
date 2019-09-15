@@ -70,13 +70,13 @@ end
 
 function string(head::HtmlHead)
     result = "<head>\n"
-    result = string(result, "  <meta charset=\"", html.head.charset, "\">\n")
+    result = string(result, "  <meta charset=\"", head.charset, "\">\n")
     result = string(result, "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
-    if !isempty(html.head.base)
-        result = string(result, "  <title>", html.head.title,"</title>\n")
+    if !isempty(head.base)
+        result = string(result, "  <title>", head.title,"</title>\n")
     end
-    if !isempty(html.head.title)
-        result = string(result, "  <base href=\"", html.head.base,">\n")
+    if !isempty(head.title)
+        result = string(result, "  <base href=\"", head.base,">\n")
     end
     result = string(result, "<\\head>\n")
     return result
