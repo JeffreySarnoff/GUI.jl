@@ -15,9 +15,10 @@
 struct HtmlHead
     charset::String
     title::String
+    base::String
     
-    function HtmleHead(;charset::String="UTF-8", title::String="")
-        return new(charset=charset, title=title)
+    function HtmleHead(;charset::String="UTF-8", title::String="", base::String="")
+        return new(charset=charset, title=title, base=base)
     end
 end
 
@@ -48,8 +49,11 @@ function Nase.string(head::HtmlHead)
     result = "<head>\n"
     result = string(result, "  <meta charset=\"", html.head.charset, "\">\n")
     result = string(result, "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
-    if !isempty(html.head.title)
+    if !isempty(html.head.base)
         result = string(result, "  <title>", html.head.title,"</title>\n")
+    end
+    if !isempty(html.head.title)
+        result = string(result, "  <base href=\"", html.head.base,">\n")
     end
     result = string(result, "</head>\n")
     return result
