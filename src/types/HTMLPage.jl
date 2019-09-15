@@ -41,7 +41,7 @@ struct HtmlHead
     base::String
 end
 
-function HtmleHead(; charset::String="UTF-8", title::String="", base::String="")
+function HtmlHead(; charset::String="UTF-8", title::String="", base::String="")
     return HtmlHead(charset, title, base)
 end
 
