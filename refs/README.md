@@ -199,4 +199,11 @@ How Solving Strategies Support Layout Aesthetics
 - [w3 CSS validator](https://jigsaw.w3.org/css-validator/)
 
 ----
+
+### Speed (Compression etc)
+
+- [speed tools](https://www.giftofspeed.com/)
+
+----
+----
 ----
