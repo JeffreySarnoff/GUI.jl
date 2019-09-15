@@ -41,7 +41,7 @@ struct HtmlHead
     base::String
     
     function HtmleHead(;charset::String="UTF-8", title::String="", base::String="")
-        return new(charset=charset, title=title, base=base)
+        return new(charset, title, base)
     end
 end
 
@@ -55,7 +55,7 @@ struct HtmlPage
     body::HtmlBody
     
     function HtmlPage(; doctype::String="html", lang::String="en", head::HtmlHead=HtmlHead(), body::HtmlBody=HtmlBody())
-       return new(doctype=doctype, lang=lang, head=head, body=body)
+       return new(doctype, lang, head, body)
     end
 end
 
