@@ -27,4 +27,6 @@ JavaScript
 
 Tools
 
+- [w3 validator](https://validator.w3.org/)
+
 - [table maker](https://www.tablesgenerator.com/html_tables)
