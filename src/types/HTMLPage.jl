@@ -8,6 +8,12 @@
   <title>""</title>
 </head>
 <body>
+  <header>
+  </header>
+  <main>
+  </main>
+  <footer>
+  </footer>
 </body>
 </html>
 
@@ -34,6 +40,7 @@
 
 import Base: string
 using URIParser
+using LinkedLists
 
 struct HtmlHead
     charset::String
@@ -46,7 +53,10 @@ function HtmlHead(; charset::String="UTF-8", title::String="", base::String="")
 end
 
 struct HtmlBody
+  elements::LinkedList{HtmlElement}
 end
+
+
 
 struct HtmlPage
     doctype::String
