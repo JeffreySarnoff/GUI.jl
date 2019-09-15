@@ -39,10 +39,10 @@ struct HtmlHead
     charset::String
     title::String
     base::String
-    
-    function HtmleHead(;charset::String="UTF-8", title::String="", base::String="")
-        return new(charset, title, base)
-    end
+end
+
+function HtmleHead(; charset::String="UTF-8", title::String="", base::String="")
+    return HtmlHead(charset, title, base)
 end
 
 struct HtmlBody
