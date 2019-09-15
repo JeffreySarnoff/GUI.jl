@@ -60,12 +60,13 @@ struct HtmlPage
 end
 
 function string(html::HtmlPage)
-    result = string("<DOCTYPE ", html.doctype,">\n")
-    result = string(result, "<html lang=\"", html.lang, "\">\n")
-    result = string(result, string(html.head))
-    result = string(result, string(html.body))
-    result = string(result, "<\\html>\n")
-    return result
+    io = IOBuffer()
+    write(io, string("<DOCTYPE ", html.doctype,">\n"))
+    write(io, string("<html lang=\"", html.lang, "\">\n")
+    write(io, string(html.head))
+    write(io, string(html.body))
+    write(io, "<\\html>\n")
+    return String(take!(io))
 end
 
 function string(head::HtmlHead)
@@ -84,7 +85,8 @@ function string(head::HtmlHead)
 end
  
 function string(body::HtmlBody)
-    result = "<body>\n"
-    result = string(result, "<\\body>\n")
-    return result
+    io = IOBuffer()
+    write(io, "<body>\n")
+    write(io, "<\\body>\n")
+    return String(take!(io))
 end
