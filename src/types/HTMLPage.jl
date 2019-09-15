@@ -12,6 +12,10 @@
 </html>
 
 =#
+
+using Base: String
+using URIParser
+
 struct HtmlHead
     charset::String
     title::String
