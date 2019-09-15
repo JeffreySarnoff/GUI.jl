@@ -32,7 +32,7 @@
 </html>
 =#
 
-using Base: String
+import Base: String
 using URIParser
 
 struct HtmlHead
