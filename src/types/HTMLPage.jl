@@ -62,8 +62,8 @@ end
 function string(html::HtmlPage)
     result = string("<DOCTYPE ", html.doctype,">\n")
     result = string(result, "<html lang=\"", html.lang, "\">\n")
-    result = string(result, html.head)
-    result = string(result, html.body)
+    result = string(result, string(html.head))
+    result = string(result, string(html.body))
     result = string(result, "<\\html>\n")
     return result
 end
@@ -83,4 +83,7 @@ function string(head::HtmlHead)
 end
  
 function string(body::HtmlBody)
+    result = "<body>\n"
+    result = string(result, "<\\body>\n"
+    return result
 end
