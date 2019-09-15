@@ -47,3 +47,9 @@ replacements, additions welcome
 
 ----
 
+### Speed (Compression etc)
+
+- [speed tools](https://www.giftofspeed.com/)
+
+----
+
