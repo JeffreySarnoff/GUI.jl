@@ -12,6 +12,25 @@
 </html>
 
 =#
+#=
+<!DOCTYPE HTML>
+<html lang="en">
+ <head>
+  <title>Online or offline?</title>
+<script>
+   function isonline(online) {
+     document.getElementById('online').textContent =
+       online;
+   }
+  </script>
+ </head>
+ <body ononline="isonline(true)"
+       onoffline="isonline(false)"
+       onload="isonline(navigator.onLine)">
+  <p>are you online? <span id="online">(Unknown)</span></p>
+ </body>
+</html>
+=#
 
 using Base: String
 using URIParser
