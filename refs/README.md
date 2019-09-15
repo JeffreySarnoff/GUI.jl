@@ -191,3 +191,10 @@ How Solving Strategies Support Layout Aesthetics
 
 ----
 ----
+
+## refs/tools/validation
+
+- [w3 validator](https://validator.w3.org/)
+
+----
+----
