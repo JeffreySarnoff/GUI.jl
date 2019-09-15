@@ -59,16 +59,16 @@ struct HtmlPage
     end
 end
 
-function Base.string(html::HtmlPage)
+function string(html::HtmlPage)
     result = string("<DOCTYPE ", html.doctype,">\n")
     result = string(result, "<html lang=\"", html.lang, "\">\n")
     result = string(result, html.head)
     result = string(result, html.body)
-    result = string(result, "<\html>\n")
+    result = string(result, "<\\html>\n")
     return result
 end
 
-function Nase.string(head::HtmlHead)
+function string(head::HtmlHead)
     result = "<head>\n"
     result = string(result, "  <meta charset=\"", html.head.charset, "\">\n")
     result = string(result, "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
@@ -78,9 +78,9 @@ function Nase.string(head::HtmlHead)
     if !isempty(html.head.title)
         result = string(result, "  <base href=\"", html.head.base,">\n")
     end
-    result = string(result, "</head>\n")
+    result = string(result, "<\\head>\n")
     return result
 end
  
-function Base.string(body::HtmlBody)
+function string(body::HtmlBody)
 end
