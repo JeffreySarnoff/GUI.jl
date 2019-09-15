@@ -41,7 +41,9 @@ replacements, additions welcome
 
 ### Validation
 
-- [w3 validator](https://validator.w3.org/)
+- [w3 HTML validator](https://validator.w3.org/)
+
+- [w3 CSS validator](https://jigsaw.w3.org/css-validator/)
 
 ----
 
