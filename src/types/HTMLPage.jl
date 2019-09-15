@@ -69,17 +69,18 @@ function string(html::HtmlPage)
 end
 
 function string(head::HtmlHead)
-    result = "<head>\n"
-    result = string(result, "  <meta charset=\"", head.charset, "\">\n")
-    result = string(result, "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
+    io = IOBuffer()
+    write(io, "<head>\n")
+    write(io, string("  <meta charset=\"", head.charset, "\">\n"))
+    write(io, "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
     if !isempty(head.base)
-        result = string(result, "  <title>", head.title,"</title>\n")
+        write(io, string("  <base href=\"", head.base,">\n"))
     end
     if !isempty(head.title)
-        result = string(result, "  <base href=\"", head.base,">\n")
+        write(io, string("  <title>", head.title,"</title>\n"))
     end
-    result = string(result, "<\\head>\n")
-    return result
+    write(io, "<\\head>\n")
+    return String(take!(io))
 end
  
 function string(body::HtmlBody)
