@@ -61,7 +61,7 @@ end
 
 function string(html::HtmlPage)
     io = IOBuffer()
-    write(io, string("<DOCTYPE ", html.doctype,">\n"))
+    write(io, string("<!DOCTYPE ", html.doctype,">\n"))
     write(io, string("<html lang=\"", html.lang, "\">\n"))
     write(io, string(html.head))
     write(io, string(html.body))
