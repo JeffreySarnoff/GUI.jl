@@ -38,3 +38,10 @@ replacements, additions welcome
 - [solved with flexbox](https://philipwalton.github.io/solved-by-flexbox/)
 
 ----
+
+### Validation
+
+- [w3 validator](https://validator.w3.org/)
+
+----
+
