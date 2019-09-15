@@ -84,6 +84,6 @@ end
  
 function string(body::HtmlBody)
     result = "<body>\n"
-    result = string(result, "<\\body>\n"
+    result = string(result, "<\\body>\n")
     return result
 end
