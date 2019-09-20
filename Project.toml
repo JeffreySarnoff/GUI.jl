@@ -3,3 +3,6 @@ uuid = "18a26d71-ac04-55e7-8e1e-9d91d9f221ea"
 repo = "https://github.com/JeffreySarnoff/GUI.jl.git"
 license = "MIT"
 version = "0.1.0"
+
+[compat]
+julia = "1"
