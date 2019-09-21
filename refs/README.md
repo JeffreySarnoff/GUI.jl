@@ -96,6 +96,21 @@ How Solving Strategies Support Layout Aesthetics
 - [Pollanen2007]
     - Towards a Universal Interface for Real-Time Mathematical Communication
 
+----
+----
+
+### refs/HTML5CSS3JS
+
+#### Julia
+
+- https://github.com/yurivish/Hyperscript.jl
+    - Hyperscript offers is a concise DSL for working with HTML, SVG, and CSS.
+
+#### also
+- W3 Standards Track
+- UI Events
+- Guidelines
+- Web Components
 
 ---- 
 ----
