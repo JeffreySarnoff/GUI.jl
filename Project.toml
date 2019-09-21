@@ -7,6 +7,9 @@ version = "0.1.0"
 [deps]
 LinkedLists = "70f5e60a-1556-5f34-a19e-a48b3e4aaee9"
 
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
 [compat]
 LinkedLists = "0"
 julia = "1"
