@@ -2,7 +2,7 @@ name = "GUI"
 uuid = "18a26d71-ac04-55e7-8e1e-9d91d9f221ea"
 repo = "https://github.com/JeffreySarnoff/GUI.jl.git"
 license = "MIT"
-version = "0.1.0"
+version = "0.0.1"
 
 [deps]
 LinkedLists = "70f5e60a-1556-5f34-a19e-a48b3e4aaee9"
