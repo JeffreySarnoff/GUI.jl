@@ -4,6 +4,13 @@
 
 ### refs/layout/
 
+----
+
+https://github.com/jkrumbiegel/Rhea.jl
+- A Julia port of the Rhea C++ implementation of the Cassowary constraint solver
+
+----
+
 - [Jiang2019]
     - ORC Layout: Adaptive GUI Layout
 
