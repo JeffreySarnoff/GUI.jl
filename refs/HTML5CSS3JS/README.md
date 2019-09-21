@@ -1,3 +1,8 @@
+Julia
+
+- https://github.com/yurivish/Hyperscript.jl
+    - Hyperscript offers is a concise DSL for working with HTML, SVG, and CSS.
+
 W3 Standards Track
 
 - [UI Events](https://www.w3.org/TR/uievents/)
