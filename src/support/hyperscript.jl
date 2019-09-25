@@ -1,15 +1,15 @@
-const html_  = m("html")
+const html_ = m("html")
 
-const head_  = m("head")
+const head_ = m("head")
 const title_ = m("title")
-const meta_  = m("meta")
+const meta_ = m("meta")
 
 # sections https://html.spec.whatwg.org/#sections
 const body_  = m("body")
 const article_ = m("article")
 const section_ = m("section")
-const nav_     = m("nav")
-const aside_   = m("aside")
+const nav_ = m("nav")
+const aside_ = m("aside")
 const h1_ = m("h1")
 const h2_ = m("h2")
 const h3_ = m("h3")
@@ -17,8 +17,8 @@ const h4_ = m("h4")
 const h5_ = m("h5")
 const h6_ = m("h6")
 const hgroup_ = m("hgroup")
-const header_  = m("header")
-const footer_  = m("footer")
+const header_ = m("header")
+const footer_ = m("footer")
 const address_ = m("address")
 
 # grouping https://html.spec.whatwg.org/#grouping-content
