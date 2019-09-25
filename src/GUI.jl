@@ -1,6 +1,7 @@
 module GUI
 
 using LinkedLists
+using Hyperscript
 
 include("support/macros.jl")     # @sym
 include("support/linkedlist.jl") # getindex(list, idx::Int)
