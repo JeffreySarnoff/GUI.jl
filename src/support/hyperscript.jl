@@ -95,3 +95,8 @@ const a_tag_ = a_(rel="tag")
 const a_next_ = a_(rel="next")
 const a_prev_ = a_(rel="prev")
 
+# area https://html.spec.whatwg.org/#the-area-element
+const area_ = m("area")
+const area_circle = area_(shape="circle")
+const area_rectangle = area_(shape="rect")
+const area_polygon = area_(shape_="poly")
