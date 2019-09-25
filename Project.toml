@@ -6,6 +6,7 @@ version = "0.0.1"
 
 [deps]
 LinkedLists = "70f5e60a-1556-5f34-a19e-a48b3e4aaee9"
+Hyperscript = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
