@@ -38,6 +38,18 @@ const figcaption_ = m("figcaption")
 const main_ = m("main")
 const div_ = m("div")
 
+# table https://html.spec.whatwg.org/#tables
+const table_ = m("table")
+const caption_ = m("caption")
+const colgroup_ = m("colgroup")
+const col_ = m("col")
+const tbody_ = m("tbody")
+const thead_ = m("thead")
+const tfoot_ = m("tfoot")
+const tr_ = m("tr")
+const td_ = m("td")
+const th_ = m("th")
+
 # text level https://html.spec.whatwg.org/#text-level-semantics
 const a_ = m("a")
 const em_ = m("em")
