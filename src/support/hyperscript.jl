@@ -100,3 +100,101 @@ const area_ = m("area")
 const area_circle_ = area_(shape="circle")
 const area_rectangle_ = area_(shape="rect")
 const area_polygon_ = area_(shape_="poly")
+
+### html attributes
+
+# global attributes
+
+const HTML_global_attributes = Set([
+    :accesskey
+    :autocapitalize
+    :autofocus
+    :contenteditable
+    :dir
+    :draggable
+    :enterkeyhint
+    :hidden
+    :inputmode
+    :is
+    :itemid
+    :itemprop
+    :itemref
+    :itemscope
+    :itemtype
+    :lang
+    :nonce
+    :spellcheck
+    :style
+    :tabindex
+    :title
+    :translate
+  ])
+
+const HTML_eventhandler_attributes = Set([
+    :onabort
+    :onauxclick
+    :onblur
+    :oncancel
+    :oncanplay
+    :oncanplaythrough
+    :onchange
+    :onclick
+    :onclose
+    :oncontextmenu
+    :oncopy
+    :oncuechange
+    :oncut
+    :ondblclick
+    :ondrag
+    :ondragend
+    :ondragenter
+    :ondragexit
+    :ondragleave
+    :ondragover
+    :ondragstart
+    :ondrop
+    :ondurationchange
+    :onemptied
+    :onended
+    :onerror
+    :onfocus
+    :onformdata
+    :oninput
+    :oninvalid
+    :onkeydown
+    :onkeypress
+    :onkeyup
+    :onload
+    :onloadeddata
+    :onloadedmetadata
+    :onloadstart
+    :onmousedown
+    :onmouseenter
+    :onmouseleave
+    :onmousemove
+    :onmouseout
+    :onmouseover
+    :onmouseup
+    :onpaste
+    :onpause
+    :onplay
+    :onplaying
+    :onprogress
+    :onratechange
+    :onreset
+    :onresize
+    :onscroll
+    :onsecuritypolicyviolation
+    :onseeked
+    :onseeking
+    :onselect
+    :onslotchange
+    :onstalled
+    :onsubmit
+    :onsuspend
+    :ontimeupdate
+    :ontoggle
+    :onvolumechange
+    :onwaiting
+    :onwheel
+  )]
