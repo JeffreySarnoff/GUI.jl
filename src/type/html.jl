@@ -3,6 +3,8 @@ abstract type AbstractHtml{T} <: AbstractWeb{T} end
 abstract type AbstractHtmlAttribute{T, V} <: AbstractHtml{T} end
 
 # AbstractWeb params
+
+struct WebAttribute{T} end
 struct WebAttributeValue{T} end
 
 const  web_boolean_value = WebAttributeValue{Bool}()
