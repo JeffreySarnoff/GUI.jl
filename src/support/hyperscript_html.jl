@@ -299,15 +299,12 @@ const HTML_lessgeneral_input_attributes = Set([
     :step
   ])
 
-const HTML_image_input_attributes = Set([
-    :alt
-    :formaction
-    :formenctype
-    :formmethod
-    :formtarget
-    :height
-    :src
-    :width
+const HTML_checkbox_input_attributes = Set([
+    :checked
+  ])
+
+const HTML_file_input_attributes = Set([
+    :accept
   ])
 
 const HTML_form_input_attributes = Set([
@@ -318,8 +315,15 @@ const HTML_form_input_attributes = Set([
     :formtarget
   ])
 
-const HTML_file_input_attributes = Set([
-    :accept
+ const HTML_image_input_attributes = Set([
+    :alt
+    :formaction
+    :formenctype
+    :formmethod
+    :formtarget
+    :height
+    :src
+    :width
   ])
 
 const HTML_submit_input_attributes = Set([
@@ -327,4 +331,11 @@ const HTML_submit_input_attributes = Set([
     :formmethod
     :formtarget
   ])
+
+const HTML_input_attributes =
+    union(HTML_general_input_attributes, HTML_less_general_input_attributes, 
+          HTML_checkbox_input_attributes, HTML_file_input_attributes, HTML_form_input_attributes,
+          HTML_image_input_attributs, HTML_submit_input_attributes) 
+
+   
 
