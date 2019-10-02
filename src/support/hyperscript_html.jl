@@ -345,31 +345,31 @@ const HTML_input_attributes =
 
 # select
     
-const HTML_select_attributes = Set([
-    :autofocus, :disabled, :form, :multiple, :name, :required, :size ])
+const HTML_select_attributes =
+    Set([:autofocus, :disabled, :form, :multiple, :name, :required, :size])
 
-const HTML_option_attributes = Set([
-    :disabled, :label, :selected, :value ])
+const HTML_option_attributes =
+    Set([:disabled, :label, :selected, :value])
 
-const HTML_optgroup_attributes = Set([
-    :disabled, :label ])
-
-const HTML_optgroup_attributes = Set([
-    :disabled, :label ])
+const HTML_optgroup_attributes =
+    Set([:disabled, :label])
 
 # list
 
-const HTML_ol_attributes = Set([
-    :reversed, :start, :type ])
+const HTML_ol_attributes =
+    Set([:reversed, :start, :type])
 
 const HTML_ul_attributes = Set([])
 
 # style
-const HTML_style_attributes = Set([
-      :media, :type])
+const HTML_style_attributes =
+    Set([:media, :type])
 
+
+# elements with global_attributes only
+
+const HTML_nav_attributes = Set([])
 # table
-
 const HTML_table_attributes = Set([])
 const HTML_tbody_attributes = Set([])
 const HTML_td_attributes = Set([])
@@ -377,5 +377,4 @@ const HTML_tfoot_attributes = Set([])
 const HTML_th_attributes = Set([])
 const HTML_thead_attributes = Set([])
 const HTML_tr_attributes = Set([])
-
 
