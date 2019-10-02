@@ -1,5 +1,6 @@
 abstract type AbstractWeb{T} end
-abstract type AbstractWebAttribute{T, V} <: AbstractWeb{T} end
+abstract type AbstractHtml{T} <: AbstractWeb{T} end
+abstract type AbstractHtmlAttribute{T, V} <: AbstractHtml{T} end
 
 # AbstractWeb params
 struct WebAttributeValue{T} end
@@ -9,7 +10,7 @@ const  web_integer_value = WebAttributeValue{Int}()
 const  web_float_value = WebAttributeValue{Float64}()
 const  web_string_value = WebAttributeValue{String}()
 
-struct WebAttribute{V} <: AbstractWebAttribute{T, V}
+struct HtmlAttribute{V} <: AbstractHtmlAttribute{T, V}
     name::String
     valuation::V
 end
