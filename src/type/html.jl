@@ -1,11 +1,19 @@
 abstract type AbstractWeb{T} end
+abstract type AbstractWebElement{T} <: AbstractWeb{T} end
+abstract type AbstractWebAttribute{T} <: AbstractWeb{T} end
+
 abstract type AbstractHtml{T} <: AbstractWeb{T} end
-abstract type AbstractHtmlAttribute{T, V} <: AbstractHtml{T} end
+abstract type AbstractHtmlElement{T, V} <: AbstractWebElement{T} end
+abstract type AbstractHtmlAttribute{T, V} <: AbstractWebAttribute{T} end
+
+abstract type AbstractXHtml{T} <: AbstractWeb{T} end
+abstract type AbstractXHtmlElement{T, V} <: AbstractWebElement{T} end
+abstract type AbstractXHtmlAttribute{T, V} <: AbstractWebAttribute{T} end
 
 # AbstractWeb params
 
-struct WebAttribute{T} end
-struct WebAttributeValue{T} end
+struct HtmlAttribute{T} end
+struct HtmlAttributeValue{T} end
 
 const  web_boolean_value = WebAttributeValue{Bool}()
 const  web_integer_value = WebAttributeValue{Int}()
