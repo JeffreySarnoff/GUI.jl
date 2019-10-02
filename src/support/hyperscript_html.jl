@@ -81,6 +81,30 @@ const span_ = m("span")
 const br_ = m("br")
 const wbr_ = m("wbr")
 
+# input element types
+const button_ = m("button")
+const checkbox_ = m("checkbox")
+const color_ = m("color")
+const date_ = m("date")
+const datetimelocal = m("datetimeLocal")
+const email_ = m("email")
+const file_ = m("file")
+const hidden_ = m("hidden")
+const image_ = m("image")
+const month_ = m("month")
+const number_ = m("number")
+const password_ = m("password")
+const radio_ = m("radio")
+const range_ = m("range")
+const reset_ = m("reset")
+const search_ = m("search")
+const submit_ = m("submit")
+const tel_ = m("tel")
+const text_ = m("text")
+const time_ = m("time")
+const url_ = m("url")
+const week_ = m("week")
+
 # link types
 const a_alternate_ = a_(rel="alternate")
 const a_author_ = a_(rel="author")
@@ -238,4 +262,35 @@ const HTML_boolean_attributes = Set([
     :scoped
     :selected
     :typemustmatch
-  )] 
+  ])
+    
+# kinds of HTML Input Attributes
+const HTML_general_input_attributes = Set([
+    :autocomplete
+    :autofocus
+    :disabled
+    :name
+    :
+  ])
+
+const HTML_img_attributes = Set([
+    :alt
+    :crossorigin
+    :height
+    :ismap
+    :longdesc
+    :sizes
+    :src
+    :srcset
+    :usemap
+    :width
+  ])
+
+const HTML_form_attributes = Set([
+  ])
+
+const HTML_file_attributes = Set([
+    :accept
+    
+  ])
+
