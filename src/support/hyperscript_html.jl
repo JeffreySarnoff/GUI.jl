@@ -264,16 +264,7 @@ const HTML_boolean_attributes = Set([
     :typemustmatch
   ])
     
-# kinds of HTML Input Attributes
-const HTML_general_input_attributes = Set([
-    :autocomplete
-    :autofocus
-    :disabled
-    :name
-    :
-  ])
-
-const HTML_img_attributes = Set([
+const HTML_image_attributes = Set([
     :alt
     :crossorigin
     :height
@@ -286,11 +277,54 @@ const HTML_img_attributes = Set([
     :width
   ])
 
-const HTML_form_attributes = Set([
+# kinds of HTML Input Attributes
+const HTML_general_input_attributes = Set([
+    :autocomplete
+    :autofocus
+    :disabled
+    :form
+    :name
+    :placeholder
+    :readonly
+    :required
+    :type
+    :value
   ])
 
-const HTML_file_attributes = Set([
+const HTML_lessgeneral_input_attributes = Set([
+    :list
+    :multiple
+    :pattern
+    :size
+    :step
+  ])
+
+const HTML_image_input_attributes = Set([
+    :alt
+    :formaction
+    :formenctype
+    :formmethod
+    :formtarget
+    :height
+    :src
+    :width
+  ])
+
+const HTML_form_input_attributes = Set([
+    :formaction
+    :formenctype
+    :formmethod
+    :formnovalidate
+    :formtarget
+  ])
+
+const HTML_file_input_attributes = Set([
     :accept
-    
+  ])
+
+const HTML_submit_input_attributes = Set([
+    :formenctype
+    :formmethod
+    :formtarget
   ])
 
