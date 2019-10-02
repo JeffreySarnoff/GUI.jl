@@ -1,14 +1,17 @@
-abstract type AbstractWeb{T} end
-abstract type AbstractWebElement{T} <: AbstractWeb{T} end
-abstract type AbstractWebAttribute{T} <: AbstractWeb{T} end
+abstract type AbstractWebPage{T} end
+abstract type AbstractWebPageElement{T} <: AbstractWebPage{T} end
+abstract type AbstractWebPageAttribute{T} <: AbstractWebPageElement{T} end
+abstract type AbstractWebPageAttributeValue{T} <: AbstractWebPageElement{T} end
 
-abstract type AbstractHtml{T} <: AbstractWeb{T} end
-abstract type AbstractHtmlElement{T, V} <: AbstractWebElement{T} end
-abstract type AbstractHtmlAttribute{T, V} <: AbstractWebAttribute{T} end
+abstract type AbstractHtml{T} <: AbstractWebPage{T} end
+abstract type AbstractHtmlElement{T, V} <: AbstractWebPageElement{T} end
+abstract type AbstractHtmlAttribute{T, V} <: AbstractWebPageAttribute{T} end
+abstract type AbstractHtmlAttributeValue{T, V} <: AbstractWebPageAttributeValue{T} end
 
-abstract type AbstractXHtml{T} <: AbstractWeb{T} end
-abstract type AbstractXHtmlElement{T, V} <: AbstractWebElement{T} end
-abstract type AbstractXHtmlAttribute{T, V} <: AbstractWebAttribute{T} end
+abstract type AbstractXHtml{T} <: AbstractWebPage{T} end
+abstract type AbstractXHtmlElement{T, V} <: AbstractWebPageElement{T} end
+abstract type AbstractXHtmlAttribute{T, V} <: AbstractWebPageAttribute{T} end
+abstract type AbstractXHtmlAttributeValue{T, V} <: AbstractWebPageAttributeValue{T} end
 
 # AbstractWeb params
 
