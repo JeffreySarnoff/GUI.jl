@@ -3,6 +3,11 @@ Julia
 - https://github.com/yurivish/Hyperscript.jl
     - Hyperscript offers is a concise DSL for working with HTML, SVG, and CSS.
 
+CSS3
+
+- https://www.w3schools.com/w3css/
+    - w3.css is a css framework
+
 W3 Standards Track
 
 - [UI Events](https://www.w3.org/TR/uievents/)
