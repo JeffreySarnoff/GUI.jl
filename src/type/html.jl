@@ -1,5 +1,18 @@
 abstract type AbstractWebPage{T} end
-abstract type AbstractWebPageElement{T} <: AbstractWebPage{T} end
+abstract type AbstractWebPageAspect{T} <: AbstractWebPage{T} end
+abstract type AbstractWebPageRole{T}   <: AbstractWebPage{T} end
+
+struct WebPageAspect{T} <: AbstractWebPageAspect{T}
+    tag::Symbol
+    
+end
+struct WebPageRole{T}   <: AbstractWebPageRole{T}   end
+
+const WebPageAspects = Set([])
+const WebPageRoles   = Set([])
+
+abstract type AbstractWebPageElement{Aspect, Role} <: AbstractWebPage{T} end
+
 abstract type AbstractWebPageAttribute{T} <: AbstractWebPageElement{T} end
 abstract type AbstractWebPageAttributeValue{T} <: AbstractWebPageElement{T} end
 
