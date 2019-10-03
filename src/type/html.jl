@@ -29,20 +29,25 @@ function HtmlShared(name::String)
     tag = @sym(name)
     return HtmlShared{T}(tag, name)
 end
-function HtmlShared(;tag::Symbol)
-    name = string(tag)
-    return HtmlShared(tag, name)
-end
-function HtmlShared(;name::String)
-    tag = @sym(name)
-    return HtmlShared{T}(tag, name)
-end
 function HtmlShared(;tag::Symbol, name::String)
     return HtmlShared(tag, name)
 end
 
 
+@quasiabstract mutable struct HtmlItemShared <: HtmlShared
+    id::String   # an identifier for the realized item that is unique throughout website
+end
 
+id(x::HtmlItemShared) = x.id
+
+function HtmlItemShared(id::String)
+    return HtmlShared(tag, name)
+end
+
+
+
+# Forward methods from `HtmlItemShared` to `HtmlShared`
+@forward (HtmlItemShared, :htmlshared) RegularPolygon
 abstract type AbstractWebPageElement{Aspect, Role} <: AbstractWebPage{T} end
 
 abstract type AbstractWebPageAttribute{T} <: AbstractWebPageElement{T} end
