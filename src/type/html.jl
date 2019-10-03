@@ -1,15 +1,47 @@
-abstract type AbstractWebPage{T} end
+abstract type AbstractWebPage end
 abstract type AbstractWebPageAspect{T} <: AbstractWebPage{T} end
 abstract type AbstractWebPageRole{T}   <: AbstractWebPage{T} end
 
 struct WebPageAspect{T} <: AbstractWebPageAspect{T}
     tag::Symbol
-    
 end
-struct WebPageRole{T}   <: AbstractWebPageRole{T}   end
+struct WebPageRole{T}   <: AbstractWebPageRole{T}
+    tag::Symbol
+end
 
 const WebPageAspects = Set([])
 const WebPageRoles   = Set([])
+
+
+@quasiabstract mutable struct HtmlShared <: AbstractWebPage
+    tag::Symbol           # tag  === Symbol(name)
+    name::String          # name === string(tag)
+end
+
+tag(x::HtmlShared)  = x.tag
+name(x::HtmlShared) = x.name
+
+function HtmlShared(tag::Symbol)
+    name = string(tag)
+    return HtmlShared(tag, name)
+end
+function HtmlShared(name::String)
+    tag = @sym(name)
+    return HtmlShared{T}(tag, name)
+end
+function HtmlShared(;tag::Symbol)
+    name = string(tag)
+    return HtmlShared(tag, name)
+end
+function HtmlShared(;name::String)
+    tag = @sym(name)
+    return HtmlShared{T}(tag, name)
+end
+function HtmlShared(;tag::Symbol, name::String)
+    return HtmlShared(tag, name)
+end
+
+
 
 abstract type AbstractWebPageElement{Aspect, Role} <: AbstractWebPage{T} end
 
