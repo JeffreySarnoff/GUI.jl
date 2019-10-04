@@ -12,6 +12,7 @@ Hyperscript = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Gumbo = "708ec375-b3d6-5a57-a7ce-8257bf98657a"
 Cascadia = "54eefc05-d75b-58de-a785-1a3403f0919f"
+ReusePatterns = "a39b5e78-89b5-562b-97d8-70689129df0c"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
