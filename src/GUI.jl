@@ -5,9 +5,12 @@ using HTTP, Gumbo, Cascadia
 using Hyperscript
 using ReusePatterns
 
+include("type/abstract.jl")            #
+
 include("support/macros.jl")           # @sym
+include("type/maybe.jl")               # MaybeString, MaybeFloat, isstring, isfloat ...
+
 include("support/linkedlist.jl")       # getindex(list, idx::Int)
-include("type/maybe.jl")               # Maybe{Int,Float,Number,String,Symbol}, is{int,float,number,string,symbol}
 
 include("support/dict.jl")             # getkeys::Vector, getvalues::Vector
 include("support/gumbo.jl")            # typeofnode(x::HTMLNode)
