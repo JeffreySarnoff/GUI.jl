@@ -1,6 +1,6 @@
 module GUI
 
-using LinkedLists
+using LinkedLists, StructArrays
 using HTTP, Gumbo, Cascadia
 using Hyperscript
 using ReusePatterns
