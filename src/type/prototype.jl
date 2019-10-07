@@ -1,5 +1,7 @@
 #=
-    using the machinery of NamedTupleTools supporting NamedTuple prototypes
+    using the machinery NamedTuple prototypes
+
+    NamedTuple{(:a, :b, :c),T} where T<:Tuple
 =#
 
 #=
