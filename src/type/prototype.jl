@@ -1,7 +1,10 @@
 #=
-    using the machinery NamedTuple prototypes
+    using the machinery NamedTupleTools 
 
-    NamedTuple{(:a, :b, :c),T} where T<:Tuple
+    prototypes
+      NamedTuple{(:a, :b, :c),T} where T<:Tuple
+
+    nt.fieldname
 =#
 
 #=
