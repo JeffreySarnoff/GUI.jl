@@ -46,9 +46,8 @@ body = lastelement(root)
 @assert body.name == "body"
 
 
+using Hyperscript, EzXML
 julia> @tags div h1
-WARNING: redefining constant div
-WARNING: redefining constant h1
 
 julia> const entry = div.entry
 WARNING: redefining constant entry
