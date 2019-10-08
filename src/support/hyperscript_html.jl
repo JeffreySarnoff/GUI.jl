@@ -233,7 +233,7 @@ const HTML_eventhandler_attributes = Set([
     :onvolumechange
     :onwaiting
     :onwheel
-  )]
+  ])
     
 const HTML_image_attributes = Set([
     :alt
