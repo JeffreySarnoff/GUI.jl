@@ -1,4 +1,4 @@
 using GUI
 using Test
 
-#include("googlefonts.jl")
+include("googlefonts.jl")
