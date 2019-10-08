@@ -1,15 +1,19 @@
 const googlefontstart = "<link ref=\"https://fonts.googleapis.com/css?family="
 const googlefontend   = " rel=\"stylesheet\">"
 
-function googlefontlink(family::String; sizes::Vector{Int}=[400,], styles::Vector{String} = [""], display="fallback")
+function googlefontlink(family::String; sizes::Vector{Int}=Int[], styles::Vector{String} = [""], display="fallback")
     str = googlefont(family, sizes=sizes, styles=styles, display=display)
     return string(googlefontstart, str, "\",", googlefontend)
 end
 
-function googlefont(family::String; sizes::Vector{Int}=[400,], styles::Vector{String} = [""], display="fallback")
+function googlefont(family::String; sizes::Vector{Int}=Int[], styles::Vector{String} = [""], display="fallback")
     xs = googlefont_family(family)
     str = join(xs, "+")
-    return string(str, ":", googlefont_sizes_styles(sizes, styles), "&display=", display)
+    sizes_styles = googlefont_sizes_styles(sizes, styles)
+    if !isempty(sizes_styles)
+        sizes_styles = string(":", sizes_styles)
+    end
+    return string(str, sizes_styles, "&display=", display)
 end
 
 function googlefont_family(family::String)
@@ -35,8 +39,8 @@ function googlefontlink(families::Vector{String}; sizes::Vector{Vector{Int}}, st
 end
        
 function googlefont(families::Vector{String}; 
-                     sizes::Vector{Vector{Int}}=fill([400,], length(families)), 
-                     styles::Vector{Vector{String}}=fill(["",], length(families)), display="fallback")
+                     sizes::Vector{Vector{Int}}=fill(Int[], length(families)), 
+                     styles::Vector{Vector{String}}=fill([""], length(families)), display="fallback")
    (length(families) == length(sizes) == length(styles)) ||
        throw(ErrorException("inputs ($(length(families)) $(length(sizes)) $(length(styles))) must be of the same length"))
    fonts = Vector{Vector{String}}[]
