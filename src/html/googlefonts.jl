@@ -22,18 +22,23 @@ end
 function googlefont_family(family::String)
     return uppercasefirst.(splitstring(family, " "))
 end    
-    
-function googlefont_sizes_styles(sizes, styles)
-    nsizes  = length(sizes)
+
+function googlefont_sizes_styles(sizes::Vector{Int}, styles::Vector{String})
+    strs = String[]
+    for sz in sizes
+        push!(strs, googlefont_size_styles(sz, styles))
+    end
+    return join(strs, ",")
+end
+
+function googlefont_size_styles(size::Int, styles::Vector{String})
     nstyles = length(styles)
-    strs = repeat(string.(sizes), nstyles)
-    for sz in 1:nsizes
-      szidx = 1+(sz-1)*nstyles
-      for sty in 0:nstyles-1
-          strs[szidx+sty] = string(strs[szidx+sty], styles[sty+1])
-      end
-   end
-   return join(strs, ",")
+    sizestr = string(size)
+    strs = String[]
+    for s in styles
+        push!(strs, string(sizestr, s))
+    end
+    return join(strs, ",")
 end
 
 function googlefontlink(families::Vector{String};
