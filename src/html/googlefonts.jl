@@ -1,9 +1,9 @@
 const googlefontstart = "<link ref=\"https://fonts.googleapis.com/css?family="
-const googlefontend   = " rel=\"stylesheet\">"
+const googlefontend   = "\", rel=\"stylesheet\">"
 
 function googlefontlink(family::String; weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
     str = googlefont(family, weight, style, display)
-    return string(googlefontstart, str, "\",", googlefontend)
+    return string(googlefontstart, str, googlefontend)
 end
 
 function googlefont(family::String, weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
