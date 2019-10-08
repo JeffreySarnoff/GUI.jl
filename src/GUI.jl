@@ -1,7 +1,7 @@
 module GUI
 
 using DataStructures, LinkedLists, StructArrays, NamedTupleTools
-using HTTP, Gumbo, Cascadia
+using HTTP, Gumbo, Cascadia, EzXML
 using Mustache, Hyperscript
 using ReusePatterns
 
