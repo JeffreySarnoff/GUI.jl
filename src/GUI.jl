@@ -1,8 +1,8 @@
 module GUI
 
-using LinkedLists, StructArrays, NamedTupleTools
+using DataStructures, LinkedLists, StructArrays, NamedTupleTools
 using HTTP, Gumbo, Cascadia
-using Hyperscript
+using Mustache, Hyperscript
 using ReusePatterns
 
 include("type/abstract.jl")            #
