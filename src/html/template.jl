@@ -15,8 +15,10 @@ const HTML_minimal_template = mt"""
 HTML_minimal_dict = Dict(
   :lang => "en",
   :viewport_content => "width=device-width, initial-scale=1",
-  :title => "Untitled"
+  :title => "Untitled",
 )
+# :bulma =>     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+
 
 HTML_dict = DefaultDict(0, HTML_minimal_dict)
 
