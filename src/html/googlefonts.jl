@@ -38,14 +38,12 @@ end
 
 function googlefontlink(families::Vector{String};
                         sizes::Vector{Vector{Int}}=fill(Int[], length(families)), 
-                       styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
+                        styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
     str = googlefont(families, sizes=sizes, styles=styles, display=display)
     return string(googlefontstart, str, googlefontend)
 end
        
-function googlefont(families::Vector{String}; 
-                     sizes::Vector{Vector{Int}}=fill(Int[], length(families)), 
-                     styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
+function googlefont(families::Vector{String}; sizes, styles, display)
    (length(families) == length(sizes) == length(styles)) ||
        throw(ErrorException("inputs ($(length(families)) $(length(sizes)) $(length(styles))) must be of the same length"))
    fonts = Vector{Vector{String}}[]
