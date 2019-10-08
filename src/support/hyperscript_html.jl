@@ -266,7 +266,7 @@ const HTML_broadlygeneral_input_attributes = Set([
     :value
   ])
 
-const HTML_moregeneral_input_attributs = union(HTML_mostgeneral_input_attributes, HTML_broadlygeneral_input_attributes)
+const HTML_moregeneral_input_attributes = union(HTML_mostgeneral_input_attributes, HTML_broadlygeneral_input_attributes)
 
 const HTML_lessgeneral_input_attributes = Set([
     :list
