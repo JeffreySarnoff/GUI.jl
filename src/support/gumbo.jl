@@ -37,6 +37,45 @@ function string(::Type{HTMLElement{:body}}, x)
     return result
 end
 
+function string(::Type{HTMLElement{T}}, x) where {T}
+    attrs = attributes(x)
+    isempty(attrs) && return stringcontent(HTMLElement{T})
+    childs = children(x)
+    while !isempty(childs)
+       return string(typeof(childs), childs)
+    end
+    return ""
+end
+
+fucntion stringcontent(::Type{HTMLElement{T}}, x) where {T}
+  content = 
+  return string("<",T,"></",T,">")
+end
+#=
+hese words"
+
+julia> r
+HTMLElement{:HTML}:
+<HTML lang="en">
+  <head></head>
+  <body hidden="hidden"class="bodyclass">
+    <div class="wrapper"id="backdrop"></div>
+    <div class="plain"id="interior">
+      <span class="plain"id="words">
+        these words
+      </span>
+    </div>
+  </body>
+</HTML>
+
+
+julia>
+
+julia> text(r[2][2][1][1])
+"these words"
+
+=#
+
 function string_of_attributes(attributes::Dict) where {T}
     k, v = collect(keys(attributes)), collect(values(attributes))
     vstrs = map(s->string("\"",s,"\""), v)
