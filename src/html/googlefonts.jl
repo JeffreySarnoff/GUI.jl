@@ -1,7 +1,7 @@
 const googlefontstart = "<link ref=\"https://fonts.googleapis.com/css?family="
 const googlefontend   = " rel=\"stylesheet\">"
 
-function googlefontlink(family::String, weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
+function googlefontlink(family::String; weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
     str = googlefont(family, weight, style, display)
     return string(googlefontstart, str, "\",", googlefontend)
 end
@@ -44,7 +44,7 @@ function googlefont_weight_style(weight::Int, style::Vector{String})
     return join(strs, ",")
 end
 
-function googlefontlink(families::Vector{String},
+function googlefontlink(families::Vector{String};
                         weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
                         styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
     str = googlefont(families, weights, styles, display)
