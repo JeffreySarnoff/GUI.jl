@@ -13,7 +13,10 @@ function googlefont(family::String; sizes::Vector{Int}=Int[], styles::Vector{Str
     if !isempty(sizes_styles)
         sizes_styles = string(":", sizes_styles)
     end
-    return string(str, sizes_styles, "&display=", display)
+    if !isempty(display)
+        display = string("&display=", display)
+    end
+    return string(str, sizes_styles, display)
 end
 
 function googlefont_family(family::String)
