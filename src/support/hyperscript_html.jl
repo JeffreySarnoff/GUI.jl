@@ -234,35 +234,6 @@ const HTML_eventhandler_attributes = Set([
     :onwaiting
     :onwheel
   )]
-
-const HTML_boolean_attributes = Set([
-    :async
-    :autofocus
-    :autoplay
-    :checked
-    :contenteditable
-    :controls
-    :default
-    :defer
-    :disabled
-    :formNoValidate
-    :frameborder
-    :hidden
-    :ismap
-    :itemscope
-    :loop
-    :multiple
-    :muted
-    :nomodule
-    :novalidate
-    :open
-    :readonly
-    :required
-    :reversed
-    :scoped
-    :selected
-    :typemustmatch
-  ])
     
 const HTML_image_attributes = Set([
     :alt
