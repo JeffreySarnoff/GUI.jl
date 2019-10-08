@@ -22,6 +22,7 @@ include("support/gumbo.jl")            # typeofnode(x::HTMLNode)
 include("support/cascadia.jl")         #
 
 include("html/template.jl")            #
+include("html/attributes/boolean.jl")  #
 
 
 end # module GUI
