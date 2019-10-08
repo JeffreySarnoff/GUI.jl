@@ -1,12 +1,12 @@
 const googlefontstart = "<link ref=\"https://fonts.googleapis.com/css?family="
 const googlefontend   = " rel=\"stylesheet\">"
 
-function googlefontlink(family::String; weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
-    str = googlefont(family, weight=weight, style=style, display=display)
+function googlefontlink(family::String, weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
+    str = googlefont(family, weight, style, display)
     return string(googlefontstart, str, "\",", googlefontend)
 end
 
-function googlefont(family::String; weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
+function googlefont(family::String, weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
     str = join(googlefont_family(family), "+")
     if isempty(weight) && !isempty(style) && !all(isempty.(style))
         weight = [400]
@@ -38,20 +38,22 @@ function googlefont_weight_style(weight::Int, style::Vector{String})
     nstyles = length(style)
     weightstr = string(weight)
     strs = String[]
-    for s in styles
+    for s in style
         push!(strs, string(weightstr, s))
     end
     return join(strs, ",")
 end
 
-function googlefontlink(families::Vector{String};
+function googlefontlink(families::Vector{String},
                         weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
                         styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
-    str = googlefont(families, weights=weights, styles=styles, display=display)
+    str = googlefont(families, weights, styles, display)
     return string(googlefontstart, str, googlefontend)
 end
        
-function googlefont(families::Vector{String}; weights, styles, display)
+function googlefont(families::Vector{String},
+                    weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
+                    styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
    (length(families) == length(weights) == length(styles)) ||
        throw(ErrorException("inputs ($(length(families)) $(length(weights)) $(length(styles))) must be of the same length"))
    fonts = Vector{Vector{String}}[]
