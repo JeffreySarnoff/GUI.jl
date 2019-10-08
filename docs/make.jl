@@ -4,7 +4,8 @@ makedocs(
     # modules = [GUI],
     sitename = "GUI",
     pages  = Any[
-        "Overview"                 => "index.md"
+        "Overview" => "index.md"
+        "HTML" => "html.md"
         ]
     )
 
