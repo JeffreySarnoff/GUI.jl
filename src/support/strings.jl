@@ -8,3 +8,12 @@ function Base.Unicode.isuppercase(s::AbstractString)
     end
     return result
 end
+
+function uppercasefirst(x::AbstractString)
+     s = strip(x)
+     return if isempty(s) || isuppercase(x)
+                s
+            else    
+                string(uppercase(x[1]), x[2:end])
+            end
+end
