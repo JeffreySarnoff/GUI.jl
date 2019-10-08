@@ -29,12 +29,12 @@ function googlefont_sizes_styles(sizes, styles)
    return join(strs, ",")
 end
 
-function googlefontslink(families::Vector{String}; sizes::Vector{Vector{Int}}, styles::Vector{Vector{String}}, display="fallback")
-    str = googlefonts(families, sizes=sizes, styles=styles, display=display)
+function googlefontlink(families::Vector{String}; sizes::Vector{Vector{Int}}, styles::Vector{Vector{String}}, display="fallback")
+    str = googlefont(families, sizes=sizes, styles=styles, display=display)
     return string(googlefontstart, str, googlefontend)
 end
        
-function googlefonts(families::Vector{String}; 
+function googlefont(families::Vector{String}; 
                      sizes::Vector{Vector{Int}}=fill([400,], length(families)), 
                      styles::Vector{Vector{String}}=fill(["",], length(families)), display="fallback")
    (length(families) == length(sizes) == length(styles)) ||
