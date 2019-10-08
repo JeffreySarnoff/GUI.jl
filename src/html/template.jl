@@ -37,4 +37,29 @@ print(res)
 <body>
 </body>
 </html>
+
+using EzXML
+
+
+julia> for x in eachelement(root(parsehtml(res)))
+          for y in eachelement(x)
+            println(y.name)
+           end
+           end
+meta
+meta
+title
+
+julia> for x in eachelement(root(parsehtml(res)))
+          for y in eachelement(x)
+            for a in (attributes(y))
+               println(a.name,": ",a.content)
+           end
+           end
+           end
+
+charset: utf-8
+name: viewport
+content: width=device-width, initial-scale=1
+
 =#
