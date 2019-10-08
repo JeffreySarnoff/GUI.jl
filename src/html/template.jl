@@ -39,6 +39,41 @@ print(res)
 </html>
 
 using EzXML
+root = root(parsehtml(res))
+head = firstelement(root)
+@assert head.name == "head"
+body = lastelement(root)
+@assert body.name == "body"
+
+
+julia> @tags div h1
+WARNING: redefining constant div
+WARNING: redefining constant h1
+
+julia> const entry = div.entry
+WARNING: redefining constant entry
+<div class="entry"></div>
+
+julia> entry(h1("An Important Announcement"))
+<div class="entry"><h1>An Important Announcement</h1></div>
+
+julia> s = string(entry(h1("An Important Announcement")))
+"<div class=\"entry\"><h1>An Important Announcement</h1></div>"
+
+julia> p=parsehtml(s)
+EzXML.Document(EzXML.Node(<HTML_DOCUMENT_NODE@0x000000000136f800>))
+
+julia> b=lastelement(root(p))
+EzXML.Node(<ELEMENT_NODE[body]@0x000000003c9b45f0>)
+
+julia> prettyprint(b)
+<body>
+  <div class="entry">
+    <h1>An Important Announcement</h1>
+  </div>
+</body>
+julia> string(b)
+"<body><div class=\"entry\"><h1>An Important Announcement</h1></div></body>"
 
 
 julia> for x in eachelement(root(parsehtml(res)))
