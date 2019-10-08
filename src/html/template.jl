@@ -17,7 +17,8 @@ HTML_minimal_dict = Dict(
   :viewport_content => "width=device-width, initial-scale=1",
   :title => "Untitled",
 )
-# :bulma =>     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+# :bulma => "<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">"
+# :fontawesome => "<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>"
 
 
 HTML_dict = DefaultDict(0, HTML_minimal_dict)
