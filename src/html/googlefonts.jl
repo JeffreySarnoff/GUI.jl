@@ -6,6 +6,13 @@ function googlefontlink(family::String; weight::Vector{Int}=Int[], style::Vector
     return string(googlefontstart, str, googlefontend)
 end
 
+function googlefontlink(families::Vector{String};
+                        weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
+                        styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
+    str = googlefont(families, weights, styles, display)
+    return string(googlefontstart, str, googlefontend)
+end
+
 function googlefont(family::String, weight::Vector{Int}=Int[], style::Vector{String} = [""], display::String="")
     str = join(googlefont_family(family), "+")
     if isempty(weight) && !isempty(style) && !all(isempty.(style))
@@ -20,6 +27,18 @@ function googlefont(family::String, weight::Vector{Int}=Int[], style::Vector{Str
         display = string("&display=", display)
     end
     return string(str, weight_style, display)
+end
+       
+function googlefont(families::Vector{String},
+                    weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
+                    styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
+   (length(families) == length(weights) == length(styles)) ||
+       throw(ErrorException("inputs ($(length(families)) $(length(weights)) $(length(styles))) must be of the same length"))
+   fonts = []
+   for (family,weight,style) in zip(families, weights, styles)
+        push!(fonts, googlefont(family, weight, style))
+   end
+   return join(fonts, "|")
 end
 
 function googlefont_family(family::String)
@@ -44,21 +63,3 @@ function googlefont_weight_style(weight::Int, style::Vector{String})
     return join(strs, ",")
 end
 
-function googlefontlink(families::Vector{String};
-                        weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
-                        styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
-    str = googlefont(families, weights, styles, display)
-    return string(googlefontstart, str, googlefontend)
-end
-       
-function googlefont(families::Vector{String},
-                    weights::Vector{Vector{Int}}=fill(Int[], length(families)), 
-                    styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
-   (length(families) == length(weights) == length(styles)) ||
-       throw(ErrorException("inputs ($(length(families)) $(length(weights)) $(length(styles))) must be of the same length"))
-   fonts = []
-   for (family,weight,style) in zip(families, weights, styles)
-        push!(fonts, googlefont(family, weight, style))
-   end
-   return join(fonts, "|")
-end
