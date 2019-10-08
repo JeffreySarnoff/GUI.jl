@@ -5,6 +5,7 @@ license = "MIT"
 version = "0.0.1"
 
 [deps]
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 NamedTupleTools = "d9ec5142-1e00-5aa0-9d6a-321866360f50"
 LinkedLists = "70f5e60a-1556-5f34-a19e-a48b3e4aaee9"
 StructArrays = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
@@ -12,16 +13,19 @@ Hyperscript = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Gumbo = "708ec375-b3d6-5a57-a7ce-8257bf98657a"
 Cascadia = "54eefc05-d75b-58de-a785-1a3403f0919f"
+Mustache = "ffc61752-8dc7-55ee-8c37-f3e9cdd09e70"
 ReusePatterns = "a39b5e78-89b5-562b-97d8-70689129df0c"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
+DataStructures = "0"
 NamedTupleTools = "0"
 LinkedLists = "0"
 StructArrays = "0"
 HTTP = "0"
 Gumbo = "0"
 Cascadia = "0"
+Mustache = "0"
 julia = "1"
