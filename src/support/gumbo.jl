@@ -24,10 +24,28 @@ function string(::Type{HTMLElement{:head}}, x)
 end
 
 function string(::Type{HTMLElement{:body}}, x)
+    atrs = attrs(x)
+    if isempty(atrs)
+        result = "<body>\n"
+    else
+        result = string("<body ",string(HTMLElement{:body}, attrs)),">")
+    end
+    for child in children(x)
+    end
+    return result
 end
 
 
-function Base.string(::Type{HTMLElement{T}}, attributes::Dict) where {T}
+function string(::Type{HTMLElement{T}}, x) where {T}
    keys, vals = keys(attributes), values(attributes)
    string.(join(keys, vals, "="))
 end
+
+function string(::Type{HTMLElement{T}}, dict::Dict) where {T}
+    result = []
+    for (k, v) in dict
+        push!(result, string(k,"=\"",v,"\""))
+    end
+    return join(result, " ")
+end
+  
