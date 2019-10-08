@@ -27,7 +27,7 @@ const HTML_boolean_attributes = Set([
     :typemustmatch
   ])
 
-HTML_boolean = Dict{Symbol, Tuple{Varargs{Symbol}}}(
+HTML_boolean = Dict{Symbol, Tuple{Vararg{N,Symbol}}}(
     :disabled => (:button , :fieldset, :input, :optgroup, :option, :select, :textarea),
     :checked => (:checkbox,)
   )
