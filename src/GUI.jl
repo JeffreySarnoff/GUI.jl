@@ -10,9 +10,10 @@ include("type/abstract.jl")            #
 include("support/macros.jl")           # @sym
 include("type/maybe.jl")               # MaybeString, MaybeFloat, isstring, isfloat ...
 
+include("support/strings.jl")          # isuppercase(String), uppercasefirst
+
 include("support/linkedlist.jl")       # getindex(list, idx::Int)
 include("support/dict.jl")             # getkeys::Vector, getvalues::Vector
-
 include("type/prototype.jl")           # specific NamedTuple prototypes
 
 include("support/hyperscript_html.jl") # HTML5 tags
