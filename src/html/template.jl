@@ -21,7 +21,7 @@ HTML_minimal_dict = Dict(
 HTML_dict = DefaultDict(0, HTML_minimal_dict)
 
 #=
-res = Mustache.render(HTML_minimal_template, HTML_minimal_dict)
+res = Mustache.render(HTML_minimal_template, HTML_dict)
 print(res)
 
 <!DOCTYPE html>
