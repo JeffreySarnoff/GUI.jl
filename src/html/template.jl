@@ -4,6 +4,7 @@ const HTML_minimal_template = mt"""
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content=\"{{{:viewport_content}}}\">
+
   <title>{{{:title}}}</title>
 </head>
 <body>
