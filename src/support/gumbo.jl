@@ -28,24 +28,19 @@ function string(::Type{HTMLElement{:body}}, x)
     if isempty(atrs)
         result = "<body>\n"
     else
-        result = string("<body ",string(HTMLElement{:body}, attrs)),">")
+        result = string("<body ", string_of_attributes(atrs),">\n")
     end
     for child in children(x)
+        result = string(result, "  ", string(typeof(child), child))
     end
+    result = string(result, "</body>\n")
     return result
 end
 
-
-function string(::Type{HTMLElement{T}}, x) where {T}
-   keys, vals = keys(attributes), values(attributes)
-   string.(join(keys, vals, "="))
-end
-
-function string(::Type{HTMLElement{T}}, dict::Dict) where {T}
-    result = []
-    for (k, v) in dict
-        push!(result, string(k,"=\"",v,"\""))
-    end
-    return join(result, " ")
+function string_of_attributes(attributes::Dict) where {T}
+    k, v = collect(keys(attributes)), collect(values(attributes))
+    vstrs = map(s->string("\"",s,"\""), v)
+    z = zip(k,vstrs)
+    return join(join.(collect(z), "=")), " ")
 end
   
