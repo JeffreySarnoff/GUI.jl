@@ -21,5 +21,7 @@ include("support/hyperscript_css.jl")  # CSS3 tags
 include("support/gumbo.jl")            # typeofnode(x::HTMLNode)
 include("support/cascadia.jl")         #
 
+include("html/template.jl")            #
+
 
 end # module GUI
