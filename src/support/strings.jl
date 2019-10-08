@@ -1,3 +1,5 @@
+splitstring(str::AbstractString, at::Union{Char,AbstractString}) = String.(split(str, at))
+
 function Base.Unicode.isuppercase(s::AbstractString)
     result = true
     for ch in s
@@ -10,10 +12,10 @@ function Base.Unicode.isuppercase(s::AbstractString)
 end
 
 function uppercasefirst(x::AbstractString)
-     s = strip(x)
-     return if isempty(s) || isuppercase(x)
-                s
-            else    
-                string(uppercase(x[1]), x[2:end])
-            end
+    s = strip(x)
+    return if isempty(s) || isuppercase(x)
+               s
+           else    
+               string(uppercase(x[1]), x[2:end])
+           end
 end
