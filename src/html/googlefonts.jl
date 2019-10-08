@@ -1,12 +1,12 @@
 const googlefontstart = "<link ref=\"https://fonts.googleapis.com/css?family="
 const googlefontend   = " rel=\"stylesheet\">"
 
-function googlefontlink(family::String; sizes::Vector{Int}=Int[], styles::Vector{String} = [""], display="fallback")
+function googlefontlink(family::String; sizes::Vector{Int}=Int[], styles::Vector{String} = [""], display::String="")
     str = googlefont(family, sizes=sizes, styles=styles, display=display)
     return string(googlefontstart, str, "\",", googlefontend)
 end
 
-function googlefont(family::String; sizes::Vector{Int}=Int[], styles::Vector{String} = [""], display="fallback")
+function googlefont(family::String; sizes::Vector{Int}=Int[], styles::Vector{String} = [""], display::String="")
     xs = googlefont_family(family)
     str = join(xs, "+")
     sizes_styles = googlefont_sizes_styles(sizes, styles)
@@ -36,14 +36,16 @@ function googlefont_sizes_styles(sizes, styles)
    return join(strs, ",")
 end
 
-function googlefontlink(families::Vector{String}; sizes::Vector{Vector{Int}}, styles::Vector{Vector{String}}, display="fallback")
+function googlefontlink(families::Vector{String};
+                        sizes::Vector{Vector{Int}}=fill(Int[], length(families)), 
+                       styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
     str = googlefont(families, sizes=sizes, styles=styles, display=display)
     return string(googlefontstart, str, googlefontend)
 end
        
 function googlefont(families::Vector{String}; 
                      sizes::Vector{Vector{Int}}=fill(Int[], length(families)), 
-                     styles::Vector{Vector{String}}=fill([""], length(families)), display="fallback")
+                     styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
    (length(families) == length(sizes) == length(styles)) ||
        throw(ErrorException("inputs ($(length(families)) $(length(sizes)) $(length(styles))) must be of the same length"))
    fonts = Vector{Vector{String}}[]
