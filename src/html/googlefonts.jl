@@ -56,7 +56,7 @@ function googlefont(families::Vector{String},
                     styles::Vector{Vector{String}}=fill([""], length(families)), display::String="")
    (length(families) == length(weights) == length(styles)) ||
        throw(ErrorException("inputs ($(length(families)) $(length(weights)) $(length(styles))) must be of the same length"))
-   fonts = Vector{Vector{String}}[]
+   fonts = []
    for (family,weight,style) in zip(families, weights, styles)
         push!(fonts, googlefont(family, weight, style))
    end
