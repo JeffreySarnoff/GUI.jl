@@ -312,7 +312,7 @@ const HTML_submit_input_attributes = Set([
 const HTML_input_attributes =
     union(HTML_moregeneral_input_attributes, HTML_lessgeneral_input_attributes, 
           HTML_checkbox_input_attributes, HTML_file_input_attributes, HTML_form_input_attributes,
-          HTML_image_input_attributs, HTML_submit_input_attributes) 
+          HTML_image_input_attributes, HTML_submit_input_attributes) 
 
 # select
     
