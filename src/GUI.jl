@@ -2,7 +2,8 @@ module GUI
 
 using DataStructures, LinkedLists, StructArrays, NamedTupleTools
 using CanonicalTraits
-using HTTP, Gumbo, Cascadia, EzXML
+using HTTP, HTTP.URIs
+using Gumbo, Cascadia, EzXML
 using Mustache, Hyperscript
 using ReusePatterns
 
