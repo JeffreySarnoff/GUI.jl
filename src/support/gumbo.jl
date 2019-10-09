@@ -223,6 +223,26 @@ first div</div>
 second div</div>
 julia>                                    
 
+
+
+julia> tst = replace(prettybody, r">." => substitute)
+
+julia> print(tst)
+<body class="bodyclass">
+  <div class="wrapper" id="backdrop">
+    <div class="plain" id="interior">
+      <span class="plain" id="words">
+these words</span>
+    </div>
+    <div class="copyright" id="interior">
+      <span class="plain" id="copyright">
+© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
+    </div>
+  </div>
+  <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js">
+</script>
+</body>
+
 =#
 
 function string_of_attributes(attributes::Dict) where {T}
