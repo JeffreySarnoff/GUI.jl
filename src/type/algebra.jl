@@ -1,24 +1,15 @@
 #=
     AbstractGUI
-      AbsractContent, AbstractContext
+      AbstractContext, AbsractContent
          AbstractConstrain, AbstractConstruct, AbstractContemper
-
-     AbstractGUI
-       AbstractContent
-          AbstractConstrainContent
-          AbstractConstructContent
-          AbstractContemperContent
-       AbstractContext
-          AbstractConstrainContext
-          AbstractConstructContext
-          AbstractContemperContext
 
 
                                                    AbstractGUI
-                       AbstractContent                                     AbstractContext
-                   AbstractConstrainContent                             AbstractConstrainContext
-                   AbstractConstructContent                             AbstractConstructContext
-                   AbstractContemperContent                             AbstractContemperContext
+                            AbstractContext                                     AbstractContent
+                   AbstractConstrainContext                             AbstractConstrainContent
+                   AbstractConstructContext                             AbstractConstructContent
+                   AbstractContemperContext                             AbstractContemperContent
+
 =#
 
 #=
@@ -31,6 +22,15 @@
 
 
 =#
+
+@trait MeroTopoi{X<:AbstractContext, N<:AbstractContent} begin
+    value :: [T] => V  # typeof(value(T)) ==  V
+end
+
+@trait Dot{F, V} where {F = vect_infer_helper(V)} begin
+    dot :: [V, V] => F
+    gram_schmidt :: [V, Set{V}] => V
+end
 
 #=
    Media Types (MIME categories)
