@@ -132,20 +132,23 @@ function tagfromstr(str::AbstractString)
     return tag
 end
 
-bodystrs = String.(split(bodystr, "\n"))
-tag(str::String) = length(str) > 1 && str[1] == '<'
 istagopen(str::String) = length(str) > 1 && str[2] !== '/' 
 istagclose(str::String) = length(str) > 1 && str[2] === '/'
+
+bodystrs = String.(split(bodystr, "\n"))
+
 prettybodystrs = Vector{String}(undef, length(bodystrs))
 indent = ""
 idx = 1
 for str in bodystrs
     global idx, indent
-    if istagopen(str)
+    opentag = opentagfromstr(str)
+    closetag = closetagfromstr(str)
+    if !isnothing(opentag)
        s = string(indent, str)
        indent = string(indent, "  ")
-    elseif istagclose(str)
-indent = indent[1:end-2]
+    elseif !isnothing(closetag)
+       indent = indent[1:end-2]
        s = string(indent, str)
     else
       s  = str
