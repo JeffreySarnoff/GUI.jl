@@ -52,21 +52,111 @@ fucntion stringcontent(::Type{HTMLElement{T}}, x) where {T}
   return string("<",T,"></",T,">")
 end
 #=
-hese words"
 
-julia> r
-HTMLElement{:HTML}:
-<HTML lang="en">
-  <head></head>
-  <body hidden="hidden"class="bodyclass">
-    <div class="wrapper"id="backdrop"></div>
-    <div class="plain"id="interior">
-      <span class="plain"id="words">
-        these words
-      </span>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Title of document</title>
+</head>
+<body>
+<h1>XHTML made easy</h1>
+This is not as hard as I thought it would be.
+I might really like this.
+</body>
+</html>
+
+xhtmlstr = """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+</head>
+<body class="bodyclass">
+  <div class="wrapper" id="backdrop">
+    <div class="plain" id="interior">
+      <span class="plain"id="words">these words</span>
     </div>
+    <div class="copyright" id="interior">
+      <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
+    </div>
+  </div>
+  <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+</html>
+"""
+
+xhtmldoc = EzXML.parsehtml(xhtmlstr)
+xhtmlroot = xhtmldoc.root
+xhtmlhead = elements(xhtmlroot)[1]
+xhtmlbody = elements(xhtmlroot)[2]
+
+EzXML.prettyprint(xhtmlhead)
+EzXML.prettyprint(xhtmlbody)
+
+io = IOBuffer()
+EzXML.prettyprint(io, xhtmlbody)
+str = String(take!(io))
+bodystr = replace(str, "  "=>"")
+print(bodystr)
+
+bodystrs = String.(split(bodystr, "\n"))
+istagopen(str::String) = length(str) > 1 && str[2] !== '/' 
+istagclose(str::String) = length(str) > 1 && str[2] === '/'
+prettybodystrs = Vector{String}(undef, length(bodystrs))
+indent = ""
+idx = 1
+for str in bodystrs
+    global idx, indent
+    if istagopen(str)
+       s = string(indent, str)
+       indent = string(indent, "  ")
+    elseif istagclose(str)
+indent = indent[1:end-2]
+       s = string(indent, str)
+    else
+      s  = str
+    end
+    prettybodystrs[idx] = s
+    idx += 1
+end
+
+prettybody = join(prettybodystrs, "\n")
+print(prettybody)
+
+
+
+
+htmlstr = """
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">"
+  </head>
+  <body class="bodyclass">
+    <div class="wrapper"id="backdrop">
+      <div class="plain"id="interior">
+        <span class="plain"id="words">
+          these words
+        </span>
+      </div>
+    </div> 
+    <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </body>
-</HTML>
+</html>
+"""
+
+htmldoc = Gumbo.parsehtml(htmlstr)
+htmlroot = htmldoc.root
+htmlhead = htmlroot[1]
+htmlbody = htmlroot[2]
 
 
 julia>
