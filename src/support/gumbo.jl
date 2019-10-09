@@ -107,10 +107,7 @@ print(bodystr)
 function opentagfromstr(str::AbstractString)
     (length(str) < 2 || str[2] === '/') && return nothing
     tagstr = tagfromstr(str)
-    taglen = length(tagstr)
-    finaltagstart = length(str) - taglen
-    finaltagend   = length(str) - 1
-    str[end] === '>' && str[finaltagstart:finaltagend] === tagstr && return nothing
+    (str[end] === '>' && last(findlast(tagstr, str)) > length(str) - 2) && return nothing
     return tagstr
 end
 
@@ -138,7 +135,7 @@ istagclose(str::String) = length(str) > 1 && str[2] === '/'
 bodystrs = String.(split(bodystr, "\n"))
 
 prettybodystrs = Vector{String}(undef, length(bodystrs))
-indent = ""
+indent = "  "
 idx = 1
 for str in bodystrs
     global idx, indent
@@ -151,25 +148,26 @@ for str in bodystrs
        indent = indent[1:end-2]
        s = string(indent, str)
     else
-      s  = string(indent, str)
+       s  = string(indent, str)
     end
-    prettybodystrs[idx] = s
+    prettybodystrs[idx] = s; println(length(indent))
     idx += 1
 end
 
 prettybody = join(prettybodystrs, "\n")
 print(prettybody)
 
-\n  </body>"
 
 julia> print(prettybody)
-<body class="bodyclass">
-  <div class="wrapper" id="backdrop">
-    <div class="plain" id="interior">
-      <span class="plain" id="words">these words</span>
-    </div>
-    <div class="copyright" id="interior">
-      <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
+
+julia> print(prettybody)
+  <body class="bodyclass">
+    <div class="wrapper" id="backdrop">
+      <div class="plain" id="interior">
+        <span class="plain" id="words">these words</span>
+      </div>
+      <div class="copyright" id="interior">
+        <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
       </div>
     </div>
     <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
