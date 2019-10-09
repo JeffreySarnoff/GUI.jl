@@ -116,3 +116,15 @@ The abstraction for types constructing aspects of elements
 involved in realizing the Context of a GUI.
 """
 abstract type AbstractContemperContext <: AbstractContemper end
+
+"""
+    AbstractContexture
+
+The abstraction for types contexturing aspects of elements
+involved in realizing a GUI.
+
+_contexture_ "a weaving together of consituent parts, the structural nature of their concomitance"
+- [_with_][_texture_]
+- tempering through measured admixture of beneficials
+"""
+abstract type AbstractContemper <: AbstractGUI end
