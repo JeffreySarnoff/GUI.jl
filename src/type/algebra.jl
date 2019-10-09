@@ -18,8 +18,8 @@
 
     Jeffrey Sarnoff 2019-Oct-09
 
-    Context pervades  Content
-    Content mapsfrom  Context
+    Context pervades, informs, reflects  Content
+    Content suffuses, regards, mapsfrom  Context
 
 
 =3
