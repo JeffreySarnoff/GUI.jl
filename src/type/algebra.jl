@@ -1,7 +1,8 @@
 #=
     AbstractGUI
       AbsractContent, AbstractContext
-         AbstractConstrain, AbstractConstruct, AbstractContemper      
+         AbstractConstrain, AbstractConstruct, AbstractContemper
+
      AbstractGUI
        AbstractContent
           AbstractConstrainContent
@@ -11,6 +12,13 @@
           AbstractConstrainContext
           AbstractConstructContext
           AbstractContemperContext
+
+
+                                                   AbstractGUI
+                       AbstractContent                                     AbstractContext
+                   AbstractConstrainContent                             AbstractConstrainContext
+                   AbstractConstructContent                             AbstractConstructContext
+                   AbstractContemperContent                             AbstractContemperContext
 =#
 
 #=
