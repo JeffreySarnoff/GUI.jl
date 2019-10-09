@@ -205,6 +205,24 @@ julia>
 julia> text(r[2][2][1][1])
 "these words"
 
+
+
+julia> source = "<div>first div</div><div>second div</div>"
+"<div>first div</div><div>second div</div>"
+
+julia> substitute(match) = match[1] * "\n" * match[2]
+substitute (generic function with 1 method)
+
+julia> replace(source, r">." => substitute)
+"<div>\nfirst div</div>\n<div>\nsecond div</div>"
+
+julia> print(ans)
+<div>
+first div</div>
+<div>
+second div</div>
+julia>                                    
+
 =#
 
 function string_of_attributes(attributes::Dict) where {T}
