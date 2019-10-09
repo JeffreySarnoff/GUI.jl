@@ -104,7 +104,36 @@ str = String(take!(io))
 bodystr = replace(str, "  "=>"")
 print(bodystr)
 
+function opentagfromstr(str::AbstractString)
+    (length(str) < 2 || str[2] === '/') && return nothing
+    tagstr = tagfromstr(str)
+    taglen = length(tagstr)
+    finaltagstart = length(str) - taglen
+    finaltagend   = length(str) - 1
+    str[end] === '>' && str[finaltagstart:finaltagend] === tagstr && return nothing
+    return tagstr
+end
+
+function closetagfromstr(str::AbstractString)
+    (length(str) < 2 || str[2] !== '/') && return nothing
+    tagstr = tagfromstr(str)
+    return tagstr
+end
+
+function tagfromstr(str::AbstractString)
+    (length(str) < 2 || str[1] !== '<') && return nothing
+    if str[2] === '/'
+       tag = str[3:end-1]
+    else
+       endidx = first(findfirst(" ", str)) 
+       endidx = isnothing(endidx) ? length(str) - 1 : endidx - 1
+       tag = str[2:endidx]
+    end
+    return tag
+end
+
 bodystrs = String.(split(bodystr, "\n"))
+tag(str::String) = length(str) > 1 && str[1] == '<'
 istagopen(str::String) = length(str) > 1 && str[2] !== '/' 
 istagclose(str::String) = length(str) > 1 && str[2] === '/'
 prettybodystrs = Vector{String}(undef, length(bodystrs))
