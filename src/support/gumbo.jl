@@ -151,7 +151,7 @@ for str in bodystrs
        indent = indent[1:end-2]
        s = string(indent, str)
     else
-      s  = str
+      s  = string(indent, str)
     end
     prettybodystrs[idx] = s
     idx += 1
@@ -159,6 +159,21 @@ end
 
 prettybody = join(prettybodystrs, "\n")
 print(prettybody)
+
+\n  </body>"
+
+julia> print(prettybody)
+<body class="bodyclass">
+  <div class="wrapper" id="backdrop">
+    <div class="plain" id="interior">
+      <span class="plain" id="words">these words</span>
+    </div>
+    <div class="copyright" id="interior">
+      <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
+      </div>
+    </div>
+    <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </body>
 
 
 
