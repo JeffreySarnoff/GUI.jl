@@ -135,7 +135,7 @@ istagclose(str::String) = length(str) > 1 && str[2] === '/'
 bodystrs = String.(split(bodystr, "\n"))
 
 prettybodystrs = Vector{String}(undef, length(bodystrs))
-indent = "  "
+indent = ""
 idx = 1
 for str in bodystrs
     global idx, indent
@@ -155,23 +155,19 @@ for str in bodystrs
 end
 
 prettybody = join(prettybodystrs, "\n")
-print(prettybody)
-
 
 julia> print(prettybody)
-
-julia> print(prettybody)
-  <body class="bodyclass">
-    <div class="wrapper" id="backdrop">
-      <div class="plain" id="interior">
-        <span class="plain" id="words">these words</span>
-      </div>
-      <div class="copyright" id="interior">
-        <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
-      </div>
+<body class="bodyclass">
+  <div class="wrapper" id="backdrop">
+    <div class="plain" id="interior">
+      <span class="plain" id="words">these words</span>
     </div>
-    <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  </body>
+    <div class="copyright" id="interior">
+      <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
+    </div>
+  </div>
+  <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
 
 
 
