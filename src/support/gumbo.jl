@@ -107,6 +107,7 @@ print(bodystr)
 function opentagfromstr(str::AbstractString)
     (length(str) < 2 || str[2] === '/') && return nothing
     tagstr = tagfromstr(str)
+    isnothing(tagstr) && return nothing
     (str[end] === '>' && last(findlast(tagstr, str)) > length(str) - 2) && return nothing
     return tagstr
 end
@@ -117,16 +118,83 @@ function closetagfromstr(str::AbstractString)
     return tagstr
 end
 
+function opentag(str::AbstractString)
+   (length(str) < 2 || str[1] !== '<' || str[2] === '/') && return nothing
+   firstspace = findfirst(" ", str)
+   if isnothing(firstspace)
+       firstclose = findfirst(">", str)
+       if isnothing(firstclose)
+           tag = str[2:end]
+       else
+           tag = str[2:first(firstclose)-1]
+       end
+   else
+       tag = str[2:first(firstspace)-1]
+   end
+   return tag
+end
+
+function closetag(str::AbstractString)
+   (length(str) < 2 || str[1] !== '<' || str[2] !== '/') && return nothing
+   firstspace = findfirst(" ", str)
+   if isnothing(firstspace)
+       if str[end] === '>'
+           tag = str[3:end-1]
+       else
+           tag = str[3:end]
+       end
+   else
+       tag = str[3:first(firstspace)-1]
+   end
+   return tag
+end
+
+
 function tagfromstr(str::AbstractString)
     (length(str) < 2 || str[1] !== '<') && return nothing
     if str[2] === '/'
-       tag = str[3:end-1]
+        tag = rstrip(str[3:end-1])
     else
-       endidx = first(findfirst(" ", str)) 
-       endidx = isnothing(endidx) ? length(str) - 1 : endidx - 1
+       endatidx = findfirst(" ", str)
+       if isnothing(endatidx)
+           endatidx = findfirst(">", str)
+           isnothing(endatidx) && return nothing
+           endidx = first(endatidx)
+       else
+           endidx = first(endatidx)
+       end
+       endidx = endidx - 1
        tag = str[2:endidx]
     end
     return tag
+end
+
+function prettyxml(x::AbstractString)
+    strs = String.(split(x, "\n"))
+    prettystrs = Vector{String}(undef, length(strs))
+    indent = ""
+    idx = 1
+    for str in strs
+        opentag = opentag(str)
+        bothtags = !isnothing(findfirst(string("</",opentag,">")))
+        if bothtags
+           s = string(indent, str)
+        else
+           closetag = closetag(str)
+           if !isnothing(opentag)
+               s = string(indent, str)
+               indent = string(indent, "  ")
+           elseif !isnothing(closetag)
+               indent = indent[1:end-2]
+               s = string(indent, str)
+           else
+               s  = string(indent, str)
+           end
+       end
+       prettystrs[idx] = s
+       idx += 1
+    end
+    return join(prettystrs, "\n")
 end
 
 istagopen(str::String) = length(str) > 1 && str[2] !== '/' 
