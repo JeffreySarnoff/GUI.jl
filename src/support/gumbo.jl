@@ -4,7 +4,7 @@ prettyhtml(x::AbstractString) = prettyhtml(Gumbo.parsehtml(x))
 
 function prettyhtml(x::Gumbo.HTMLDocument)
     s = string(x)
-    s = replace(s, r">\"\n.*\n.*\n" => ">\n") # fix problem in Gumbo parser with "<body ...>"
+    # s = replace(s, r">\"\n.*\n.*\n" => ">\n") # fix problem in Gumbo parser with "<body ...>"
     return prettyxml(s)
 end    
 
@@ -74,15 +74,15 @@ htmlstr = """
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
   </head>
   <body class="bodyclass">
-    <div class="wrapper"id="backdrop">
-      <div class="plain"id="interior">
-        <span class="plain"id="words">
+    <div class="wrapper" id="backdrop">
+      <div class="plain" id="interior">
+        <span class="plain" id="words">
           these words
         </span>
       </div>
