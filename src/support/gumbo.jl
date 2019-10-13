@@ -22,8 +22,8 @@ attribute_values(x::HTMLElement{T}) where {T} = values(attributes(x))
 function string(::Type{HTMLElement{:HTML}}, x, lang="en")
   doctypestr = "<!DOCTYPE html>"
   htmlstr = string("<html lang=\"", lang, "\">")
-  headstr = string(::Type{HTMLElement{:head}}, x[1])
-  bodystr = string(::Type{HTMLElement{:body}}, x[2])
+  headstr = string(HTMLElement{:head}, x[1])
+  bodystr = string(HTMLElement{:body}, x[2])
   return join((doctypestr, htmlstr, headstr, "</head>", bodystr, "</body>", "</html>\n"), "\n")
 end
 
