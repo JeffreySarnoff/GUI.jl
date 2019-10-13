@@ -22,7 +22,9 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
     ("image", :image_), ("month", :month_), ("number", :number_), ("password", :password_),
     ("radio", :radio_), ("range", :range_), ("reset", :reset_), ("search", :search_), ("submit", :submit_),
     ("tel", :tel_), ("text", :text_), ("time", :time_), ("url", :url_), ("week", :week_),
-    )
+    # other
+    ("area", :area_),
+    )      
   @eval begin
      $F() = m($T)
      $F(class::String) = m($T, class=class)
@@ -69,7 +71,6 @@ const a_next_ = a_(:rel=>"next")
 const a_prev_ = a_(:rel=>"prev")
 
 # area https://html.spec.whatwg.org/#the-area-element
-const area_ = m("area")
 const area_circle_ = area_(:shape=>"circle")
 const area_rectangle_ = area_(:shape=>"rect")
 const area_polygon_ = area_(:shape=>"poly")
