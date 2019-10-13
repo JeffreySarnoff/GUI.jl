@@ -21,15 +21,28 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
     ("datetimeLocal", :datetimeLocal_), ("email", :email_), ("file", :file_), ("hidden", :hidden_),
     ("image", :image_), ("month", :month_), ("number", :number_), ("password", :password_),
     ("radio", :radio_), ("range", :range_), ("reset", :reset_), ("search", :search_), ("submit", :submit_),
-    ("tel", :tel_), ("text"), :text_), ("time", :time_), ("url", :url_), ("week", :week_),
+    ("tel", :tel_), ("text", :text_), ("time", :time_), ("url", :url_), ("week", :week_),
     )
   @eval begin
      $F() = m($T)
      $F(class) = m($T, class=class)
-     $F(class, id) = m($T, id=id, class=class)
+     function $F(class, xs...)
+         dict = Dict(xs)
+         dict[:class] = class      
+         return Hyperscript.Node(Hyperscript.DEFAULT_HTMLSVG_CONTEXT, $T, [], dict)
+     end          
   end
 end
 
+function asattributes(xs)
+    isempty(xs) && return () 
+    z = zip(string.(first.(xs)), last.(xs))
+    result = ""
+    for (a,b) in z
+        result = string(result, " ",a,"=\"",b,"\"")
+    end
+    return result
+end
 
 
 
