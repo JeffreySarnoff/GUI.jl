@@ -4,7 +4,6 @@ prettyhtml(x::AbstractString) = prettyhtml(Gumbo.parsehtml(x))
 
 function prettyhtml(x::Gumbo.HTMLDocument)
     s = string(x)
-    # s = replace(s, r">\"\n.*\n.*\n" => ">\n") # fix problem in Gumbo parser with "<body ...>"
     return prettyxml(s)
 end    
 
