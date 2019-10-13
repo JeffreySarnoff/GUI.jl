@@ -8,7 +8,8 @@ function prettyxml(x::EzXML.Node)
 end
 
 function prettyxml(x::AbstractString)
-    s = join(split(x,"><"),">\n<")
+    s = replace(x, "><" => ">\n<")
+    s = replace(s, ">\n</" => "></")
     strs = strip.(String.(split(s, "\n")))
     prettystrs = Vector{String}(undef, length(strs))
     indent = ""
