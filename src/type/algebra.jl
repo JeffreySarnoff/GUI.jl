@@ -37,12 +37,17 @@ mutable struct Context{T} <: AbstractContext
      value::T
 end
 
-struct Element{T1,T2}
+mutable struct Element{T1,T2,T3}
     content::Content{T1}
     context::Context{T2}
-    html::String
+    css_id::MaybeString
+    css_class::Vector{String}
+    html::Hyperscript.Node{T3}
 end
 
-#=
-=#
+function string(x::Element{T1,T2,T3}) where {T1, T2, T3}
+    cssclass = isempty(x.css_class) ? "" : string("class=\"",join(x.css_class),"\"")
+    cssid = isnothing(x.css_id) ? "" : string("id=\"",x.css_id,"\"")
+    # ...
+ end    
 
