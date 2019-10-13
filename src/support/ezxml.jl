@@ -1,12 +1,15 @@
+prettyxml(x::EzXML.Document) = prettyxml(root(x))
+
 function prettyxml(x::EzXML.Node)
     io = IOBuffer()
-    EzXML.print(io, xhtmlroot)
+    EzXML.print(io, x)
     str = String(take!(io))
     return prettyxml(str)
 end
 
 function prettyxml(x::AbstractString)
-    strs = strip.(String.(split(x, "\n")))
+    s = join(split(x,"><"),">\n<")
+    strs = strip.(String.(split(s, "\n")))
     prettystrs = Vector{String}(undef, length(strs))
     indent = ""
     idx = 1
