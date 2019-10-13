@@ -8,7 +8,8 @@ function prettyxml(x::EzXML.Node)
 end
 
 function prettyxml(x::AbstractString)
-    s = join(split(x,"><"),">\n<")
+    s = replace(x, r">\"\n.*\n.*\n" => ">\n") # fix problem in Gumbo parser with "<body ...>"
+    s = join(split(s,"><"),">\n<")
     strs = strip.(String.(split(s, "\n")))
     prettystrs = Vector{String}(undef, length(strs))
     indent = ""
