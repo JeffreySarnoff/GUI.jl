@@ -3,8 +3,10 @@ import Base: string
 prettyhtml(x::AbstractString) = prettyhtml(Gumbo.parsehtml(x))
 
 function prettyhtml(x::Gumbo.HTMLDocument)
-    s = string(x)
-    return prettyxml(s)
+    io = IOBuffer()
+    Gumbo.prettyprint(io, x)
+    s = String(take!(io))
+    return s
 end    
 
 # subtypes(HTMLNode) == [ HTMLElement, HTMLText, NullNode ]
