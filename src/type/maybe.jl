@@ -12,7 +12,7 @@ issymbol(x::MaybeSymbol)   = !isnothing(x)
 isstring(x::MaybeString)   = !isnothing(x)
 isnumber(x::MaybeNumber)   = !isnothing(x)
 isuri(x::MaybeURI)         = !isnothing(x)
-ismime(x::MaybeMime)       = !isnothing(x)
+ismime(x::MaybeMIME)       = !isnothing(x)
 
 isinteger(x::Int32)  = true
 isinteger(x::Int64)  = true
