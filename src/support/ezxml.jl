@@ -1,3 +1,15 @@
+# root(x::EzXML.Document) exported from EzXML
+xhtmlroot(x::EzXML.Document) = root(x)
+xhtmlhead(x::EzXML.Document) = elements(root(x))[1]
+xhtmlbody(x::EzXML.Document) = elements(root(x))[2]
+
+function xhtml2html(x::EzXML.Document)
+    str = string(x)
+    idx = findfirst("<!DOCTYPE", str)[1]
+    return Gumbo.parsehtml(SubString(str,idx,length(str)))
+end
+
+#=
 prettyxml(x::EzXML.Document) = prettyxml(root(x))
 
 function prettyxml(x::EzXML.Node)
@@ -67,6 +79,7 @@ function closexmltag(str::AbstractString)
    end
    return tag
 end
+=#
 
 #=
 xhtmlstr = """
