@@ -12,6 +12,7 @@ include("type/abstract.jl")            #
 include("support/macros.jl")           # @sym
 include("type/maybe.jl")               # MaybeString, MaybeFloat, isstring, isfloat ...
 
+include("support/misc.jl")             # first(nothing), isless(x, nothing) ...
 include("support/strings.jl")          # isuppercase(String), uppercasefirst
 
 include("support/linkedlist.jl")       # getindex(list, idx::Int)
