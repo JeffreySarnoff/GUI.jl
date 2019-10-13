@@ -71,10 +71,10 @@ xhtmlstr = """
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Title</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
 </head>
 <body class="bodyclass">
   <div class="wrapper" id="backdrop">
@@ -89,34 +89,6 @@ xhtmlstr = """
 </body>
 </html>
 """
-
-xhtmldoc = EzXML.parsehtml(xhtmlstr)
-xhtmlroot = xhtmldoc.root
-xhtmlhead = elements(xhtmlroot)[1]
-xhtmlbody = elements(xhtmlroot)[2]
-
-EzXML.prettyprint(xhtmlhead)
-EzXML.prettyprint(xhtmlbody)
-
-io = IOBuffer()
-EzXML.prettyprint(io, xhtmlbody)
-str = String(take!(io))
-bodystr = replace(str, "  "=>"")
-print(bodystr)
-
-function opentagfromstr(str::AbstractString)
-    (length(str) < 2 || str[2] === '/') && return nothing
-    tagstr = tagfromstr(str)
-    isnothing(tagstr) && return nothing
-    (str[end] === '>' && last(findlast(tagstr, str)) > length(str) - 2) && return nothing
-    return tagstr
-end
-
-function closetagfromstr(str::AbstractString)
-    (length(str) < 2 || str[2] !== '/') && return nothing
-    tagstr = tagfromstr(str)
-    return tagstr
-end
 
 function opentag(str::AbstractString)
    (length(str) < 2 || str[1] !== '<' || str[2] === '/') && return nothing
@@ -149,6 +121,74 @@ function closetag(str::AbstractString)
    return tag
 end
 
+function prettyxml(x::AbstractString)
+    strs = strip.(String.(split(x, "\n")))
+    prettystrs = Vector{String}(undef, length(strs))
+    indent = ""
+    idx = 1
+    for str in strs
+        open_tag = opentag(str)
+        bothtags = !isnothing(open_tag) && (str[end-1:end] == "/>" || occursin(string("</",open_tag,">"), str))
+        if bothtags
+           s = string(indent, str)
+        else
+           close_tag = closetag(str)
+           if !isnothing(open_tag)
+               s = string(indent, str)
+               indent = string(indent, "  ")
+           elseif !isnothing(close_tag)
+               indent = indent[1:end-2]
+               s = string(indent, str)
+           else
+               s  = string(indent, str)
+           end
+       end
+       prettystrs[idx] = s
+       idx += 1
+    end
+    return join(prettystrs, "\n")
+end
+
+xhtmldoc = EzXML.parsehtml(xhtmlstr)
+xhtmlroot = xhtmldoc.root
+
+io = IOBuffer()
+EzXML.print(io, xhtmlroot)
+str = String(take!(io))
+
+pretty = prettyxml(str)
+print(pretty)
+=#
+
+
+#=
+
+xhtmlhead = elements(xhtmlroot)[1]
+xhtmlbody = elements(xhtmlroot)[2]
+
+EzXML.prettyprint(xhtmlhead)
+EzXML.prettyprint(xhtmlbody)
+
+io = IOBuffer()
+EzXML.prettyprint(io, xhtmlbody)
+str = String(take!(io))
+bodystr = replace(str, "  "=>"")
+print(bodystr)
+
+function opentagfromstr(str::AbstractString)
+    (length(str) < 2 || str[2] === '/') && return nothing
+    tagstr = tagfromstr(str)
+    isnothing(tagstr) && return nothing
+    (str[end] === '>' && last(findlast(tagstr, str)) > length(str) - 2) && return nothing
+    return tagstr
+end
+
+function closetagfromstr(str::AbstractString)
+    (length(str) < 2 || str[2] !== '/') && return nothing
+    tagstr = tagfromstr(str)
+    return tagstr
+end
+
 
 function tagfromstr(str::AbstractString)
     (length(str) < 2 || str[1] !== '<') && return nothing
@@ -167,34 +207,6 @@ function tagfromstr(str::AbstractString)
        tag = str[2:endidx]
     end
     return tag
-end
-
-function prettyxml(x::AbstractString)
-    strs = String.(split(x, "\n"))
-    prettystrs = Vector{String}(undef, length(strs))
-    indent = ""
-    idx = 1
-    for str in strs
-        opentag = opentag(str)
-        bothtags = !isnothing(findfirst(string("</",opentag,">")))
-        if bothtags
-           s = string(indent, str)
-        else
-           closetag = closetag(str)
-           if !isnothing(opentag)
-               s = string(indent, str)
-               indent = string(indent, "  ")
-           elseif !isnothing(closetag)
-               indent = indent[1:end-2]
-               s = string(indent, str)
-           else
-               s  = string(indent, str)
-           end
-       end
-       prettystrs[idx] = s
-       idx += 1
-    end
-    return join(prettystrs, "\n")
 end
 
 istagopen(str::String) = length(str) > 1 && str[2] !== '/' 
