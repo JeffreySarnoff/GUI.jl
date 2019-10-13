@@ -20,15 +20,29 @@
     Context pervades, informs, reflects  Content
     Content suffuses, regards, mapsfrom  Context
 
-
-=#
-
-@trait MeroTopoi{A<:AbstractContext, B<:AbstractContent} begin
     meld   ::  [A, A] => A
     whole   :: [B, B] => B
     pervade :: [A, B] => B
     inform  :: [A, B] => B
     suffuse :: [B, A] => A
     regard  :: [B, A] => A    
+
+=#
+
+mutable struct Content{T} <: AbstractContent
+     value::T
 end
+
+mutable struct Context{T} <: AbstractContext
+     value::T
+end
+
+struct Element{T1,T2}
+    content::Content{T1}
+    context::Context{T2}
+    html::String
+end
+
+#=
+=#
 
