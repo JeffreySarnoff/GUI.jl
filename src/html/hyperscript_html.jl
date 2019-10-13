@@ -38,15 +38,7 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
   end
 end
 
-function asattributes(xs)
-    isempty(xs) && return () 
-    z = zip(string.(first.(xs)), last.(xs))
-    result = ""
-    for (a,b) in z
-        result = string(result, " ",a,"=\"",b,"\"")
-    end
-    return result
-end
+
 
 
 
