@@ -25,10 +25,14 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
     )
   @eval begin
      $F() = m($T)
-     $F(class) = m($T, class=class)
-     function $F(class, xs...)
+     $F(class::String) = m($T, class=class)
+     function $F(class::String, xs::Vararg{Pair,N}) where {N}
          dict = Dict(xs)
          dict[:class] = class      
+         return Hyperscript.Node(Hyperscript.DEFAULT_HTMLSVG_CONTEXT, $T, [], dict)
+     end          
+     function $F(xs::Vararg{Pair,N}) where {N}
+         dict = Dict(xs)
          return Hyperscript.Node(Hyperscript.DEFAULT_HTMLSVG_CONTEXT, $T, [], dict)
      end          
   end
