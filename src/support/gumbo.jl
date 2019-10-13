@@ -47,7 +47,7 @@ function string(::Type{HTMLElement{T}}, x) where {T}
     return ""
 end
 
-fucntion stringcontent(::Type{HTMLElement{T}}, x) where {T}
+function stringcontent(::Type{HTMLElement{T}}, x) where {T}
   content = 
   return string("<",T,"></",T,">")
 end
@@ -57,7 +57,7 @@ function string_of_attributes(attributes::Dict) where {T}
     k, v = collect(keys(attributes)), collect(values(attributes))
     vstrs = map(s->string("\"",s,"\""), v)
     z = zip(k,vstrs)
-    return join(join.(collect(z), "=")), " ")
+    return join(join.(collect(z), "="), " ")
 end
   
 
