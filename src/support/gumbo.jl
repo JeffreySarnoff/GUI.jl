@@ -1,9 +1,13 @@
 import Base: string
 
+Base.pushfirst!(elem::HTMLElement,val) = pushfirst!(elem.children, val)
+
 htmldoctype(x::Gumbo.HTMLDocument) = x.doctype
 htmlroot(x::Gumbo.HTMLDocument) = x.root
 htmlhead(x::Gumbo.HTMLDocument) = children(x.root)[1]
 htmlbody(x::Gumbo.HTMLDocument) = children(x.root)[2]
+
+
 
 # subtypes(HTMLNode) == [ HTMLElement, HTMLText, NullNode ]
 
