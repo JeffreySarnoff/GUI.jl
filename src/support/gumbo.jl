@@ -1,5 +1,10 @@
 import Base: string
 
+doctype(x::Gumbo.HTMLDocument) = x.doctype
+root(x::Gumbo.HTMLDocument) = x.root
+head(x::Gumbo.HTMLDocument) = children(x.root)[1]
+body(x::Gumbo.HTMLDocument) = children(x.root)[2]
+
 prettyhtml(x::AbstractString) = prettyhtml(Gumbo.parsehtml(x))
 
 function prettyhtml(x::Gumbo.HTMLDocument)
