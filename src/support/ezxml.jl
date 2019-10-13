@@ -1,3 +1,11 @@
+prettyhtml(x::AbstractString) = prettyhtml(Gumbo.parsehtml(x))
+
+function prettyhtml(x::Gumbo.HTMLDocument)
+    s = string(x)
+    s = replace(s, r">\"\n.*\n.*\n" => ">\n") # fix problem in Gumbo parser with "<body ...>"
+    return prettyxml(s)
+ end    
+
 prettyxml(x::EzXML.Document) = prettyxml(root(x))
 
 function prettyxml(x::EzXML.Node)
@@ -8,7 +16,6 @@ function prettyxml(x::EzXML.Node)
 end
 
 function prettyxml(x::AbstractString)
-    s = replace(x, r">\"\n.*\n.*\n" => ">\n") # fix problem in Gumbo parser with "<body ...>"
     s = join(split(s,"><"),">\n<")
     strs = strip.(String.(split(s, "\n")))
     prettystrs = Vector{String}(undef, length(strs))
