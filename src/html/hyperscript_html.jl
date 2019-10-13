@@ -1,108 +1,37 @@
-const html_ = m("html")
+for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :meta_),
+     # sections https://html.spec.whatwg.org/#sections
+    ("body", :body_),  ("article", :article_), ("section", :section_), ("nav", :nav_), ("aside", :aside_),
+    ("h1", :h1_), ("h2", :h2_), ("h3", :h3_), ("h4", :h4_), ("h5", :h5_), ("h6", :h6_),
+    ("hgroup", :hgroup_), ("header", :header_), ("footer", :footer_), ("address", :address_),
+    # grouping https://html.spec.whatwg.org/#grouping-content
+    ("p", :p_), ("hr", :hr_), ("pre", :pre_), ("blockquote", :blockquote_), ("ol", :ol_), ("ul", :ul_),
+    ("menu", :menu_), ("li", :li_), ("dl", :dl_), ("dt", :dt_), ("dd", :dd_), ("figure", :figure_),
+    ("figcaption", :figcaption_), ("main", :main_), ("div", :div_),
+    # table https://html.spec.whatwg.org/#tables
+    ("table", :table_), ("caption", :caption_), ("colgroup", :colgroup_), ("col", :col_), ("tbody", :tbody_),
+    ("thead", :thead_), ("tfoot", :tfoot_), ("tr", :tr_), ("td", :td_),  ("th", :th_),
+    # text level https://html.spec.whatwg.org/#text-level-semantics
+    ("a", :a_), ("em", :em_), ("strong", :strong_), ("small", :small_), ("s", :s_), ("cite", :cite_),
+    ("q", :q_), ("dfn", :dfn_), ("abbr", :abbr_), ("ruby", :ruby_), ("rt", :rt_), ("rp", :rp_),
+    ("data", :data_), ("code", :code_), ("var", :var_), ("samp", :samp_), ("kbd", :kbd_),
+    ("sub", :sub_), ("sup", :sup_), ("i", :i_), ("b", :b_), ("u", :u_), ("mark", :mark_),
+    ("bdi", :bdi_), ("bdo", :bdo_), ("span", :span_), ("br", :br_), ("wbr", :wbr_),
+    # input element types
+    ("button", :button_), ("checkbox", :checkbox_), ("color", :color_), ("date", :date_),
+    ("datetimeLocal", :datetimeLocal_), ("email", :email_), ("file", :file_), ("hidden", :hidden_),
+    ("image", :image_), ("month", :month_), ("number", :number_), ("password", :password_),
+    ("radio", :radio_), ("range", :range_), ("reset", :reset_), ("search", :search_), ("submit", :submit_),
+    ("tel", :tel_), ("text"), :text_), ("time", :time_), ("url", :url_), ("week", :week_),
+    )
+  @eval begin
+     $F() = m($T)
+     $F(class) = m($T, class=class)
+     $F(class, id) = m($T, id=id, class=class)
+  end
+end
 
-const head_ = m("head")
-const title_ = m("title")
-const meta_ = m("meta")
 
-# sections https://html.spec.whatwg.org/#sections
-const body_  = m("body")
-const article_ = m("article")
-const section_ = m("section")
-const nav_ = m("nav")
-const aside_ = m("aside")
-const h1_ = m("h1")
-const h2_ = m("h2")
-const h3_ = m("h3")
-const h4_ = m("h4")
-const h5_ = m("h5")
-const h6_ = m("h6")
-const hgroup_ = m("hgroup")
-const header_ = m("header")
-const footer_ = m("footer")
-const address_ = m("address")
 
-# grouping https://html.spec.whatwg.org/#grouping-content
-const p_ = m("p")
-const hr_ = m("hr")
-const pre_ = m("pre")
-const blockquote_ = m("blockquote")
-const ol_ = m("ol")
-const ul_ = m("ul")
-const menu_ = m("menu")
-const li_ = m("li")
-const dl_ = m("dl")
-const dt_ = m("dt")
-const dd_ = m("dd")
-const figure_ = m("figure")
-const figcaption_ = m("figcaption")
-const main_ = m("main")
-const div_ = m("div")
-
-# table https://html.spec.whatwg.org/#tables
-const table_ = m("table")
-const caption_ = m("caption")
-const colgroup_ = m("colgroup")
-const col_ = m("col")
-const tbody_ = m("tbody")
-const thead_ = m("thead")
-const tfoot_ = m("tfoot")
-const tr_ = m("tr")
-const td_ = m("td")
-const th_ = m("th")
-
-# text level https://html.spec.whatwg.org/#text-level-semantics
-const a_ = m("a")
-const em_ = m("em")
-const strong_ = m("strong")
-const small_ = m("small")
-const s_ = m("s")
-const cite_ = m("cite")
-const q_ = m("q")
-const dfn_ = m("dfn")
-const abbr_ = m("abbr")
-const ruby_ = m("ruby")
-const rt_ = m("rt")
-const rp_ = m("rp")
-const data_ = m("data")
-const code_ = m("code")
-const var_ = m("var")
-const samp_ = m("samp")
-const kbd_ = m("kbd")
-const sub_ = m("sub")
-const sup_ = m("sup")
-const i_ = m("i")
-const b_ = m("b")
-const u_ = m("u")
-const mark_ = m("mark")
-const bdi_ = m("bdi")
-const bdo_ = m("bdo")
-const span_ = m("span")
-const br_ = m("br")
-const wbr_ = m("wbr")
-
-# input element types
-const button_ = m("button")
-const checkbox_ = m("checkbox")
-const color_ = m("color")
-const date_ = m("date")
-const datetimelocal = m("datetimeLocal")
-const email_ = m("email")
-const file_ = m("file")
-const hidden_ = m("hidden")
-const image_ = m("image")
-const month_ = m("month")
-const number_ = m("number")
-const password_ = m("password")
-const radio_ = m("radio")
-const range_ = m("range")
-const reset_ = m("reset")
-const search_ = m("search")
-const submit_ = m("submit")
-const tel_ = m("tel")
-const text_ = m("text")
-const time_ = m("time")
-const url_ = m("url")
-const week_ = m("week")
 
 # link types
 const a_alternate_ = a_(rel="alternate")
