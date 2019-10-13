@@ -1,5 +1,3 @@
-
-
 function prettyxml(x::EzXML.Node)
     io = IOBuffer()
     EzXML.print(io, xhtmlroot)
@@ -66,3 +64,29 @@ function closexmltag(str::AbstractString)
    end
    return tag
 end
+
+#=
+xhtmlstr = """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+</head>
+<body class="bodyclass">
+  <div class="wrapper" id="backdrop">
+    <div class="plain" id="interior">
+      <span class="plain"id="words">these words</span>
+    </div>
+    <div class="copyright">
+      <span class="plain" id="copyright">© 2019 Jeffrey Sarnoff. All Rights Reserved.</span>
+    </div>
+  </div>
+  <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+</html>
+"""
+=#
