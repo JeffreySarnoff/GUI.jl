@@ -22,6 +22,7 @@ include("type/prototype.jl")           # specific NamedTuple prototypes
 include("support/hyperscript_html.jl") # HTML5 tags
 include("support/hyperscript_css.jl")  # CSS3 tags
 
+include("support/ezxml.jl")            # prettyxml
 include("support/gumbo.jl")            # typeofnode(x::HTMLNode)
 include("support/cascadia.jl")         #
 
