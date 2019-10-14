@@ -24,8 +24,10 @@
     - https://jenil.github.io/bulmaswatch/sandstone/
     - https://jenil.github.io/bulmaswatch/lumen/
 - dark
-    - https://jenil.github.io/bulmaswatch/cyborg/
+    - https://jenil.github.io/bulmaswatch/darkly/
     - https://jenil.github.io/bulmaswatch/slate/
+    - https://jenil.github.io/bulmaswatch/cyborg/
+- other    
     - https://jenil.github.io/bulmaswatch/solar/
 
     
