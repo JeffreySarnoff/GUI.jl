@@ -2,6 +2,9 @@ import Base: string
 
 Base.pushfirst!(elem::HTMLElement,val) = pushfirst!(elem.children, val)
 
+const HTMLTextTag = "(_)" 
+Gumbo.tag(x::Gumbo.HTMLText) = HTMLTextTag
+
 htmldoctype(x::Gumbo.HTMLDocument) = x.doctype
 htmlroot(x::Gumbo.HTMLDocument) = x.root
 htmlhead(x::Gumbo.HTMLDocument) = children(x.root)[1]
@@ -83,6 +86,24 @@ end
 =#
 
 #=
+htmlstr = """
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"></link>
+  </head>
+  <body class="body">
+    <div class="plain">
+      content
+    </div> 
+    <script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </body>
+</html>
+"""
+
 htmlstr = """
 <!DOCTYPE html>
 <html lang="en">
