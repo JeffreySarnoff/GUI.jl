@@ -19,7 +19,16 @@
 ----
 
 [Some Bulma Themes](https://jenil.github.io/bulmaswatch/)
+- light
+    - https://jenil.github.io/bulmaswatch/spacelab/
+    - https://jenil.github.io/bulmaswatch/sandstone/
+    - https://jenil.github.io/bulmaswatch/lumen/
+- dark
+    - https://jenil.github.io/bulmaswatch/cyborg/
+    - https://jenil.github.io/bulmaswatch/slate/
+    - https://jenil.github.io/bulmaswatch/solar/
 
+    
 [Bulma Application 1](https://github.com/cssninjaStudio/fresh)
 
 [Bulma Application 2](https://github.com/cssninjaStudio/krypton)
