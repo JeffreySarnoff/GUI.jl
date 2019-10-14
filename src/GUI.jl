@@ -1,6 +1,6 @@
 module GUI
 
-using DataStructures, LinkedLists, StructArrays, NamedTupleTools
+using DataStructures, LinkedLists, StructArrays, NamedTupleTools, AbstractTrees
 using CanonicalTraits
 using HTTP, HTTP.URIs
 using Gumbo, Cascadia, EzXML
