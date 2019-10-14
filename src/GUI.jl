@@ -20,11 +20,12 @@ include("support/dict.jl")             # getkeys::Vector, getvalues::Vector
 include("type/prototype.jl")           # specific NamedTuple prototypes
 
 include("html/hyperscript_html.jl")    # HTML5 tags
-include("support/hyperscript_css.jl")  # CSS3 tags
+#include("css/hyperscript_css.jl")  # CSS3 tags
 
 include("support/ezxml.jl")            # prettyxml
 include("support/gumbo.jl")            # typeofnode(x::HTMLNode)
 include("support/cascadia.jl")         #
+include("support/hyperscript.jl")      # convert to Gumbo, push!, pushlast!
 
 include("html/template.jl")            #
 include("html/elements.jl")            #
