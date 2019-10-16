@@ -1,3 +1,30 @@
+export  html_, head_, title_, meta_,
+    # sections https://html.spec.whatwg.org/#sections
+    body_, article_, section_, nav_, aside_,
+    h1_, h2_, h3_, h4_, h5_, h6_,
+    hgroup_, header_, footer_, address_,
+    # grouping https://html.spec.whatwg.org/#grouping-content
+    p_, hr_, pre_, blockquote_, ol_, ul_,
+    menu_, li_, dl_, dt_, dd_, figure_,
+    figcaption_, main_, div_,
+    # table https://html.spec.whatwg.org/#tables
+    table_, caption_, colgroup_, col_, tbody_,
+    thead_, tfoot_, tr_, td_,  th_,
+    # text level https://html.spec.whatwg.org/#text-level-semantics
+    a_, em_, strong_, small_, s_, cite_,
+    q_, dfn_, abbr_, ruby_, rt_, rp_,
+    data_, code_, var_, samp_, kbd_,
+    sub_, sup_, i_, b_, u_, mark_,
+    bdi_, bdo_, span_, br_, wbr_,
+    # input element types
+    button_, checkbox_, color_, date_,
+    datetimeLocal_, email_, file_, hidden_,
+    image_, month_, number_, password_,
+    radio_, range_, reset_, search_, submit_,
+    tel_, text_, time_, url_, week_,
+    # other
+    area_
+
 for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :meta_),
      # sections https://html.spec.whatwg.org/#sections
     ("body", :body_),  ("article", :article_), ("section", :section_), ("nav", :nav_), ("aside", :aside_),
