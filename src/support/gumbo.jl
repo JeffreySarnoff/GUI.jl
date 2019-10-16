@@ -1,5 +1,9 @@
 import Base: string
 
+const EmptyHtmlDoc = Gumbo.parsehtml("")
+htmldoc() = deepcopy(EmptyHtmlDoc)
+
+
 Base.pushfirst!(elem::HTMLElement,val) = pushfirst!(elem.children, val)
 
 const HTMLTextTag = "(_)" 
