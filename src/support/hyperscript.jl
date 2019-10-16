@@ -1,7 +1,7 @@
 function Base.convert(::Type{Gumbo.HTMLElement}, x::Hyperscript.Node{Hyperscript.HTMLSVG})
     str = string(x)
     htmldoc = Gumbo.parsehtml(str)
-    return children(htmlbody(htmldoc))[1]
+    return Gumbo.children(htmlbody(htmldoc))[1]
 end
 
 #=
