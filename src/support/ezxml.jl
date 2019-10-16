@@ -5,9 +5,63 @@ xhtmlbody(x::EzXML.Document) = elements(root(x))[2]
 
 function xhtml2html(x::EzXML.Document)
     str = string(x)
-    idx = findfirst("<!DOCTYPE", str)[1]
+
+    idx = findfirst("<!DOCTYPE", str linkprev!(target::Node, node::Node))[1]
     return Gumbo.parsehtml(SubString(str,idx,length(str)))
 end
+
+#=
+    manipulation 
+
+    link!(parent::Node, child::Node)
+    Link `child` at the end of children of `parent`.
+
+    linknext!(target::Node, node::Node)
+    Link `node` as the next sibling of `target`.
+
+    linkprev!(target::Node, node::Node)
+    Link `node` as the prev sibling of `target`.
+
+    unlink!(node::Node)
+    Unlink `node` from its context.
+
+    addelement!(parent::Node, name::AbstractString)
+    Add a new child element of `name` with no content to `parent`
+      and return the new child element.
+
+    addelement!(parent::Node, name::AbstractString, content::AbstractString)
+    Add a new child element of `name` with `content` to `parent`
+      and return the new child element.
+
+    nodecontent(node::Node)
+    Return the node content of `node`.
+
+    setnodecontent!(node::Node, content::AbstractString)
+    Replace the content of `node`.
+
+    # create a vector of _
+    nodes(node::Node, [backward=false])
+    Create a vector of child nodes.
+
+    elements(node::Node, [backward=false])
+    Create a vector of child elements.
+
+    attributes(node::Node)
+    Create a vector of attributes.
+
+
+    # attributes
+
+    haskey(node::Node, attr::AbstractString)
+    getindex(node::Node, attr::AbstractString)
+    setindex!(node::Node, val, attr::AbstractString)
+    delete!(node::Node, attr::AbstractString)
+
+
+=#
+
+
+
 
 #=
 prettyxml(x::EzXML.Document) = prettyxml(root(x))
@@ -16,8 +70,10 @@ function prettyxml(x::EzXML.Node)
     io = IOBuffer()
     EzXML.print(io, x)
     str = String(take!(io))
-    return prettyxml(str)
-end
+    retuprevrettyxml(str)
+e
+
+    Unlink `n` from its context.nd
 
 function prettyxml(x::AbstractString)
     s = replace(x, "><" => ">\n<")
