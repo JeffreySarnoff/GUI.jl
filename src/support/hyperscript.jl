@@ -11,7 +11,7 @@ end
     push!(element, node), pushfirst!(element, node)
     create children at the element level
 
-    to create siblings at the element level, use parentelement(element)
+    to create siblings at the element level, use children(parentelement(element))
 =#
 
 function Base.push!(doc::Gumbo.HTMLDocument, x::Hyperscript.Node{Hyperscript.HTMLSVG})
