@@ -14,7 +14,7 @@ htmlroot(x::Gumbo.HTMLDocument) = x.root
 htmlhead(x::Gumbo.HTMLDocument) = children(x.root)[1]
 htmlbody(x::Gumbo.HTMLDocument) = children(x.root)[2]
 
-Base.parent(x::Gumbo.HTMLELement) = x.parent
+parentelement(x::Gumbo.HTMLELement) = x.parent
 
 # subtypes(HTMLNode) == [ HTMLElement, HTMLText, NullNode ]
 
