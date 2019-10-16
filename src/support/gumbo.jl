@@ -3,8 +3,10 @@ import Base: string
 const EmptyHtmlDoc = Gumbo.parsehtml("")
 htmldoc() = deepcopy(EmptyHtmlDoc)
 
-
-Base.pushfirst!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem.children, val)
+pushlastsibling!(elem::Gumbo.HTMLElement,val) = push!(elem, val)
+pushfirstsibling!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem, val)
+pushlastchild!(elem::Gumbo.HTMLElement,val) = push!(elem.children, val)
+pushfirstchild!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem.children, val)
 
 const HTMLTextTag = "(_)" 
 Gumbo.tag(x::Gumbo.HTMLText) = HTMLTextTag
