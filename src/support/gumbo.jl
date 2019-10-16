@@ -1,12 +1,15 @@
+export htmldoc, htmlroot, htmlhead, htmlbody, attributes, attribute_names, attribute_values,
+    pushfirst_sibling!, push_sibling!, pushfirst_child!, push_child!
+
 import Base: string
 
 const EmptyHtmlDoc = Gumbo.parsehtml("")
 htmldoc() = deepcopy(EmptyHtmlDoc)
 
-pushlastsibling!(elem::Gumbo.HTMLElement,val) = push!(elem, val)
-pushfirstsibling!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem, val)
-pushlastchild!(elem::Gumbo.HTMLElement,val) = push!(elem.children, val)
-pushfirstchild!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem.children, val)
+push_sibling!(elem::Gumbo.HTMLElement,val) = push!(elem, val)
+pushfirst_sibling!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem, val)
+push_child!(elem::Gumbo.HTMLElement,val) = push!(elem.children, val)
+pushfirst_child!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem.children, val)
 
 const HTMLTextTag = "(_)" 
 Gumbo.tag(x::Gumbo.HTMLText) = HTMLTextTag
@@ -16,7 +19,7 @@ htmlroot(x::Gumbo.HTMLDocument) = x.root
 htmlhead(x::Gumbo.HTMLDocument) = children(x.root)[1]
 htmlbody(x::Gumbo.HTMLDocument) = children(x.root)[2]
 
-parentelement(x::Gumbo.HTMLELement) = x.parent
+Base.parentelement(x::Gumbo.HTMLELement) = x.parent
 
 # subtypes(HTMLNode) == [ HTMLElement, HTMLText, NullNode ]
 
