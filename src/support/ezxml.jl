@@ -10,17 +10,52 @@ function xhtml2html(x::EzXML.Document)
     return Gumbo.parsehtml(SubString(str,idx,length(str)))
 end
 
+"""
+    linkfirst!(parent::Node, child::Node)
+
+    Link `child` at the start of children of `parent`.
+"""
+function linkfirst!(parent::Node, child::Node)
+    check_topmost(child)
+    if hasnode(parent)
+        first_child_node = firstnode(parent)
+        linkprev!(first_child_node, child)    # link child as prev sibling of first_child_node
+    else 
+        name = nodename(child)
+        if hascontent(child)
+           content = nodecontent(child)
+           child = addelement!(parent, name, content)
+        else
+           child = addelement!(parent, name)
+        end    
+    end    
+    return child
+end
+
+
 #=
     manipulation 
 
         for Nodes, for Elements
           first, next, prev, last
           first_ptr, next_ptr, prev_ptr, last_ptr
+ 
+        for Nodes
+          link!: introduce to a parent a new, final child            
           parent_ptr(Node)
 
+        to provide
+            linkfirstchild!, linklastchild!
+            linkprevsibling!, linknextsibling!
+            linkprevchild!, linknextchild!
+            linkfirstsibling!, linknextsibling!
 
     link!(parent::Node, child::Node)
     Link `child` at the end of children of `parent`.
+    linklast!(parent::Node, child::Node)
+
+    linkfirst!(parent::Node, child::Node)
+    Link `child` at the start of children of `parent`.
 
     linknext!(target::Node, node::Node)
     Link `node` as the next sibling of `target`.
@@ -65,7 +100,6 @@ end
 
 
 =#
-
 
 
 
