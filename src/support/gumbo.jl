@@ -17,8 +17,8 @@ Gumbo.tag(x::Gumbo.HTMLText) = HTMLTextTag
 
 htmldoctype(x::Gumbo.HTMLDocument) = x.doctype
 htmlroot(x::Gumbo.HTMLDocument) = x.root
-htmlhead(x::Gumbo.HTMLDocument) = children(x.root)[1]
-htmlbody(x::Gumbo.HTMLDocument) = children(x.root)[2]
+htmlhead(x::Gumbo.HTMLDocument) = Gumbo.children(x.root)[1]
+htmlbody(x::Gumbo.HTMLDocument) = Gumbo.children(x.root)[2]
 
 EzXML.parentelement(x::Gumbo.HTMLElement) = x.parent
 
