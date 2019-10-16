@@ -4,7 +4,7 @@ const EmptyHtmlDoc = Gumbo.parsehtml("")
 htmldoc() = deepcopy(EmptyHtmlDoc)
 
 
-Base.pushfirst!(elem::HTMLElement,val) = pushfirst!(elem.children, val)
+Base.pushfirst!(elem::Gumbo.HTMLElement,val) = pushfirst!(elem.children, val)
 
 const HTMLTextTag = "(_)" 
 Gumbo.tag(x::Gumbo.HTMLText) = HTMLTextTag
@@ -14,7 +14,7 @@ htmlroot(x::Gumbo.HTMLDocument) = x.root
 htmlhead(x::Gumbo.HTMLDocument) = children(x.root)[1]
 htmlbody(x::Gumbo.HTMLDocument) = children(x.root)[2]
 
-
+parent(x::Gumbo.HTMLELement) = x.parent
 
 # subtypes(HTMLNode) == [ HTMLElement, HTMLText, NullNode ]
 
