@@ -7,6 +7,9 @@ CSS3
 
 - https://www.w3schools.com/w3css/
     - w3.css is a css framework
+    
+- https://www.quackit.com/css/color/charts/css_color_names_chart.cfm
+    - named colors recognized by css3
 
 W3 Standards Track
 
