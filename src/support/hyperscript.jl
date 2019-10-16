@@ -8,15 +8,15 @@ function Base.push!(doc::Gumbo.HTMLDocument, x::Hyperscript.Node{Hyperscript.HTM
     push!(htmlbody(doc), convert(Gumbo.HTMLElement, x))
 end
 
-function Base.pushlast!(doc::Gumbo.HTMLDocument, x::Hyperscript.Node{Hyperscript.HTMLSVG})
-    pushlast!(htmlbody(doc), convert(Gumbo.HTMLElement, x))
+function Base.pushfirst!(doc::Gumbo.HTMLDocument, x::Hyperscript.Node{Hyperscript.HTMLSVG})
+    pushfirst!(htmlbody(doc), convert(Gumbo.HTMLElement, x))
 end
 
 function Base.push!(elem::Gumbo.HTMLElement, x::Hyperscript.Node{Hyperscript.HTMLSVG})
     push!(elem, convert(Gumbo.HTMLElement, x))
 end
 
-function Base.pushlast!(elem::Gumbo.HTMLElement, x::Hyperscript.Node{Hyperscript.HTMLSVG})
-    pushlast!(elem, convert(Gumbo.HTMLElement, x))
+function Base.pushfirst!(elem::Gumbo.HTMLElement, x::Hyperscript.Node{Hyperscript.HTMLSVG})
+    pushfirst!(elem, convert(Gumbo.HTMLElement, x))
 end
 
