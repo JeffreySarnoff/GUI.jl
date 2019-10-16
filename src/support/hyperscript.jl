@@ -4,6 +4,16 @@ function Base.convert(::Type{Gumbo.HTMLElement}, x::Hyperscript.Node{Hyperscript
     return children(htmlbody(htmldoc))[1]
 end
 
+#=
+    push!(doc, node), pushfirst!(doc, node)
+    create siblings at the body level
+
+    push!(element, node), pushfirst!(element, node)
+    create children at the element level
+
+    to create siblings at the element level, use parentelement(element)
+=#
+
 function Base.push!(doc::Gumbo.HTMLDocument, x::Hyperscript.Node{Hyperscript.HTMLSVG})
     push!(htmlbody(doc), convert(Gumbo.HTMLElement, x))
 end
