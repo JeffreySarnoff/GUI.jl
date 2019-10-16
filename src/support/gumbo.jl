@@ -1,5 +1,6 @@
 export htmldoc, htmlroot, htmlhead, htmlbody, attributes, attribute_names, attribute_values,
-    pushfirst_sibling!, push_sibling!, pushfirst_child!, push_child!
+    pushfirst_sibling!, push_sibling!, pushfirst_child!, push_child!,
+    HTMLDocument, HTMLElement, HTMLNode, HTMLText, NullNode, attrs, getattr, setattr!, tag, text
 
 import Base: string
 
