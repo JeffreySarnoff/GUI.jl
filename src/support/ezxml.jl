@@ -13,6 +13,12 @@ end
 #=
     manipulation 
 
+        for Nodes, for Elements
+          first, next, prev, last
+          first_ptr, next_ptr, prev_ptr, last_ptr
+          parent_ptr(Node)
+
+
     link!(parent::Node, child::Node)
     Link `child` at the end of children of `parent`.
 
