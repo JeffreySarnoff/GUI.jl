@@ -24,10 +24,14 @@ function first_child!(parent::EzXML.Node, child::EzXML.Node)
         name = EzXML.nodename(child)
         if EzXML.hascontent(child)
            content = EzXML.nodecontent(child)
-           child = EzXML.addelement!(parent, name, content)
+           new_child = EzXML.addelement!(parent, name, content)
         else
-           child = EzXML.addelement!(parent, name)
-        end    
+           new_child = EzXML.addelement!(parent, name)
+        end
+        for a in EzXML.eachattribute(child)
+            EzXML.linknext!(new_child, a)
+        end
+        child = new_child
     end    
     return child
 end
@@ -53,10 +57,14 @@ function next_child!(curr_node::EzXML.Node, next_child::EzXML.Node)
         name = EzXML.nodename(next_child)
         if EzXML.hascontent(next_child)
            content = EzXML.nodecontent(next_child)
-           child = EzXML.addelement!(curr_node, name, content)
+           new_child = EzXML.addelement!(curr_node, name, content)
         else
-           child = EzXML.addelement!(curr_node, name)
+           new_child = EzXML.addelement!(curr_node, name)
         end    
+        for a in EzXML.eachattribute(child)
+            EzXML.linknext!(new_child, a)
+        end
+        next_child = new_child
     end            
     return next_child
 end
