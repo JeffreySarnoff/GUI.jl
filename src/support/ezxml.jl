@@ -11,25 +11,83 @@ function xhtml2html(x::EzXML.Document)
 end
 
 """
-    linkfirst!(parent::Node, child::Node)
+    first_child!(parent::Node, child::Node)
 
-    Link `child` at the start of children of `parent`.
+    Link `child` as the first of the children of `parent`.
 """
-function linkfirst!(parent::Node, child::Node)
-    check_topmost(child)
-    if hasnode(parent)
-        first_child_node = firstnode(parent)
-        linkprev!(first_child_node, child)    # link child as prev sibling of first_child_node
+function first_child!(parent::EzXML.Node, child::EzXML.Node)
+    EzXML.check_topmost(child)
+    if EzXML.hasnode(parent)
+        first_child_node = EzXML.firstnode(parent)
+        EzXML.linkprev!(first_child_node, child)    # link child as prev sibling of first_child_node
     else 
-        name = nodename(child)
-        if hascontent(child)
-           content = nodecontent(child)
-           child = addelement!(parent, name, content)
+        name = EzXML.nodename(child)
+        if EzXML.hascontent(child)
+           content = EzXML.nodecontent(child)
+           child = EzXML.addelement!(parent, name, content)
         else
-           child = addelement!(parent, name)
+           child = EzXML.addelement!(parent, name)
         end    
     end    
     return child
+end
+
+"""
+     last_child!(parent::Node, child::Node)
+
+     Link `child` as the last of the children of `parent`.
+"""
+last_child!(parent::EzXML.Node, child::EzXML.Node) = EzXML.link!(parent, child)
+
+"""
+    prev_child!(curr_node, prev_child)
+
+    Link `prev_child` as the child that preceeds the parent-level `curr_node`.
+"""
+prev_child!(curr_node::EzXML.Node, prev_child::EzXML.Node) = prev_sibling!(curr_node, prev_child)
+
+"""
+    next_child!(curr_node, next_child)
+
+    Link `next_child` as the child that follows the parent-level `curr_node`.
+"""
+next_child!(curr_node::EzXML.Node, prev_child::EzXML.Node) = next_sibling!(curr_node, prev_child)
+
+
+"""
+    next_sibling!(curr_sibling, next_sibling)
+
+    Link `next_sibling` as the next sibling of `curr_sibling`.
+"""
+next_sibling!(curr_sibling::EzXML.Node, next_sibling::EzXML.Node) = linknext!(curr_sibling, next_sibling)
+
+"""
+    prev_sibling!(curr_sibling, prev_sibling)
+
+    Link `prev_sibling` as the prev sibling of `curr_sibling`.
+"""
+prev_sibling!(curr_sibling::EzXML.Node, prev_sibling::EzXML.Node) = linknext!(curr_sibling, prev_sibling)
+
+"""
+    first_sibling!(curr_sibling::EzXML.Node, first_sibling::EzXML.Node)
+
+    Link `first_sibling` as the first sibling of the siblings to which `curr_sibling` belongs.
+"""
+function first_sibling!(curr_sibling::EzXML.Node, first_sibling::EzXML.Node)
+    initial_sibling_node = EzXML.firstnode(parent(curr_sibling))
+    EzXML.linkprev!(initial_sibling_node, first_sibling)    # link first_sibling as prev sibling of initial_sibling_node
+    return first_sibling
+end
+
+"""
+    last_sibling!(curr_sibling::EzXML.Node, last_sibling::EzXML.Node)
+
+    Link `last_sibling` as the last sibling of the siblings to which `curr_sibling` belongs.
+"""
+function last_sibling!(curr_sibling::EzXML.Node, last_sibling::EzXML.Node)
+    final_sibling_node = EzXML.lastnode(parent(curr_sibling))
+    EzXML.linknext!(final_sibling_node, last_sibling)    # link last_sibling as next sibling of final_sibling_node
+    return last_sibling
 end
 
 
