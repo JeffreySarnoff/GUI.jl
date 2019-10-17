@@ -5,8 +5,7 @@ xhtmlbody(x::EzXML.Document) = elements(root(x))[2]
 
 function xhtml2html(x::EzXML.Document)
     str = string(x)
-
-    idx = findfirst("<!DOCTYPE", str linkprev!(target::Node, node::Node))[1]
+    idx = findfirst("<!DOCTYPE", str)[1]
     return Gumbo.parsehtml(SubString(str,idx,length(str)))
 end
 
