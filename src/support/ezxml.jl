@@ -17,21 +17,10 @@ end
 function first_child!(parent::EzXML.Node, child::EzXML.Node)
     EzXML.check_topmost(child)
     if EzXML.hasnode(parent)
-        first_child_node = EzXML.firstnode(parent)
-        EzXML.linkprev!(first_child_node, child)    # link child as prev sibling of first_child_node
-    else 
-        name = EzXML.nodename(child)
-        if EzXML.hascontent(child)
-           content = EzXML.nodecontent(child)
-           new_child = EzXML.addelement!(parent, name, content)
-        else
-           new_child = EzXML.addelement!(parent, name)
-        end
-        for a in EzXML.eachattribute(child)
-            EzXML.linknext!(new_child, a)
-        end
-        child = new_child
-    end    
+        EzXML.linkprev!(EzXML.firstnode(parent), child)
+    else
+        EzXML.link!(parent, child)
+    end
     return child
 end
 
@@ -48,24 +37,14 @@ last_child!(parent::EzXML.Node, child::EzXML.Node) = EzXML.link!(parent, child)
 
     Link `next_child` as the child that follows the parent-level `curr_node`.
 """
-function next_child!(curr_node::EzXML.Node, next_child::EzXML.Node)
-    if EzXML.hasnode(curr_node) # has a child node
-        first_child = EzXML.firstnode(curr_node)    
-        prev_sibling!(first_child, next_child)
+function next_child!(parent::EzXML.Node, child::EzXML.Node)
+    EzXML.check_topmost(child)
+    if EzXML.hasnode(parent)
+        EzXML.linknext!(EzXML.firstnode(parent), child)
     else
-        name = EzXML.nodename(next_child)
-        if EzXML.hascontent(next_child)
-           content = EzXML.nodecontent(next_child)
-           new_child = EzXML.addelement!(curr_node, name, content)
-        else
-           new_child = EzXML.addelement!(curr_node, name)
-        end    
-        for a in EzXML.eachattribute(child)
-            EzXML.linknext!(new_child, a)
-        end
-        next_child = new_child
-    end            
-    return next_child
+        EzXML.link!(parent, child)
+    end
+    return child
 end
 
 """
@@ -73,6 +52,7 @@ end
 
     Link `prev_child` as the child that preceeds the parent-level `curr_node`.
 """
+#=
 function prev_child!(curr_node::EzXML.Node, prev_child::EzXML.Node)
     if EzXML.hasprevnode(curr_node)
         curr_node = EzXML.prevnode(curr_node)
@@ -86,6 +66,7 @@ function prev_child!(curr_node::EzXML.Node, prev_child::EzXML.Node)
     end    
     return prev_child
 end
+=#
 
 """
     next_sibling!(curr_sibling, next_sibling)
