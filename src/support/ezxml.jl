@@ -9,6 +9,16 @@ function xhtml2html(x::EzXML.Document)
     return Gumbo.parsehtml(SubString(str,idx,length(str)))
 end
 
+#=
+    root = ElementNode("root")
+    x = ElementNode("x")
+    first_child!(root, x)
+    y = ElementNode("y")
+    first_child!(root, y)
+    z = ElementNode("z")
+    first_child!(root, z)
+=#
+
 """
     first_child!(parent::Node, child::Node)
 
