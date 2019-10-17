@@ -39,20 +39,46 @@ end
 """
 last_child!(parent::EzXML.Node, child::EzXML.Node) = EzXML.link!(parent, child)
 
-"""
-    prev_child!(curr_node, prev_child)
-
-    Link `prev_child` as the child that preceeds the parent-level `curr_node`.
-"""
-prev_child!(curr_node::EzXML.Node, prev_child::EzXML.Node) = prev_sibling!(curr_node, prev_child)
 
 """
     next_child!(curr_node, next_child)
 
     Link `next_child` as the child that follows the parent-level `curr_node`.
 """
-next_child!(curr_node::EzXML.Node, prev_child::EzXML.Node) = next_sibling!(curr_node, prev_child)
+function next_child!(curr_node::EzXML.Node, next_child::EzXML.Node)
+    if hasnode(curr_node) # has a child node
+        first_child = firstnode(curr_node)    
+        prev_sibling!(first_child, next_child)
+    else
+        name = EzXML.nodename(next_child)
+        if EzXML.hascontent(next_child)
+           content = EzXML.nodecontent(next_child)
+           child = EzXML.addelement!(curr_node, name, content)
+        else
+           child = EzXML.addelement!(curr_node, name)
+        end    
+    end            
+    return next_child
+end
 
+"""
+    prev_child!(curr_node, prev_child)
+
+    Link `prev_child` as the child that preceeds the parent-level `curr_node`.
+"""
+function prev_child!(curr_node::EzXML.Node, prev_child::EzXML.Node)
+    if hasprevnode(curr_node)
+        curr_node = prevnode(curr_node)
+        if hasnode(curr_node)
+            last_sibling!(lastnode(curr_node), prev_child)
+        else
+            throw(ErrorException("no previous parent node"))
+        end
+    else   
+        throw(ErrorException("no previous parent node"))
+    end    
+    return prev_child
+end
 
 """
     next_sibling!(curr_sibling, next_sibling)
@@ -66,7 +92,7 @@ next_sibling!(curr_sibling::EzXML.Node, next_sibling::EzXML.Node) = linknext!(cu
 
     Link `prev_sibling` as the prev sibling of `curr_sibling`.
 """
-prev_sibling!(curr_sibling::EzXML.Node, prev_sibling::EzXML.Node) = linknext!(curr_sibling, prev_sibling)
+prev_sibling!(curr_sibling::EzXML.Node, prev_sibling::EzXML.Node) = linkprev!(curr_sibling, prev_sibling)
 
 """
     first_sibling!(curr_sibling::EzXML.Node, first_sibling::EzXML.Node)
