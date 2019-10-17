@@ -39,7 +39,11 @@ end
 
      Link `child` as the last of the children of `parent`.
 """
-last_child!(parent::EzXML.Node, child::EzXML.Node) = EzXML.link!(parent, child)
+function last_child!(parent::EzXML.Node, child::EzXML.Node)
+    EzXML.check_topmost(child)
+    EzXML.link!(parent, child)
+    return child
+end
 
 
 """
@@ -83,14 +87,22 @@ end
 
     Link `next_sibling` as the next sibling of `curr_sibling`.
 """
-next_sibling!(curr_sibling::EzXML.Node, next_sibling::EzXML.Node) = linknext!(curr_sibling, next_sibling)
+function next_sibling!(curr_sibling::EzXML.Node, next_sibling::EzXML.Node)
+    EzXML.check_topmost(next_sibling)
+    linknext!(curr_sibling, next_sibling)
+    return next_sibling
+end
 
 """
     prev_sibling!(curr_sibling, prev_sibling)
 
     Link `prev_sibling` as the prev sibling of `curr_sibling`.
 """
-prev_sibling!(curr_sibling::EzXML.Node, prev_sibling::EzXML.Node) = linkprev!(curr_sibling, prev_sibling)
+function prev_sibling!(curr_sibling::EzXML.Node, prev_sibling::EzXML.Node)
+    EzXML.check_topmost(prev_sibling)
+    linkprev!(curr_sibling, prev_sibling)
+    return prev_sibling
+end
 
 """
     first_sibling!(curr_sibling::EzXML.Node, first_sibling::EzXML.Node)
@@ -98,6 +110,7 @@ prev_sibling!(curr_sibling::EzXML.Node, prev_sibling::EzXML.Node) = linkprev!(cu
     Link `first_sibling` as the first sibling of the siblings to which `curr_sibling` belongs.
 """
 function first_sibling!(curr_sibling::EzXML.Node, first_sibling::EzXML.Node)
+    EzXML.check_topmost(first_sibling)
     initial_sibling_node = EzXML.firstnode(parent(curr_sibling))
     EzXML.linkprev!(initial_sibling_node, first_sibling)    # link first_sibling as prev sibling of initial_sibling_node
     return first_sibling
@@ -109,6 +122,7 @@ end
     Link `last_sibling` as the last sibling of the siblings to which `curr_sibling` belongs.
 """
 function last_sibling!(curr_sibling::EzXML.Node, last_sibling::EzXML.Node)
+    EzXML.check_topmost(last_sibling)
     final_sibling_node = EzXML.lastnode(parent(curr_sibling))
     EzXML.linknext!(final_sibling_node, last_sibling)    # link last_sibling as next sibling of final_sibling_node
     return last_sibling
