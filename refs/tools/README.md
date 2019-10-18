@@ -4,6 +4,9 @@ replacements, additions welcome
 
 ### Color
 
+- [an improved color palette for the web](http://clrs.cc/)
+    - [css definitions](https://github.com/mrmrs/colors/tree/master/css/colors.css)
+
 - [color by position](https://color.hailpixel.com/)
     - move mouse on page to change the color
     - mouse click saves & shows color and lets you choose again
