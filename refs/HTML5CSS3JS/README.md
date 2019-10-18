@@ -6,6 +6,14 @@ Julia
 - https://github.com/tkluck/HAML.jl
     - HAML offers [X]HTML templating
 
+Fast Smaller Web Development Frameworks
+
+- https://picnicss.com/
+    - Picnic "Lightweight and beautiful library" written in SCSS
+    - [widgets](https://picnicss.com/documentation#)
+    - [Picnic on github](https://github.com/franciscop/picnic)
+
+
 CSS3
 
 - https://www.w3schools.com/w3css/
