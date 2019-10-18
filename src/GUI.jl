@@ -4,7 +4,7 @@ using DataStructures, LinkedLists, StructArrays, NamedTupleTools, AbstractTrees
 using CanonicalTraits
 using HTTP, HTTP.URIs
 using Gumbo, Cascadia, EzXML
-using Mustache, Hyperscript
+using HAML, Mustache, Hyperscript
 using ReusePatterns
 
 include("type/abstract.jl")            #
