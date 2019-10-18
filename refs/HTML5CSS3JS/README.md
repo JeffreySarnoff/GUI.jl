@@ -2,6 +2,9 @@ Julia
 
 - https://github.com/yurivish/Hyperscript.jl
     - Hyperscript offers is a concise DSL for working with HTML, SVG, and CSS.
+    
+- https://github.com/tkluck/HAML.jl
+    - HAML offers [X]HTML templating
 
 CSS3
 
