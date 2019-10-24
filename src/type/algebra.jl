@@ -70,8 +70,8 @@ mutable struct HtmlElement
 end
 
 hyperhtml(x::Nothing) = nothing
-hyperhtml(x::Context{T}) where {T} = hyper(x.value)
-hyperhtml(x::Content{T}) where {T} = hyper(x.value)
+hyperhtml(x::Context{T}) where {T} = hyperhtml(x.value)
+hyperhtml(x::Content{T}) where {T} = hyperhtml(x.value)
 hyperhtml(x::String) = x
 
 function hyperhtml(x::HtmlElement)
