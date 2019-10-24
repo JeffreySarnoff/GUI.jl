@@ -1,4 +1,5 @@
-export  html_, head_, title_, meta_,
+export  hyperhtml,
+    html_, head_, title_, meta_,
     # sections https://html.spec.whatwg.org/#sections
     body_, article_, section_, nav_, aside_,
     h1_, h2_, h3_, h4_, h5_, h6_,
@@ -24,6 +25,8 @@ export  html_, head_, title_, meta_,
     tel_, text_, time_, url_, week_,
     # other
     area_
+
+hyperhtml = Dict{Symbol, Node{HTMLSVG})[]
 
 for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :meta_),
      # sections https://html.spec.whatwg.org/#sections
@@ -54,6 +57,7 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
     )      
   @eval begin
      $F() = m($T)
+     hyperhtml[Symbol($T)] = $F
      $F(class::String) = m($T, class=class)
      function $F(class::String, xs::Vararg{Pair,N}) where {N}
          dict = Dict(xs)
