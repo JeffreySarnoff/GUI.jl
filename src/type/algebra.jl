@@ -33,22 +33,48 @@ mutable struct Content{T} <: AbstractContent
      value::T
 end
 
+const MaybeContent{T} = Union{Nothing, Content{T}}
+iscontent(x::MaybeContent{T}) where {T} = !isnothing(x)
+iscontent(x::Content{T}) where {T} = true
+iscontent(x) = false
+
 mutable struct Context{T} <: AbstractContext
      value::T
 end
 
-mutable struct Element{N,E,T1,T2}
-    htmlelement::E
-    hyperelement::Hyperscript.Node{Hyperscript.HTMLSVG}
+const MaybeContext{T} = Union{Nothing, Context{T}}
+iscontext(x::MaybeContext{T}) where {T} = !isnothing(x)
+iscontext(x::Context{T}) where {T} = true
+iscontext(x) = false
+
+
+mutable struct HtmlElement{N}
+    htmlelem::Symbol
+    hyperelem::Function
     cssclass::MaybeNTuple{N,String}
     cssid::MaybeString
-    content::Content{T1}
-    context::Context{T2}
+
+    function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing) where {N}
+       hyperelem = hyperhtml[elem] 
+       return new{isnothing(cssclass) ? 0 : N}(elem, hyperelem, cssclass, id)
+    end
+    function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing) where {N}
+       hyperelem = hyperhtml[elem] 
+       return new{isnothing(cssclass) ? 0 : N}(elem, hyperelem, (cssclass,), id)
+    end
 end
 
-function string(x::Element{T1,T2,T3}) where {T1, T2, T3}
-    cssclass = isempty(x.css_class) ? "" : string("class=\"",join(x.css_class),"\"")
-    cssid = isnothing(x.css_id) ? "" : string("id=\"",x.css_id,"\"")
-    # ...
- end    
-
+function hyperelem(x::HtmlElement{N}) where {N}
+    if !isnothing(x.cssclass)
+        classes = join(x.cssclass, " ")
+        if !isnothing(x.cssid)
+            x.hyperelem(classes, :id=>id)
+        else
+            x.hyperelem(classes)
+        end
+    elseif !isnothing(x.cssid)
+        x.hyperelem(:id=>id)
+    else
+        x.hyperelem()
+    end
+end
