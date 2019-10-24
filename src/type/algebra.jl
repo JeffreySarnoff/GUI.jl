@@ -48,24 +48,24 @@ iscontext(x::Context{T}) where {T} = true
 iscontext(x) = false
 
 
-mutable struct HtmlElement{N}
+mutable struct HTML_Element
     htmlelem::Symbol
     hyperelem::Function
-    cssclass::MaybeNTuple{N,String}
+    cssclass::MaybeTuple
     cssid::MaybeString
 
-    function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing) where {N}
+    function HTML_Element(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing)
        hyperelem = hyperhtml[elem] 
-       return new{isnothing(cssclass) ? 0 : N}(elem, hyperelem, cssclass, id)
+       return new(elem, hyperelem, cssclass, id)
     end
     
-    function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing) where {N}
+    function HTML_Element(elem::Symbol, cssclass::String; id::MaybeString=nothing)
        hyperelem = hyperhtml[elem] 
-       return new{1}(elem, hyperelem, (cssclass,), id)
+       return new(elem, hyperelem, (cssclass,), id)
     end
 end
 
-function hyperelem(x::HtmlElement{N}) where {N}
+function hyperelem(x::HTML_Element)
     if !isnothing(x.cssclass)
         classes = join(x.cssclass, " ")
         if !isnothing(x.cssid)
@@ -81,14 +81,14 @@ function hyperelem(x::HtmlElement{N}) where {N}
 end
 
 #=
-julia> asection = HtmlElement(:section, ("asection",))
-HtmlElement{1}(:section, GUI.section_, ("asection",), nothing)
+julia> asection = HTML_Element(:section, ("asection",))
+HTML_Element(:section, GUI.section_, ("asection",), nothing)
 
-julia> adiv=HtmlElement(:div, "adiv")
-HtmlElement{1}(:div, GUI.div_, ("adiv",), nothing)
+julia> adiv=HTML_Element(:div, "adiv")
+HTML_Element(:div, GUI.div_, ("adiv",), nothing)
 
 julia> alink=HtmlElement(:a, ("alink"))
-HtmlElement{1}(:a, GUI.a_, ("alink",), nothing)
+HTML_Element(:a, GUI.a_, ("alink",), nothing)
 
 julia> hyperelem(asection)
 <section class="asection"></section>
@@ -110,5 +110,57 @@ julia> hyperelem(adiv),hyperelem(alink)("url")
 
 julia> hyperelem(asection)(hyperelem(adiv),hyperelem(alink)("url"))
 <section class="asection"><div class="adiv"></div><a class="alink">url</a></section>
-
 =#
+
+mutable struct HtmlElement
+    htmlelem::Symbol
+    hyperelem::Function
+    cssclass::MaybeTuple
+    cssid::MaybeString
+    content::MaybeContent
+    context::MaybeContext
+
+    function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing, 
+                         content::MaybeContent=nothing, context::MaybeContext=nothing)
+       hyperelem = hyperhtml[elem] 
+       return new(elem, hyperelem, cssclass, id, content, context)
+    end
+    
+    function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing,
+                         content::MaybeContent=nothing, context::MaybeContext=nothing)
+       hyperelem = hyperhtml[elem] 
+       return new(elem, hyperelem, (cssclass,), id, content, context)
+    end
+end
+
+hyperelem(x::Nothing) = nothing
+
+function hyperelem(x::HtmlElement)
+    context = hyperelem(x.context)
+    content = hyperelem(x.content)
+    result =
+        if !isnothing(x.cssclass)
+            classes = join(x.cssclass, " ")
+            if !isnothing(x.cssid)
+                x.hyperelem(classes, :id=>id)
+            else
+                x.hyperelem(classes)
+            end
+        elseif !isnothing(x.cssid)
+            x.hyperelem(:id=>id)
+        else
+            x.hyperelem()
+        end
+    if !isnothing(context)
+        if !isnothing(content)
+            result(content,context)
+        else
+            result(context)
+        end
+    elseif !isnothing(content)
+        result(content)
+    else
+        result
+    end
+end
+
