@@ -70,12 +70,12 @@ function hyper(x::HTML_Element)
     if !isnothing(x.cssclass)
         classes = join(x.cssclass, " ")
         if !isnothing(x.cssid)
-            x.hyperelem(classes, :id=>id)
+            x.hyperelem(classes, :id=>x.cssid)
         else
             x.hyperelem(classes)
         end
     elseif !isnothing(x.cssid)
-        x.hyperelem(:id=>id)
+        x.hyperelem(:id=>x.cssid)
     else
         x.hyperelem()
     end
@@ -145,12 +145,12 @@ function hyper(x::HtmlElement)
         if !isnothing(x.cssclass)
             classes = join(x.cssclass, " ")
             if !isnothing(x.cssid)
-                x.hyperelem(classes, :id=>id)
+                x.hyperelem(classes, :id=>x.cssid)
             else
                 x.hyperelem(classes)
             end
         elseif !isnothing(x.cssid)
-            x.hyperelem(:id=>id)
+            x.hyperelem(:id=>x.cssid)
         else
             x.hyperelem()
         end
