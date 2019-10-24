@@ -54,7 +54,7 @@ mutable struct HTML_Element
     cssclass::MaybeTuple
     cssid::MaybeString
 
-    function HTML_Element(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing)
+    function HTML_Element(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing) where {N}
        helem = hyperhtml[elem] 
        return new(elem, helem, cssclass, id)
     end
@@ -121,7 +121,7 @@ mutable struct HtmlElement
     context::MaybeContext
 
     function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing, 
-                         content::MaybeContent=nothing, context::MaybeContext=nothing)
+                         content::MaybeContent=nothing, context::MaybeContext=nothing) where {N}
        helem = hyperhtml[elem] 
        return new(elem, helem, cssclass, id, content, context)
     end
