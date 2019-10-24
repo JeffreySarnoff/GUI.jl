@@ -114,7 +114,7 @@ const HTML_grouping_elements = Set([
     :figcaption, :main, :div])
 const HTML_table_elements = Set([
     :table, :caption, :colgroup, :col, :tbody,
-    :thead, :tfoot, :tr, :td, : :th])
+    :thead, :tfoot, :tr, :td, :th])
 const HTML_text_elements = Set([
     :a, :em, :strong, :small, :s, :cite,
     :q, :dfn, :abbr, :ruby, :rt, :rp,
