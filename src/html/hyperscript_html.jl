@@ -26,7 +26,8 @@ export  hyperhtml,
     # other
     area_
 
-hyperhtml = Dict{Symbol, Hyperscript.Node{Hyperscript.HTMLSVG}}([])
+# hyperhtml = Dict{Symbol, Hyperscript.Node{Hyperscript.HTMLSVG}}([])
+hyperhtml = Dict{Symbol, Function}([])
 
 for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :meta_),
      # sections https://html.spec.whatwg.org/#sections
