@@ -58,9 +58,10 @@ mutable struct HtmlElement{N}
        hyperelem = hyperhtml[elem] 
        return new{isnothing(cssclass) ? 0 : N}(elem, hyperelem, cssclass, id)
     end
+    
     function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing) where {N}
        hyperelem = hyperhtml[elem] 
-       return new{isnothing(cssclass) ? 0 : N}(elem, hyperelem, (cssclass,), id)
+       return new{1}(elem, hyperelem, (cssclass,), id)
     end
 end
 
