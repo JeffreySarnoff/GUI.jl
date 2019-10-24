@@ -48,6 +48,118 @@ iscontext(x::Context{T}) where {T} = true
 iscontext(x) = false
 
 
+mutable struct HtmlElement
+    htmlelem::Symbol
+    hyperelem::Function
+    cssclass::MaybeTuple
+    cssid::MaybeString
+    content::MaybeContent
+    context::MaybeContext
+
+    function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing, 
+                         content::MaybeContent=nothing, context::MaybeContext=nothing) where {N}
+       helem = hyperhtml[elem] 
+       return new(elem, helem, cssclass, id, content, context)
+    end
+    
+    function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing,
+                         content::MaybeContent=nothing, context::MaybeContext=nothing)
+       helem = hyperhtml[elem] 
+       return new(elem, helem, (cssclass,), id, content, context)
+    end
+end
+
+hyper(x::Nothing) = nothing
+hyper(x::Context{T}) where {T} = hyper(x.value)
+hyper(x::Content{T}) where {T} = hyper(x.value)
+hyper(x::String) = x
+
+function hyper(x::HtmlElement)
+    context = hyper(x.context)
+    content = hyper(x.content)
+    result =
+        if !isnothing(x.cssclass)
+            classes = join(x.cssclass, " ")
+            if !isnothing(x.cssid)
+                x.hyperelem(classes, :id=>x.cssid)
+            else
+                x.hyperelem(classes)
+            end
+        elseif !isnothing(x.cssid)
+            x.hyperelem(:id=>x.cssid)
+        else
+            x.hyperelem()
+        end
+    if !isnothing(context)
+        if !isnothing(content)
+            result(content,context)
+        else
+            result(context)
+        end
+    elseif !isnothing(content)
+        result(content)
+    else
+        result
+    end
+end
+
+#=
+julia> asection = HtmlElement(:section, ("asection",))
+HtmlElement(:section, GUI.section_, ("asection",), nothing)
+
+julia> adiv=HtmlElement(:div, "adiv")
+HtmlElement(:div, GUI.div_, ("adiv",), nothing)
+
+julia> alink=HtmlElement(:a, ("alink"))
+HtmlElement(:a, GUI.a_, ("alink",), nothing)
+
+julia> hyper(asection)
+<section class="asection"></section>
+
+julia> hyper(adiv)
+<div class="adiv"></div>
+
+julia> hyper(alink)
+<a class="alink"></a>
+
+julia> hyper(adiv)(hyper(alink))
+<div class="adiv"><a class="alink"></a></div>
+
+julia> hyper(adiv)(hyper(alink)("url"))
+<div class="adiv"><a class="alink">url</a></div>
+
+julia> hyper(adiv),hyper(alink)("url")
+(<div class="adiv"></div>, <a class="alink">url</a>)
+
+julia> hyper(asection)(hyper(adiv),hyper(alink)("url"))
+<section class="asection"><div class="adiv"></div><a class="alink">url</a></section>
+
+julia> bdiv = HtmlElement(:div, "bdiv", context=Context(adiv))
+HtmlElement(:div, GUI.div_, ("bdiv",), nothing, nothing, Context{HTML_Element}(HTML_Element(:div, GUI.div_, ("adiv",), nothing)))
+
+julia> hyper(bdiv)
+<div class="bdiv"><div class="adiv"></div></div>
+
+julia> hyper(bdiv)("b")
+<div class="bdiv"><div class="adiv"></div>b</div>
+
+
+julia> bdiv = GUI.HtmlElement(:div, "bdiv", content=GUI.Content("ab"), context=GUI.Context(alink))
+GUI.HtmlElement(:div, GUI.div_, ("bdiv",), nothing, GUI.Content{String}("ab"), GUI.Context{GUI.HtmlElement}(GUI.HtmlElement(:a, GUI.a_, ("alink blink",), "id", nothing, nothing)))
+
+julia> GUI.hyper(bdiv)
+<div class="bdiv">ab<a class="alink blink" id="id"></a></div>
+
+julia> bdiv = GUI.HtmlElement(:div, "bdiv", content=GUI.Content(alink), context=GUI.Context("abcd"))
+GUI.HtmlElement(:div, GUI.div_, ("bdiv",), nothing, GUI.Content{GUI.HtmlElement}(GUI.HtmlElement(:a, GUI.a_, ("alink blink",), "id", nothing, nothing)), GUI.Context{String}("abcd"))
+
+julia> GUI.hyper(bdiv)
+<div class="bdiv"><a class="alink blink" id="id"></a>abcd</div>
+
+=#
+
+
+#=
 mutable struct HTML_Element
     htmlelem::Symbol
     hyperelem::Function
@@ -80,103 +192,4 @@ function hyper(x::HTML_Element)
         x.hyperelem()
     end
 end
-
-#=
-julia> asection = HTML_Element(:section, ("asection",))
-HTML_Element(:section, GUI.section_, ("asection",), nothing)
-
-julia> adiv=HTML_Element(:div, "adiv")
-HTML_Element(:div, GUI.div_, ("adiv",), nothing)
-
-julia> alink=HtmlElement(:a, ("alink"))
-HTML_Element(:a, GUI.a_, ("alink",), nothing)
-
-julia> hyper(asection)
-<section class="asection"></section>
-
-julia> hyper(adiv)
-<div class="adiv"></div>
-
-julia> hyper(alink)
-<a class="alink"></a>
-
-julia> hyper(adiv)(hyper(alink))
-<div class="adiv"><a class="alink"></a></div>
-
-julia> hyper(adiv)(hyper(alink)("url"))
-<div class="adiv"><a class="alink">url</a></div>
-
-julia> hyper(adiv),hyper(alink)("url")
-(<div class="adiv"></div>, <a class="alink">url</a>)
-
-julia> hype(asection)(hyper(adiv),hyper(alink)("url"))
-<section class="asection"><div class="adiv"></div><a class="alink">url</a></section>
-=#
-
-mutable struct HtmlElement
-    htmlelem::Symbol
-    hyperelem::Function
-    cssclass::MaybeTuple
-    cssid::MaybeString
-    content::MaybeContent
-    context::MaybeContext
-
-    function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing, 
-                         content::MaybeContent=nothing, context::MaybeContext=nothing) where {N}
-       helem = hyperhtml[elem] 
-       return new(elem, helem, cssclass, id, content, context)
-    end
-    
-    function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing,
-                         content::MaybeContent=nothing, context::MaybeContext=nothing)
-       helem = hyperhtml[elem] 
-       return new(elem, helem, (cssclass,), id, content, context)
-    end
-end
-
-hyper(x::Nothing) = nothing
-hyper(x::Context{T}) where {T} = hyper(x.value)
-hyper(x::Content{T}) where {T} = hyper(x.value)
-
-function hyper(x::HtmlElement)
-    context = hyper(x.context)
-    content = hyper(x.content)
-    result =
-        if !isnothing(x.cssclass)
-            classes = join(x.cssclass, " ")
-            if !isnothing(x.cssid)
-                x.hyperelem(classes, :id=>x.cssid)
-            else
-                x.hyperelem(classes)
-            end
-        elseif !isnothing(x.cssid)
-            x.hyperelem(:id=>x.cssid)
-        else
-            x.hyperelem()
-        end
-    if !isnothing(context)
-        if !isnothing(content)
-            result(content,context)
-        else
-            result(context)
-        end
-    elseif !isnothing(content)
-        result(content)
-    else
-        result
-    end
-end
-
-#=
-
-julia> bdiv = HtmlElement(:div, "bdiv", context=Context(adiv))
-HtmlElement(:div, GUI.div_, ("bdiv",), nothing, nothing, Context{HTML_Element}(HTML_Element(:div, GUI.div_, ("adiv",), nothing)))
-
-julia> hyper(bdiv)
-<div class="bdiv"><div class="adiv"></div></div>
-
-
-julia> hyper(bdiv)("b")
-<div class="bdiv"><div class="adiv"></div>b</div>
-
 =#
