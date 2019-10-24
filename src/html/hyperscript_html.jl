@@ -106,7 +106,7 @@ const HTML_global_elements = Set([:html, :head, :body])
 const HTML_head_elements = Set([:title, :meta])
 const HTML_section_elements = Set([
     :body, :article, :section, :nav, :aside,
-    :h1, ::h2, ::h3, ::h4, :h5, :h6,
+    :h1, :h2, :h3, :h4, :h5, :h6,
     :hgroup, :header, :footer, :address])
 const HTML_grouping_elements = Set([
     :p, :hr, :pre, :blockquote, :ol, :ul,
