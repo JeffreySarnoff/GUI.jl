@@ -55,17 +55,17 @@ mutable struct HTML_Element
     cssid::MaybeString
 
     function HTML_Element(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing)
-       hyperelem = hyperhtml[elem] 
-       return new(elem, hyperelem, cssclass, id)
+       helem = hyperhtml[elem] 
+       return new(elem, helem, cssclass, id)
     end
     
     function HTML_Element(elem::Symbol, cssclass::String; id::MaybeString=nothing)
-       hyperelem = hyperhtml[elem] 
-       return new(elem, hyperelem, (cssclass,), id)
+       helem = hyperhtml[elem] 
+       return new(elem, helem, (cssclass,), id)
     end
 end
 
-function hyperelem(x::HTML_Element)
+function hyper(x::HTML_Element)
     if !isnothing(x.cssclass)
         classes = join(x.cssclass, " ")
         if !isnothing(x.cssid)
@@ -122,22 +122,22 @@ mutable struct HtmlElement
 
     function HtmlElement(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing, 
                          content::MaybeContent=nothing, context::MaybeContext=nothing)
-       hyperelem = hyperhtml[elem] 
-       return new(elem, hyperelem, cssclass, id, content, context)
+       helem = hyperhtml[elem] 
+       return new(elem, helem, cssclass, id, content, context)
     end
     
     function HtmlElement(elem::Symbol, cssclass::String; id::MaybeString=nothing,
                          content::MaybeContent=nothing, context::MaybeContext=nothing)
-       hyperelem = hyperhtml[elem] 
-       return new(elem, hyperelem, (cssclass,), id, content, context)
+       helem = hyperhtml[elem] 
+       return new(elem, helem, (cssclass,), id, content, context)
     end
 end
 
-hyperelem(x::Nothing) = nothing
+hyper(x::Nothing) = nothing
 
-function hyperelem(x::HtmlElement)
-    context = hyperelem(x.context)
-    content = hyperelem(x.content)
+function hyper(x::HtmlElement)
+    context = hyper(x.context)
+    content = hyper(x.content)
     result =
         if !isnothing(x.cssclass)
             classes = join(x.cssclass, " ")
