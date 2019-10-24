@@ -1,5 +1,4 @@
 module GUI
-include("type/algebra.jl")             #
 
 using DataStructures, LinkedLists, StructArrays, NamedTupleTools, AbstractTrees
 using CanonicalTraits
