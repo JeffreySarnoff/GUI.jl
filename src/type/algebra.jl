@@ -65,6 +65,7 @@ mutable struct HTML_Element
     end
 end
 
+
 function hyper(x::HTML_Element)
     if !isnothing(x.cssclass)
         classes = join(x.cssclass, " ")
@@ -134,6 +135,8 @@ mutable struct HtmlElement
 end
 
 hyper(x::Nothing) = nothing
+hyper(x::Context{T}) where {T} = hyper(x.value)
+hyper(x::Content{T}) where {T} = hyper(x.value)
 
 function hyper(x::HtmlElement)
     context = hyper(x.context)
@@ -164,3 +167,16 @@ function hyper(x::HtmlElement)
     end
 end
 
+#=
+
+julia> bdiv = HtmlElement(:div, "bdiv", context=Context(adiv))
+HtmlElement(:div, GUI.div_, ("bdiv",), nothing, nothing, Context{HTML_Element}(HTML_Element(:div, GUI.div_, ("adiv",), nothing)))
+
+julia> hyper(bdiv)
+<div class="bdiv"><div class="adiv"></div></div>
+
+
+julia> hyper(bdiv)("b")
+<div class="bdiv"><div class="adiv"></div>b</div>
+
+=#
