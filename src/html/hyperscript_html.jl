@@ -68,9 +68,6 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
 end
 
 
-
-
-
 # link types
 const a_alternate_ = a_(:rel=>"alternate")
 const a_author_ = a_(:rel=>"author")
@@ -101,6 +98,40 @@ const a_prev_ = a_(:rel=>"prev")
 const area_circle_ = area_(:shape=>"circle")
 const area_rectangle_ = area_(:shape=>"rect")
 const area_polygon_ = area_(:shape=>"poly")
+
+### html elements
+
+# html elements
+const HTML_global_elements = Set([:html, :head, :body])
+const HTML_head_elements = Set([:title, :meta])
+const HTML_section_elements := :Set([
+    :body, ::article, :section, :nav, :aside,
+    :h1, ::h2, ::h3, ::h4, :h5, :h6,
+    :hgroup, :header, :footer, :address])
+const HTML_grouping_elements := :Set([
+    :p, :hr, :pre, :blockquote, :ol, :ul,
+    :menu, :li, :dl, :dt, :dd, :figure,
+    :figcaption, :main, :div])
+const HTML_table_elements := :Set([
+    :table, :caption, :colgroup, :col, :tbody,
+    :thead, :tfoot, :tr, :td, : :th])
+const HTML_text_elements := :Set([
+    :a, :em, :strong, :small, :s, :cite,
+    :q, :dfn, :abbr, :ruby, :rt, :rp,
+    :data, :code, :var, :samp, :kbd,
+    :sub, :sup, :i, :b, :u, :mark,
+    :bdi, :bdo, :span, :br, :wbr])
+const HTML_input_elements = Set([
+    :button, :checkbox, :color, :date,
+    :datetimeLocal, :email, :file, :hidden,
+    :image, :month, :number, :password,
+    :radio, :range, :reset, :search, :submit,
+    :tel, :text, :time, :url, :week])
+const HTML_other_elements = Set([:area])
+
+const HTML_elements = union(HTML_global_elements, HTML_head_elements, HTML_section_elements, HTML_grouping_elements,
+    HTML_table_elements, HTML_text_elements, HTML_input_elements, HTML_other_elements)
+
 
 ### html attributes
 
