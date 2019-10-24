@@ -18,7 +18,7 @@ include("type/maybe.jl")               # MaybeString, MaybeFloat, isstring, isfl
 include("support/misc.jl")             # first(nothing), isless(x, nothing) ...
 include("support/strings.jl")          # isuppercase(String), uppercasefirst
 
-include("support/linkedlist.jl")       # getindex(list, idx::Int)
+include("support/linkedlists.jl")      # getindex(list, idx::Int)
 include("support/dict.jl")             # getkeys::Vector, getvalues::Vector
 include("type/prototype.jl")           # specific NamedTuple prototypes
 
