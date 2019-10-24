@@ -9,6 +9,20 @@ function xhtml2html(x::EzXML.Document)
     return Gumbo.parsehtml(SubString(str,idx,length(str)))
 end
 
+
+function nelements(x::EzXML.Node)
+    if hasparentelement(x)
+        x = parentelement(x)
+    end
+    return EzXML.countelements(x)
+end
+
+haschildnode(node) = EzXML.hasnode(node)
+haschildelement(node) = EzXML.haselement(node)
+
+
+
+
 #=
     root = ElementNode("root")
     x = ElementNode("x")
