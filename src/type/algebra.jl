@@ -69,14 +69,14 @@ mutable struct HtmlElement
     end
 end
 
-hyper(x::Nothing) = nothing
-hyper(x::Context{T}) where {T} = hyper(x.value)
-hyper(x::Content{T}) where {T} = hyper(x.value)
-hyper(x::String) = x
+hyperhtml(x::Nothing) = nothing
+hyperhtml(x::Context{T}) where {T} = hyper(x.value)
+hyperhtml(x::Content{T}) where {T} = hyper(x.value)
+hyperhtml(x::String) = x
 
-function hyper(x::HtmlElement)
-    context = hyper(x.context)
-    content = hyper(x.content)
+function hyperhtml(x::HtmlElement)
+    context = hyperhtml(x.context)
+    content = hyperhtml(x.content)
     result =
         if !isnothing(x.cssclass)
             classes = join(x.cssclass, " ")
@@ -113,47 +113,47 @@ HtmlElement(:div, GUI.div_, ("adiv",), nothing)
 julia> alink=HtmlElement(:a, ("alink"))
 HtmlElement(:a, GUI.a_, ("alink",), nothing)
 
-julia> hyper(asection)
+julia> hyperhtml(asection)
 <section class="asection"></section>
 
-julia> hyper(adiv)
+julia> hyperhtml(adiv)
 <div class="adiv"></div>
 
-julia> hyper(alink)
+julia> hyperhtml(alink)
 <a class="alink"></a>
 
-julia> hyper(adiv)(hyper(alink))
+julia> hyperhtml(adiv)(hyperhtml(alink))
 <div class="adiv"><a class="alink"></a></div>
 
-julia> hyper(adiv)(hyper(alink)("url"))
+julia> hyperhtml(adiv)(hyperhtml(alink)("url"))
 <div class="adiv"><a class="alink">url</a></div>
 
-julia> hyper(adiv),hyper(alink)("url")
+julia> hyperhtml(adiv),hyperhtml(alink)("url")
 (<div class="adiv"></div>, <a class="alink">url</a>)
 
-julia> hyper(asection)(hyper(adiv),hyper(alink)("url"))
+julia> hyperhtml(asection)(hyperhtml(adiv),hyperhtml(alink)("url"))
 <section class="asection"><div class="adiv"></div><a class="alink">url</a></section>
 
 julia> bdiv = HtmlElement(:div, "bdiv", context=Context(adiv))
 HtmlElement(:div, GUI.div_, ("bdiv",), nothing, nothing, Context{HTML_Element}(HTML_Element(:div, GUI.div_, ("adiv",), nothing)))
 
-julia> hyper(bdiv)
+julia> hyperhtml(bdiv)
 <div class="bdiv"><div class="adiv"></div></div>
 
-julia> hyper(bdiv)("b")
+julia> hyperhtml(bdiv)("b")
 <div class="bdiv"><div class="adiv"></div>b</div>
 
 
 julia> bdiv = GUI.HtmlElement(:div, "bdiv", content=GUI.Content("ab"), context=GUI.Context(alink))
 GUI.HtmlElement(:div, GUI.div_, ("bdiv",), nothing, GUI.Content{String}("ab"), GUI.Context{GUI.HtmlElement}(GUI.HtmlElement(:a, GUI.a_, ("alink blink",), "id", nothing, nothing)))
 
-julia> GUI.hyper(bdiv)
+julia> hyperhtml(bdiv)
 <div class="bdiv">ab<a class="alink blink" id="id"></a></div>
 
 julia> bdiv = GUI.HtmlElement(:div, "bdiv", content=GUI.Content(alink), context=GUI.Context("abcd"))
 GUI.HtmlElement(:div, GUI.div_, ("bdiv",), nothing, GUI.Content{GUI.HtmlElement}(GUI.HtmlElement(:a, GUI.a_, ("alink blink",), "id", nothing, nothing)), GUI.Context{String}("abcd"))
 
-julia> GUI.hyper(bdiv)
+julia> hyperhtml(bdiv)
 <div class="bdiv"><a class="alink blink" id="id"></a>abcd</div>
 
 =#
@@ -178,7 +178,7 @@ mutable struct HTML_Element
 end
 
 
-function hyper(x::HTML_Element)
+function hyperhtml(x::HTML_Element)
     if !isnothing(x.cssclass)
         classes = join(x.cssclass, " ")
         if !isnothing(x.cssid)
