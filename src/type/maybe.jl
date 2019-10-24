@@ -1,4 +1,4 @@
-const MaybeSymbol  = Union{Nothing, Symbol
+const MaybeSymbol  = Union{Nothing, Symbol}
 const MaybeString  = Union{Nothing, String}
 const MaybeNumber  = Union{Nothing, Int, Float64}
 const MaybeInteger = Union{Nothing, Int32, Int64}
