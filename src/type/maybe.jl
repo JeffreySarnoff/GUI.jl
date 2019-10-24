@@ -32,7 +32,7 @@ isnumber(x::Float64) = true
 isuri(x::URI)        = true
 ismime(x::MIME)      = true
 istuple(x::Tuple)    = true
-isntuple(x:NTuple{N,T}) where {N,T} = true
+isntuple(x::NTuple{N,T}) where {N,T} = true
 isnamedtuple(x::NamedTuple) = true
 
 isinteger(x) = false
