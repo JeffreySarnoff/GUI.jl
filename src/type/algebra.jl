@@ -37,12 +37,13 @@ mutable struct Context{T} <: AbstractContext
      value::T
 end
 
-mutable struct Element{T1,T2,T3}
+mutable struct Element{N,E,T1,T2}
+    htmlelement::E
+    hyperelement::Hyperscript.Node{Hyperscript.HTMLSVG}
+    cssclass::MaybeNTuple{N,String}
+    cssid::MaybeString
     content::Content{T1}
     context::Context{T2}
-    css_id::MaybeString
-    css_class::Vector{String}
-    html::Hyperscript.Node{T3}
 end
 
 function string(x::Element{T1,T2,T3}) where {T1, T2, T3}
