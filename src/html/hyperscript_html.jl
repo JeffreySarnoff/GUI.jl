@@ -1,4 +1,4 @@
-export  hyperhtml,
+export  HyperHtml,
     html_, head_, title_, meta_,
     # sections https://html.spec.whatwg.org/#sections
     body_, article_, section_, nav_, aside_,
@@ -27,7 +27,7 @@ export  hyperhtml,
     area_
 
 # hyperhtml = Dict{Symbol, Hyperscript.Node{Hyperscript.HTMLSVG}}([])
-hyperhtml = Dict{Symbol, Function}([])
+HyperHtmlDict = Dict{Symbol, Function}([])
 
 for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :meta_),
      # sections https://html.spec.whatwg.org/#sections
@@ -58,7 +58,7 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
     )      
   @eval begin
      $F() = m($T)
-     hyperhtml[Symbol($T)] = $F
+     HyperHtmlDict[Symbol($T)] = $F
      $F(class::String) = m($T, class=class)
      function $F(class::String, xs::Vararg{Pair,N}) where {N}
          dict = Dict(xs)
@@ -72,6 +72,8 @@ for (T,F) in (("html", :html_), ("head", :head_), ("title", :title_), ("meta", :
   end
 end
 
+const HyperHtml = copy(HyperHtmlDict)
+HyperHtmlDict = nothing
 
 # link types
 const a_alternate_ = a_(:rel=>"alternate")
