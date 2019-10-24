@@ -1,5 +1,7 @@
 module GUI
 
+export HtmlElement, hyperhtml, Context, Content
+
 using DataStructures, LinkedLists, StructArrays, NamedTupleTools, AbstractTrees
 using CanonicalTraits
 using Gumbo, Cascadia, EzXML
@@ -7,6 +9,7 @@ using HAML, Mustache, Hyperscript
 using ReusePatterns
 
 using HTTP, HTTP.URIs
+
 include("type/abstract.jl")            #
 
 include("support/macros.jl")           # @sym
