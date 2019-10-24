@@ -90,25 +90,25 @@ HTML_Element(:div, GUI.div_, ("adiv",), nothing)
 julia> alink=HtmlElement(:a, ("alink"))
 HTML_Element(:a, GUI.a_, ("alink",), nothing)
 
-julia> hyperelem(asection)
+julia> hyper(asection)
 <section class="asection"></section>
 
-julia> hyperelem(adiv)
+julia> hyper(adiv)
 <div class="adiv"></div>
 
-julia> hyperelem(alink)
+julia> hyper(alink)
 <a class="alink"></a>
 
-julia> hyperelem(adiv)(hyperelem(alink))
+julia> hyper(adiv)(hyper(alink))
 <div class="adiv"><a class="alink"></a></div>
 
-julia> hyperelem(adiv)(hyperelem(alink)("url"))
+julia> hyper(adiv)(hyper(alink)("url"))
 <div class="adiv"><a class="alink">url</a></div>
 
-julia> hyperelem(adiv),hyperelem(alink)("url")
+julia> hyper(adiv),hyper(alink)("url")
 (<div class="adiv"></div>, <a class="alink">url</a>)
 
-julia> hyperelem(asection)(hyperelem(adiv),hyperelem(alink)("url"))
+julia> hype(asection)(hyper(adiv),hyper(alink)("url"))
 <section class="asection"><div class="adiv"></div><a class="alink">url</a></section>
 =#
 
