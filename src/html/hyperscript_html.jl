@@ -104,18 +104,18 @@ const area_polygon_ = area_(:shape=>"poly")
 # html elements
 const HTML_global_elements = Set([:html, :head, :body])
 const HTML_head_elements = Set([:title, :meta])
-const HTML_section_elements := :Set([
+const HTML_section_elements = :Set([
     :body, ::article, :section, :nav, :aside,
     :h1, ::h2, ::h3, ::h4, :h5, :h6,
     :hgroup, :header, :footer, :address])
-const HTML_grouping_elements := :Set([
+const HTML_grouping_elements = :Set([
     :p, :hr, :pre, :blockquote, :ol, :ul,
     :menu, :li, :dl, :dt, :dd, :figure,
     :figcaption, :main, :div])
-const HTML_table_elements := :Set([
+const HTML_table_elements = :Set([
     :table, :caption, :colgroup, :col, :tbody,
     :thead, :tfoot, :tr, :td, : :th])
-const HTML_text_elements := :Set([
+const HTML_text_elements = :Set([
     :a, :em, :strong, :small, :s, :cite,
     :q, :dfn, :abbr, :ruby, :rt, :rp,
     :data, :code, :var, :samp, :kbd,
