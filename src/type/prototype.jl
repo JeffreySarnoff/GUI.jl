@@ -34,9 +34,9 @@ mutable struct Content{T} <: AbstractContent
         if isnothing(ako)
             ako = AkoContent(Symbol(supertype(T)))
         end    
-        isnothing(ako) && println("\n\t missing AkoContent for ",T,"\n")
+        isnothing(ako) && println("\n  >>>  missing AkoContent for ",T," <: ", supertype(T), "\n")
         return new{T}(ako, value)
-    end    
+    end
 end
 
 const MaybeContent{T} = Union{Nothing, Content{T}}
@@ -50,17 +50,21 @@ iscontent(x) = false
 
 @enum AkoContext noContext=1 akoTable akoList akoEntry
 
-const akoContext = Dict(nothing=>noContext, :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoEntry)
+const akoContext = Dict(:nothing=>noContext, :Nothing=>noContext,
+    :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoEntry)
+
 AkoContext(x::Symbol) = get(akoContext, x, nothing)
-        
 
 mutable struct Context{T} <: AbstractContext
     ako::AkoContext
     value::T
 
     function Context(value::T) where {T}
-        ako = AkoContext(T)
-        isnothing(ako) && println("\n\t missing AkoContext for ",T,"\n")
+        ako = AkoContext(Symbol(T))
+        if isnothing(ako)
+            ako = AkoContext(Symbol(supertype(T)))
+        end    
+        isnothing(ako) && println("\n  >>>  missing AkoContext for ",T," <: ", supertype(T), "\n")
         return new{T}(ako, value)
     end    
 end
