@@ -20,7 +20,7 @@
 const akoContent = Dict(:nothing=>noContent, :Nothing=>noContent,
     :text=>akoText, :img=>akoImage, :image=>akoImage, :form=>akoForm, 
     :Int8=>akoInteger, :Int16=>akoInteger, :Int64=>akoInteger, :Int64=>akoInteger, :Integer=>akoInteger,
-    :Float16=>akoFloat, :Float32=>akoFloat, :Float64=>akoFloat, :AbstractFloat=>akoFloat)
+    :Float16=>akoFloat, :Float32=>akoFloat, :Float64=>akoFloat, :AbstractFloat=>akoFloat, :Number=>akoNumber)
 
 AkoContent(x::Symbol) = get(akoContent, x, nothing)
 
@@ -28,10 +28,10 @@ mutable struct Content{T} <: AbstractContent
     ako::AkoContent
     value::T
     
-    function Content(value::T) where {S, T<:S}
+    function Content(value::T) where {T}
         ako = AkoContent(Symbol(T))
         if isnothing(ako)
-            ako = AkoContent(Symbol(S))
+            ako = AkoContent(Symbol(supertype(T)))
         end    
         isnothing(ako) && println("\n\t missing AkoContent for ",T," <: ",S,"\n")
         return new{T}(ako, value)
