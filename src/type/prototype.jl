@@ -15,11 +15,11 @@
    sorts of Content
 =#
 
-@enum AkoContent noContent=1 akoText akoImage akoForm akoInteger akoFloat akoNumber
+@enum AkoContent noContent=1 akoTextual akoImage akoTable akoListed akoForm akoInteger akoFloat akoNumber
 
 const akoContent = Dict(:nothing=>noContent, :Nothing=>noContent,
-    :text=>akoText, :string=>akoText, :AbstractString=>akoText,
-    :img=>akoImage, :image=>akoImage, :form=>akoForm,
+    :text=>akoTextual, :string=>akoTextual, :AbstractString=>akoTextual,
+    :img=>akoImage, :image=>akoImage, :form=>akoForm, :table=>akoTable, :ol=>akoListed, :ul=>akoListed,
     :Int8=>akoInteger, :Int16=>akoInteger, :Int64=>akoInteger, :Int64=>akoInteger, :Integer=>akoInteger,
     :Float16=>akoFloat, :Float32=>akoFloat, :Float64=>akoFloat, :AbstractFloat=>akoFloat, :Number=>akoNumber)
 
@@ -48,10 +48,50 @@ iscontent(x) = false
    sorts of Context
 =#
 
-@enum AkoContext noContext=1 akoTable akoList akoEntry
+@enum AkoContext begin
+    noContext=1 akoBackground akoForeground 
+    akoEntry akoSequence akoTabular akoHierarchy
+    akoColor akoFont akoWord akoText
+    akoBorder akoMargin akoPadding
+    akoBox akoColumn akoGrid akoFlex 
+    akoOutline akoTransform
+end
 
 const akoContext = Dict(:nothing=>noContext, :Nothing=>noContext,
-    :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoEntry)
+    :body=>akoHierarchy, :head=>akoHierarchy,
+    :table=>akoTabular, :ol=>akoSequence, :ul=>akoSequence, :form=>akoEntry,
+    # https://www.w3.org/TR/css-color/
+    # https://www.w3.org/TR/css-color-adjust-1/
+    # https://www.w3.org/TR/css-color-4/
+    :color=>akoColor, Symbol("alpha-value")=>akoColor, Symbol("rendering-intent")=>akoColor,
+    :lab=>akoColor, :lch=>akoColor, :hwb=>akoColor, :hsl=>akoColor, :rgb=>akoColor, :hue=>akoColor,
+    # https://www.w3.org/TR/css-text/
+    Symbol("font-family")=>akoFont, Symbol("font-size")=>akoFont, Symbol("font-weight")=>akoFont,
+    Symbol("font-variant")=>akoFont, Symbol("font-kerning")=>akoFont, Symbol("font-stretch")=>akoFont,
+    Symbol("font-size-adjust")=>akoFont, Symbol("line-height")=>akoFont, Symbol("letter-spacing")=>akoFont,
+    Symbol("full-size")=>akoFont, :small=>akoFont, Symbol("full-width")=>akoFont,
+    # https://www.w3.org/TR/css-text/
+    Symbol("text")=>akoText, Symbol("text-transform")=>akoText, Symbol("text-indent")=>akoText,
+    Symbol("hanging-punctuation")=>akoText, Symbol("white-space")=>akoText,
+    Symbol("tab-size")=>akoText, Symbol("line-break")=>akoText, :hyphens=>akoText,
+    Symbol("overflow-wrap")=>akoText, Symbol("text-align")=>akoText,
+    Symbol("text-align-all")=>akoText, Symbol("text-align-last")=>akoText, Symbol("text-justify")=>akoText,
+    Symbol("text-justify-all")=>akoText, Symbol("inter-character")=>akoText, 
+    # https://www.w3.org/TR/css-text-decor-3/
+    #
+    :word=>akoWord, Symbol("word-break")=>akoWord, Symbol("word-spacing")=>akoWord,  Symbol("word-wrap")=>akoWord,
+    Symbol("keep-all")=>akoWord,  Symbol("inter-word")=>akoText,
+    # https://www.w3.org/TR/css-lists-3/
+    :outline=>akoOutline,
+    :padding=>akoPadding, :margin=>akoMargin, :border=>akoBorder,
+    :box=>akoBox, :column=>akoColumn, :grid=>akoGrid, :flex=>akoFlex,
+    # https://www.w3.org/TR/css-images-3/
+    :transform=>akoTransform
+    # https://www.w3.org/TR/css-contain-1/ "This CSS module describes the contain property, which indicates that the element’s subtree is independent of the rest of the page."
+    # https://www.w3.org/TR/css-contain-2/ 
+    # https://www.w3.org/TR/css-values-3/
+    # https://www.w3.org/TR/css-sizing-3/
+    )
 
 AkoContext(x::Symbol) = get(akoContext, x, nothing)
 
