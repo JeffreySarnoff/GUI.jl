@@ -29,25 +29,6 @@
 
 =#
 
-mutable struct Content{T} <: AbstractContent
-     value::T
-end
-
-const MaybeContent{T} = Union{Nothing, Content{T}}
-iscontent(x::MaybeContent{T}) where {T} = !isnothing(x)
-iscontent(x::Content{T}) where {T} = true
-iscontent(x) = false
-
-mutable struct Context{T} <: AbstractContext
-     value::T
-end
-
-const MaybeContext{T} = Union{Nothing, Context{T}}
-iscontext(x::MaybeContext{T}) where {T} = !isnothing(x)
-iscontext(x::Context{T}) where {T} = true
-iscontext(x) = false
-
-
 mutable struct HtmlElement
     htmlelem::Symbol
     hyperelem::Function
