@@ -30,7 +30,9 @@ mutable struct Content{T} <: AbstractContent
     
     function Content(value::T) where {S, T<:S}
         ako = AkoContent(Symbol(T))
-        isnothing(ako) && ako = AkoContent(Symbol(S))
+        if isnothing(ako)
+            ako = AkoContent(Symbol(S))
+        end    
         isnothing(ako) && println("\n\t missing AkoContent for ",T," <: ",S,"\n")
         return new{T}(ako, value)
     end    
