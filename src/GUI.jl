@@ -1,6 +1,7 @@
 module GUI
 
-export HtmlElement, hyperhtml, Context, Content
+export HtmlElement, hyperhtml, Context, Content,
+       render
 
 using DataStructures, LinkedLists, StructArrays, NamedTupleTools, AbstractTrees
 using CanonicalTraits
