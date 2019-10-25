@@ -30,3 +30,6 @@ function Base.pushfirst!(elem::Gumbo.HTMLElement, x::Hyperscript.Node{Hyperscrip
     pushfirst!(elem, convert(Gumbo.HTMLElement, x))
 end
 
+render(io::IO, x::Hyperscript.Node{Hyperscript.HTMLSVG}) = Hyperscript.render(io, Hyperscript.Pretty(x))
+render(x::Hyperscript.Node{Hyperscript.HTMLSVG}) = Hyperscript.render(stdout, Hyperscript.Pretty(x))
+
