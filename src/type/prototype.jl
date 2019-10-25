@@ -15,9 +15,9 @@
    sorts of Content
 =#
 
-@enum AkoContent akoNothing=1 akoText akoImage akoForm
+@enum AkoContent noContent=1 akoText akoImage akoForm
 
-const akoContent = Dict(Nothing=>akoNothing, :text=>akoText, :img=>akoImage, :image=>akoImage, :form=>akoForm)
+const akoContent = Dict(Nothing=>noContent, :text=>akoText, :img=>akoImage, :image=>akoImage, :form=>akoForm)
 AkoContent(x::Symbol) = get(akoContent, x, nothing)
 
 mutable struct Content{T} <: AbstractContent
@@ -40,9 +40,9 @@ iscontent(x) = false
    sorts of Context
 =#
 
-@enum AkoContext akoNothing=1 akoTable akoList akoEntry
+@enum AkoContext noContext=1 akoTable akoList akoEntry
 
-const akoContext = Dict(Nothing=>akoNothing, :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoEntry)
+const akoContext = Dict(Nothing=>noContext, :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoEntry)
 AkoContext(x::Symbol) = get(akoContext, x, nothing)
         
 
