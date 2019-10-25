@@ -15,12 +15,12 @@
    sorts of Content
 =#
 
-@enum AkoContent noContent=1 akoText akoImage akoForm akoNumber
+@enum AkoContent noContent=1 akoText akoImage akoForm akoInteger akoFloat akoNumber
 
 const akoContent = Dict(:nothing=>noContent, :Nothing=>noContent,
     :text=>akoText, :img=>akoImage, :image=>akoImage, :form=>akoForm, 
-    :Int8=>akoNumber, :Int16=>akoNumber, :Int64=>akoNumber, :Int64=>akoNumber,
-    :Float16=>akoNumber, :Float32=>akoNumber, :Float64=>akoNumber)
+    :Int8=>akoInteger, :Int16=>akoInteger, :Int64=>akoInteger, :Int64=>akoInteger, :Integer=>akoInteger,
+    :Float16=>akoFloat, :Float32=>akoFloat, :Float64=>akoFloat, :AbstractFloat=>akoFloat)
 
 AkoContent(x::Symbol) = get(akoContent, x, nothing)
 
@@ -28,9 +28,10 @@ mutable struct Content{T} <: AbstractContent
     ako::AkoContent
     value::T
     
-    function Content(value::T) where {T}
+    function Content(value::T) where {S, T<:S}
         ako = AkoContent(Symbol(T))
-        isnothing(ako) && println("\n\t missing AkoContent for ",T,"\n")
+        isnothing(ako) && ako = AkoContent(Symbol(S))
+        isnothing(ako) && println("\n\t missing AkoContent for ",T," <: ",S,"\n")
         return new{T}(ako, value)
     end    
 end
