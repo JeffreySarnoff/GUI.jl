@@ -18,7 +18,8 @@
 @enum AkoContent noContent=1 akoText akoImage akoForm akoInteger akoFloat akoNumber
 
 const akoContent = Dict(:nothing=>noContent, :Nothing=>noContent,
-    :text=>akoText, :img=>akoImage, :image=>akoImage, :form=>akoForm, 
+    :text=>akoText, :string=>akoText, :AbstractString=>akoText,
+    :img=>akoImage, :image=>akoImage, :form=>akoForm,
     :Int8=>akoInteger, :Int16=>akoInteger, :Int64=>akoInteger, :Int64=>akoInteger, :Integer=>akoInteger,
     :Float16=>akoFloat, :Float32=>akoFloat, :Float64=>akoFloat, :AbstractFloat=>akoFloat, :Number=>akoNumber)
 
@@ -33,7 +34,7 @@ mutable struct Content{T} <: AbstractContent
         if isnothing(ako)
             ako = AkoContent(Symbol(supertype(T)))
         end    
-        isnothing(ako) && println("\n\t missing AkoContent for ",T," <: ",S,"\n")
+        isnothing(ako) && println("\n\t missing AkoContent for ",T,"\n")
         return new{T}(ako, value)
     end    
 end
