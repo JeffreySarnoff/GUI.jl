@@ -26,6 +26,7 @@ mutable struct Content{T} <: AbstractContent
     
     function Content(value::T) where {T}
         ako = AkoContent(T)
+        isnothing(ako) && println("\n\t missing AkoContent for ",T,"\n")
         return new{T}(ako, value)
     end    
 end
@@ -39,15 +40,21 @@ iscontent(x) = false
    sorts of Context
 =#
 
-@enum AkoContext akoNothing=1 akoTable akoList akoForm
+@enum AkoContext akoNothing=1 akoTable akoList akoEntry
 
-const akoContext = Dict(Nothing=>akoNothing, :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoForm)
+const akoContext = Dict(Nothing=>akoNothing, :table=>akoTable, :ol=>akoList, :ul=>akoList, :form=>akoEntry)
 AkoContext(x::Symbol) = get(akoContext, x, nothing)
         
 
 mutable struct Context{T} <: AbstractContext
     ako::AkoContext
     value::T
+
+    function Context(value::T) where {T}
+        ako = AkoContext(T)
+        isnothing(ako) && println("\n\t missing AkoContext for ",T,"\n")
+        return new{T}(ako, value)
+    end    
 end
 
 const MaybeContext{T} = Union{Nothing, Context{T}}
