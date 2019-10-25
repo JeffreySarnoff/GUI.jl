@@ -40,7 +40,9 @@ uipadded = vbox(pad(winvertpadding, pad(winhorizpadding,select.widget)));
 body!(blinkwin,uipadded);
 
 
-select = Node(:select, Node(:option, value="first", "FirstValue"), Node(:option, value="second", "SecondValue"), attributes=Dict(:style => "font-size: 22px; color: brown; backgroundColor: green; padding: 20px"));
+blinkwin = Window();
+select = Node(:select, Node(:option, value="first", "FirstValue"), Node(:option, value="second", "SecondValue"), 
+               attributes=Dict(:style => "font-size: 32px; color: green; padding: 20px"));
 
 ui = vbox( pad(6em, select) );
 body!(blinkwin, ui);
