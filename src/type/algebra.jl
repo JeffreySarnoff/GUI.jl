@@ -128,46 +128,10 @@ bdiv = HtmlElement(:div, "bdiv", context=Context(adiv)) # HtmlElement(:div, GUI.
 hyperhtml(bdiv) # <div class="bdiv"><div class="adiv"></div></div>
 hyperhtml(bdiv)("b") # <div class="bdiv"><div class="adiv"></div>b</div>
 
-bdiv = HtmlElement(:div, "bdiv", content=GUI.Content("ab"), context=GUI.Context(alink)) # HtmlElement(:div, GUI.div_, ("bdiv",), nothing, GUI.Content{String}("ab"), GUI.Context{GUI.HtmlElement}(GUI.HtmlElement(:a, GUI.a_, ("alink blink",), "id", nothing, nothing)))
-hyperhtml(bdiv) # <div class="bdiv">ab<a class="alink blink" id="id"></a></div>
+cdiv = HtmlElement(:div, "cdiv", content=GUI.Content("inside cdiv"), context=GUI.Context(alink)) # HtmlElement(:div, GUI.div_, ("ddiv",), nothing, Content{HtmlElement}(HtmlElement(:a, GUI.a_, ("alink",), nothing, nothing, nothing)), Context{String}("abcd"))
+hyperhtml(cdiv) # <div class="cdiv">inside cdiv<a class="alink"></a></div>
 
-bdiv = HtmlElement(:div, "bdiv", content=GUI.Content(alink), context=GUI.Context("abcd")) # HtmlElement(:div, GUI.div_, ("bdiv",), nothing, GUI.Content{GUI.HtmlElement}(GUI.HtmlElement(:a, GUI.a_, ("alink blink",), "id", nothing, nothing)), GUI.Context{String}("abcd"))
-hyperhtml(bdiv) # <div class="bdiv"><a class="alink blink" id="id"></a>abcd</div>
-
+ddiv = HtmlElement(:div, "ddiv", content=GUI.Content(alink), context=GUI.Context("abcd")) # HtmlElement(:div, GUI.div_, ("ddiv",), nothing, Content{HtmlElement}(HtmlElement(:a, GUI.a_, ("alink",), nothing, nothing, nothing)), Context{String}("abcd"))
+hyperhtml(ddiv) # <div class="ddiv"><a class="alink"></a>abcd</div>
 =#
 
-
-#=
-mutable struct HTML_Element
-    htmlelem::Symbol
-    hyperelem::Function
-    cssclass::MaybeTuple
-    cssid::MaybeString
-
-    function HTML_Element(elem::Symbol, cssclass::MaybeNTuple{N,String}=nothing; id::MaybeString=nothing) where {N}
-       helem = HyperHtml[elem] 
-       return new(elem, helem, cssclass, id)
-    end
-    
-    function HTML_Element(elem::Symbol, cssclass::String; id::MaybeString=nothing)
-       helem = HyperHtml[elem] 
-       return new(elem, helem, (cssclass,), id)
-    end
-end
-
-
-function hyperhtml(x::HTML_Element)
-    if !isnothing(x.cssclass)
-        classes = join(x.cssclass, " ")
-        if !isnothing(x.cssid)
-            x.hyperelem(classes, :id=>x.cssid)
-        else
-            x.hyperelem(classes)
-        end
-    elseif !isnothing(x.cssid)
-        x.hyperelem(:id=>x.cssid)
-    else
-        x.hyperelem()
-    end
-end
-=#
