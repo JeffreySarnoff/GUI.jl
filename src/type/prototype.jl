@@ -90,7 +90,7 @@ const akoContext = Dict(:nothing=>noContext, :Nothing=>noContext,
     # https://www.w3.org/TR/css-contain-1/ "This CSS module describes the contain property, which indicates that the element’s subtree is independent of the rest of the page."
     # https://www.w3.org/TR/css-contain-2/ 
     # https://www.w3.org/TR/css-values-3/
-    # https://www.w3.org/TR/css-sizing-3/
+    # https://www.w3.org/TR/css-sizing-3/ "This module extends the CSS sizing properties with keywords that represent content-based "intrinsic" sizes and context-based "extrinsic" sizes, allowing CSS to more easily describe boxes that fit their content or fit into a particular layout context."
     )
 
 AkoContext(x::Symbol) = get(akoContext, x, nothing)
