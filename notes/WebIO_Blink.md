@@ -19,6 +19,10 @@ function HtmlSelect(options, values)
     return HtmlSelect(dict, widget)
 end
 
+checkargs(::Type{Val{:HtmlSelect}}, options, values) =
+    (length(options) === length(values) && !isempty(options)) ? nothing :
+        throw(ArgumentError("improper lengths: $(length(options)), $(length(values))"))
+
 
 options=["image", "help", "menu"]; values=["img", "help", "navbar"];
 
@@ -36,13 +40,10 @@ uipadded = vbox(pad(winvertpadding, pad(winhorizpadding,select.widget)));
 body!(blinkwin,uipadded);
 
 
-#ui = vbox( pad(6em, select.widget) );
-#body!(blinkwin, ui);
+select = Node(:select, Node(:option, value="first", "FirstValue"), Node(:option, value="second", "SecondValue"), attributes=Dict(:style => "font-size: 22px; color: brown; backgroundColor: green; padding: 20px"));
 
-
-checkargs(::Type{Val{:HtmlSelect}}, options, values) =
-    (length(options) === length(values) && !isempty(options)) ? nothing :
-        throw(ArgumentError("improper lengths: $(length(options)), $(length(values))"))
+ui = vbox( pad(6em, select) );
+body!(blinkwin, ui);
 
 =#
 
