@@ -1,6 +1,11 @@
 ```
-using WebIO, Interact, Blink and creating w = Window(); ui = <select dropdown>; body(w, ui);
-When the user selects one of the drop-down options, how do I know which option has been selected from Julia? (edited) 
+using WebIO, Interact, Blink
+w = Window()
+ui = <select dropdown>; 
+body!(w, ui)
+
+When the user selects one of the drop-down options,
+how do I know which option has been selected from Julia?
 
 Travis DePrato 15:33
 observe(ui) will return an observable whose value tracks the selection.
