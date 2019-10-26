@@ -91,6 +91,12 @@ select = Node(:select, Node(:option, value="first", "FirstValue"), Node(:option,
 ui = vbox( pad(6em, select) );
 body!(blinkwin, ui);
 
+# ---------
+
+obs = observe(Observable(uipadded))
+body!(blinkwin,obs)
+ 
+ 
 =#
 
 
