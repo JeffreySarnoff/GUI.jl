@@ -9,7 +9,11 @@ how do I know which option has been selected from Julia?
 
 Travis DePrato 15:33
 observe(ui) will return an observable whose value tracks the selection.
-That happens implicitly if you do `on(map) do … end` or `onjs(map, js"""function (newValue) { … }"""`)
+That happens implicitly if you do 
+`on(map) do … end`
+or 
+`onjs(map, js"""function (newValue) { … }"""`)
+
 ```
 ```
 Jeffrey Sarnoff 09:50
